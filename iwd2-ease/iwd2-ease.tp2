@@ -8,13 +8,17 @@ BACKUP ~iwd2-ease/backup~ // where should we put backup files?
 // where should tell the user to send email if something goes wrong? 
 AUTHOR "weimer@cs.berkeley.edu (http://www.cs.berkeley.edu/~weimer/bgate)"
 
-AUTO_TRA ~iwd2-ease/%s~
+AUTO_TRA ~iwd2-ease/languages/%s~
 
-LANGUAGE ~American English~ ~american~ 
-         ~iwd2-ease/american/setup.tra~
-LANGUAGE ~Traducción al Español (hecha por Bhasbuto, Clan DLAN)~ "spanish"
-         ~iwd2-ease/spanish/setup.tra~
-
+LANGUAGE 
+  ~American English~ 
+  ~english~ 
+  ~iwd2-ease/languages/english/setup.tra~
+LANGUAGE 
+  ~Traducción al Español (hecha por Bhasbuto, Clan DLAN)~ 
+  ~spanish~
+  ~iwd2-ease/languages/english/setup.tra~
+  ~iwd2-ease/languages/spanish/setup.tra~
 
 ///////////////////////////////////////////////////////////////////////
 // Ease-Of-Use Mod
