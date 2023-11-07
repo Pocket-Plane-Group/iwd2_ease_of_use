@@ -363,3 +363,7 @@ Disadvantages:
 @68   = ~Skip Battle Square~
 @69   = ~Randomized Treasure (mix up items with similar costs)~
 @70   = ~Faster Oswald~
+
+// game and weidu share the 0-70 range; use 1000s for weidu and 2000s for game going forward
+
+@1000 = ~This mod is for IWD2 only.~

@@ -31,7 +31,9 @@ LANGUAGE
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @0
+BEGIN @0 DESIGNATED 0
+REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+LABEL ~ww_iwd_ease_of_use_bugfixes~
 
 COPY_EXISTING ~00swdb93.itm~    ~override~ // Bastard Sword of Heroism
   LPF ALTER_HEADER_IWD2 INT_VAR type = 1 to_hit = 3 END // to hit bonus is 0, should be +3
@@ -54,7 +56,8 @@ COPY_EXISTING ~00arow88.itm~    ~override~ // Stunning Arrows +1
   LPF ALTER_EFFECT INT_VAR check_globals = 0 match_probability1 = 25 probability1 = 49 END // should have 50% stun on hit
   BUT_ONLY
 
-COPY_EXISTING ~rt_fury.2da~     ~override~
+COPY_EXISTING ~rt_fury.2da~ ~override~
+              ~rt_norm.2da~ ~override~ //no errors by default, but here just in case someone somehow manages to install comp #13 before this
   REPLACE_TEXTUALLY ~SPEAR~ ~SPER~
   REPLACE_TEXTUALLY ~STAFF~ ~STAF~
   BUT_ONLY
@@ -74,7 +77,9 @@ COPY_EXISTING ~00cwshm1.itm~    ~override~ // shambling mound attack
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @1
+BEGIN @1 DESIGNATED 1
+REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+LABEL ~ww_iwd_ease_of_use_infinte_stacking~
 
 // code essentially stolen and adapted from Tweaks Anthology
 OUTER_SET stack = 9999
@@ -115,7 +120,9 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~    ~override~ // check all items
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @2
+BEGIN @2 DESIGNATED 2
+REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+LABEL ~ww_iwd_ease_of_use_non-_combat_war_chant~
 
 // small change from v15: war chant still wn't apply to deafened party members or non-allies
 COPY_EXISTING ~spin148.spl~ ~override~
@@ -131,11 +138,13 @@ COPY_EXISTING ~spin148.spl~ ~override~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @3
+BEGIN @3 DESIGNATED 3
+REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+LABEL ~ww_iwd_ease_of_use_holy_avenger_improved~
 
 ACTION_IF subs BEGIN
-  OUTER_SPRINT ha_match   @71
-  OUTER_SPRINT ha_replace @72
+  OUTER_SPRINT ha_match   @2001
+  OUTER_SPRINT ha_replace @2002
 END    
 
 COPY_EXISTING ~60hfslha.itm~ ~override~
@@ -165,15 +174,17 @@ COPY_EXISTING ~60hfslha.itm~ ~override~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @6
+BEGIN @6 DESIGNATED 4
+REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+LABEL ~ww_iwd_ease_of_use_holy_avenger_2h~
 
 ACTION_IF subs BEGIN
-  OUTER_SPRINT dam_match   @73
-  OUTER_SPRINT dam_replace @74
-  OUTER_SPRINT hd1_match   @75
-  OUTER_SPRINT hd1_replace @76
-  OUTER_SPRINT feat_match   @77
-  OUTER_SPRINT feat_replace @78
+  OUTER_SPRINT dam_match   @2003
+  OUTER_SPRINT dam_replace @2004
+  OUTER_SPRINT hd1_match   @2005
+  OUTER_SPRINT hd1_replace @2006
+  OUTER_SPRINT feat_match   @2007
+  OUTER_SPRINT feat_replace @2008
 END    
 
 COPY_EXISTING ~60hfslha.itm~ ~override~
@@ -201,7 +212,9 @@ COPY_EXISTING ~60hfslha.itm~ ~override~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @7
+BEGIN @7 DESIGNATED 5
+REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+LABEL ~ww_iwd_ease_of_use_iron_body_no_fist~
 
 COPY_EXISTING ~spwi807.spl~ ~override~ // iron body
   LPF DELETE_EFFECT INT_VAR match_opcode = 111 END // delete opcode that creates fist
@@ -215,7 +228,9 @@ COPY_EXISTING ~spwi807.spl~ ~override~ // iron body
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @8
+BEGIN @8 DESIGNATED 6
+REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+LABEL ~ww_iwd_ease_of_use_gnome_starting_xp~
 
 COPY_EXISTING ~strtxp.2da~ ~override~
   REPLACE_TEXTUALLY ~^\(GNOME_DEEP[ %TAB%]+\)[0-9]+~ ~\19000~
@@ -229,14 +244,16 @@ COPY_EXISTING ~strtxp.2da~ ~override~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @9
+BEGIN @9 DESIGNATED 7
+REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+LABEL ~ww_iwd_ease_of_use_improved_moonblades~
 
 ACTION_IF subs BEGIN
-  OUTER_SPRINT dam_match    @79
-  OUTER_SPRINT dam_replace  @80
-  OUTER_SPRINT atk_match    @81
-  OUTER_SPRINT feat_match   @77
-  OUTER_SPRINT feat_replace @82
+  OUTER_SPRINT dam_match    @2009
+  OUTER_SPRINT dam_replace  @2010
+  OUTER_SPRINT atk_match    @2011
+  OUTER_SPRINT feat_match   @2007
+  OUTER_SPRINT feat_replace @2012
 END    
 
 COPY_EXISTING ~00swdl09.itm~   ~override~
@@ -267,7 +284,9 @@ COPY_EXISTING ~moonbla.itm~   ~override~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @10
+BEGIN @10 DESIGNATED 8
+REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+LABEL ~ww_iwd_ease_of_use_improved_monk_fists~
 
 COPY_EXISTING_REGEXP GLOB ~^00mfist[1-9]\.itm$~ ~override~
   WRITE_SHORT 0x1c 19 // short sword
@@ -281,7 +300,9 @@ COPY_EXISTING_REGEXP GLOB ~^00mfist[1-9]\.itm$~ ~override~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @11
+BEGIN @11 DESIGNATED 9
+REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+LABEL ~ww_iwd_ease_of_use_ce_items~
 
 EXTEND_BOTTOM ~baldur.bcs~ ~iwd2-ease/baf/ce.baf~
 
@@ -293,7 +314,9 @@ EXTEND_BOTTOM ~baldur.bcs~ ~iwd2-ease/baf/ce.baf~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @12
+BEGIN @12 DESIGNATED 10
+REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+LABEL ~ww_iwd_ease_of_use_no_class_align_restrictions~
 
 COPY_EXISTING ~alignmnt.2da~ ~override~
   REPLACE_TEXTUALLY 
@@ -310,7 +333,9 @@ COPY_EXISTING ~alignmnt.2da~ ~override~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @13
+BEGIN @13 DESIGNATED 11
+REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+LABEL ~ww_iwd_ease_of_use_magic_weapon_finesse~
 
 COPY_EXISTING_REGEXP GLOB ~^bbodisa\.itm$~         ~override~
                           ~^ltouch\.itm$~          ~override~
@@ -329,14 +354,25 @@ COPY_EXISTING_REGEXP GLOB ~^bbodisa\.itm$~         ~override~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @14
+BEGIN @14 DESIGNATED 12
+REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+LABEL ~ww_iwd_ease_of_use_always_some_xp~
 
 COPY    ~iwd2-ease/2da/moncrate.2da~   ~override~
 
-///////////////////////////////////////////////////////////////////////
-BEGIN @15
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Some Heart of Fury Items In Normal Mode          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-COPY_EXISTING ~RT_FURY.2DA~     ~override/RT_NORM.2DA~
+BEGIN @15 DESIGNATED 13
+REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+LABEL ~ww_iwd_ease_of_use_hof_items_in_regular~
+
+COPY_EXISTING ~rt_fury.2da~     ~override/rt_norm.2da~
 
 ///////////////////////////////////////////////////////////////////////
 BEGIN @16

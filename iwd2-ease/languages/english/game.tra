@@ -1,4 +1,8 @@
-/* @4, @5 are deprecated in favor of subbing text in the description (see @71, @71
+/* 
+
+@4, @5 are deprecated in favor of subbing text in the description (see @2001, @2002)
+
+
 @4    = ~The holy avenger is the paladin's ultimate weapon against the forces of evil.  There are few creatures on the Lower Planes that would not hesitate to confront a holy warrior wielding such a weapon... and this one, perhaps more so than others.  Once, it was nothing more than a simple iron sword, but through the courage and faith of one man, it became something more. 
    
 The blade of this holy avenger glows with a soft golden light.  Inscribed upon the hilt in flowing gold letters is "Cera Sumat," which translates into "Six, now Silenced."  Cera Sumat earned its name through the labors of elderly duke Kholsa Ehld, a man cresting nearly eighty years of age, who vowed to complete a task that the greatest warriors of three kingdoms feared to do... all because of the weeping of a child.  
@@ -76,17 +80,20 @@ Weight:  5 lb.
 Feat Requirement:  Martial Weapon, Large Sword 
 Type:  One-handed~
 */
-@71 = ~^[ %TAB%]*Holy:[ %TAB%]*\+2[Dd]6[ %TAB%]+[Aa]gainst[ %TAB%]+[Ee]vil[ %TAB%]+[Cc]reatures\.?~ 
-@72 = ~ Holy: +2d6 against evil creatures. 
+
+// game and weidu share the 0-70 range; use 1000s for weidu and 2000s for game going forward
+
+@2001 = ~^[ %TAB%]*Holy:[ %TAB%]*\+2[Dd]6[ %TAB%]+[Aa]gainst[ %TAB%]+[Ee]vil[ %TAB%]+[Cc]reatures\.?~ 
+@2002 = ~ Holy: +2d6 against evil creatures. 
  Lawful: +2d6 against chaotic creatures. 
  Dispelling: Dispel Magic on target (Will save)~
-@73 = ~^\([ %TAB%]*Damage:[ %TAB%]*\)[0-9][Dd][0-9][ %TAB%]*\+[ %TAB%]*~
-@74 = ~\12d6 + ~
-@75 = ~^\([ %TAB%]*Type:[ %TAB%]*\)[Oo]ne[- ][Hh]anded~
-@76 = ~\1Two-handed~
-@77 = ~^\([ %TAB%]*Feat[ %TAB%]+Requirement:.+\)[Ll]arge[ %TAB%]+[Ss]word~
-@78 = ~\1Great Sword~
-@79 = ~^\([ %TAB%]*Damage:[ %TAB%]*\)[0-9][Dd][0-9][ %TAB%]*\+[ %TAB%]*[0-9]+~
-@80 = ~\11d12 + 4~
-@81 = ~^[ %TAB%]*[Aa]ttack[ %TAB%]+[Bb]onus:?[ %TAB%]+\+[0-9]+[ %TAB%%LNL%%MNL%%WNL%]+~
-@82 = ~\1Small Blade~
+@2003 = ~^\([ %TAB%]*Damage:[ %TAB%]*\)[0-9][Dd][0-9][ %TAB%]*\+[ %TAB%]*~
+@2004 = ~\12d6 + ~
+@2005 = ~^\([ %TAB%]*Type:[ %TAB%]*\)[Oo]ne[- ][Hh]anded~
+@2006 = ~\1Two-handed~
+@2007 = ~^\([ %TAB%]*Feat[ %TAB%]+Requirement:.+\)[Ll]arge[ %TAB%]+[Ss]word~
+@2008 = ~\1Great Sword~
+@2009 = ~^\([ %TAB%]*Damage:[ %TAB%]*\)[0-9][Dd][0-9][ %TAB%]*\+[ %TAB%]*[0-9]+~
+@2010 = ~\11d12 + 4~
+@2011 = ~^[ %TAB%]*[Aa]ttack[ %TAB%]+[Bb]onus:?[ %TAB%]+\+[0-9]+[ %TAB%%LNL%%MNL%%WNL%]+~
+@2012 = ~\1Small Blade~
