@@ -458,16 +458,22 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   WRITE_SHORT 0x42 0 // lore
   BUT_ONLY
 
-// produce fire, sppr411
-// righteous wrath, sppr511, look in listspll for details
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Non-Linear Teleportation                         \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-///////////////////////////////////////////////////////////////////////
+BEGIN @31 DESIGNATED 16
+REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+LABEL ~ww_iwd_ease_of_use_non_linear_teleportation~
 
-BEGIN @31
+EXTEND_BOTTOM ~dplayer3.bcs~ ~iwd2-ease/baf/teleport.baf~
 
-EXTEND_TOP ~DPLAYER3.BCS~       ~iwd2-ease/nonlinear/teleport.bcs~
-
-COMPILE ~iwd2-ease/nonlinear/teleport.d~
+ACTION_IF !FILE_EXISTS_IN_GAME ~multig.dlg~ BEGIN COMPILE ~iwd2-ease/dlg/teleport_multig.d~ END // create multig in case it doesn't exist
+COMPILE ~iwd2-ease/dlg/teleport.d~
 
 ///////////////////////////////////////////////////////////////////////
 
