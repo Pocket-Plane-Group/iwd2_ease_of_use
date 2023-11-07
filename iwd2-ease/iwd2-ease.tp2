@@ -176,10 +176,19 @@ COPY_EXISTING ~spwi807.spl~ ~override~ // iron body
   LPF DELETE_EFFECT INT_VAR match_opcode = 111 END // delete opcode that creates fist
   BUT_ONLY
 
-///////////////////////////////////////////////////////////////////////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Deep Gnome Starting XP                           \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
 BEGIN @8
 
-COPY    ~iwd2-ease/deep-gnome~        ~override~
+COPY_EXISTING ~strtxp.2da~ ~override~
+  REPLACE_TEXTUALLY ~^\(GNOME_DEEP[ %TAB%]+\)[0-9]+~ ~\19000~
+  BUT_ONLY
 
 ///////////////////////////////////////////////////////////////////////
 BEGIN @9
