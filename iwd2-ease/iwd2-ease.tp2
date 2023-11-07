@@ -13,12 +13,15 @@ AUTO_TRA ~iwd2-ease/languages/%s~
 LANGUAGE 
   ~American English~ 
   ~english~ 
-  ~iwd2-ease/languages/english/setup.tra~
+  ~iwd2-ease/languages/english/weidu.tra~
+  ~iwd2-ease/languages/english/game.tra~
 LANGUAGE 
   ~Traducción al Español (hecha por Bhasbuto, Clan DLAN)~ 
   ~spanish~
-  ~iwd2-ease/languages/english/setup.tra~
-  ~iwd2-ease/languages/spanish/setup.tra~
+  ~iwd2-ease/languages/english/weidu.tra~
+  ~iwd2-ease/languages/english/game.tra~
+  ~iwd2-ease/languages/spanish/weidu.tra~
+  ~iwd2-ease/languages/spanish/game.tra~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -31,7 +34,7 @@ LANGUAGE
 BEGIN @0
 
 COPY_EXISTING ~00swdb93.itm~    ~override~ // Bastard Sword of Heroism
-  LPF ALTER_HEADER INT_VAR type = 1 to_hit = 3 END // to hit bonus is 0, should be +3
+  LPF ALTER_HEADER_IWD2 INT_VAR type = 1 to_hit = 3 END // to hit bonus is 0, should be +3
   BUT_ONLY
 
 COPY_EXISTING ~11phaen.cre~     ~override~ // Phaen of the Rags
@@ -40,18 +43,15 @@ COPY_EXISTING ~11phaen.cre~     ~override~ // Phaen of the Rags
   BUT_ONLY
 
 COPY_EXISTING ~00ax1hsc.itm~    ~override~ // Screamer
-  LPF ALTER_HEADER INT_VAR type = 2 flag_strength = 1 END // strength bonus
+  LPF ALTER_HEADER_IWD2 INT_VAR match_type = 2 flag_strength = 1 END // strength bonus
   BUT_ONLY
 
 //COPY_EXISTING ~63halbpb.itm~    ~override~ // Pudu's Blight
 //  WRITE_BYTE 0x1ec 25   // stunning chance (already correct as 0-24 is 25%)
 
-COPY_EXISTING ~00arow88.itm~    ~override~
-  LPF ALTER_EFFECT INT_VAR check_globals = 0 match_probability1 = 25 probability1 = 49 END // stun on hit
-  BUT_ONLY
-
-COPY_EXISTING ~00flal87.itm~    ~override~
-  LPF ALTER_EFFECT INT_VAR check_globals = 0 match_probability1 = 25 probability1 = 49 END // stun on hit
+COPY_EXISTING ~00arow88.itm~    ~override~ // Stunning Arrows +1
+              ~00flal87.itm~    ~override~ // Stun Flail +1
+  LPF ALTER_EFFECT INT_VAR check_globals = 0 match_probability1 = 25 probability1 = 49 END // should have 50% stun on hit
   BUT_ONLY
 
 COPY_EXISTING ~rt_fury.2da~     ~override~
@@ -133,15 +133,28 @@ COPY_EXISTING ~spin148.spl~ ~override~
 
 BEGIN @3
 
+ACTION_IF subs BEGIN
+  OUTER_SPRINT ha_match   @71
+  OUTER_SPRINT ha_replace @72
+END    
+
 COPY_EXISTING ~60hfslha.itm~ ~override~
               ~60swdlha.itm~ ~override~
-  PATCH_IF ("%SOURCE_RES%" STRING_COMPARE_CASE "60swdlha" = 0) BEGIN
-    SAY DESC @4
-  END ELSE BEGIN  
-    SAY DESC @5
-  END
   LPF ADD_ITEM_EFFECT INT_VAR type = 1 opcode = 402 target = 2 parameter2 = 61 timing = 1 resist_dispel = 2 STR_VAR resource = ~effuhc1~ END // +2d6 vs. chaotic
   LPF ADD_ITEM_EFFECT INT_VAR type = 1 opcode = 402 target = 2                 timing = 1 resist_dispel = 2 STR_VAR resource = ~effdm1~  END // dispel magic vs. everyone
+  PATCH_IF subs BEGIN // for english, sub text in the description directly
+    READ_STRREF 0x54 desc
+    INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+      REPLACE_TEXTUALLY ~%ha_match%~ ~%ha_replace%~
+    END
+    SAY_EVALUATED 0x54 ~%desc%~
+  END ELSE BEGIN // otherwise use static descriptions
+    PATCH_IF ("%SOURCE_RES%" STRING_COMPARE_CASE "60swdlha" = 0) BEGIN
+      SAY DESC @4
+    END ELSE BEGIN  
+      SAY DESC @5
+    END
+  END
   BUT_ONLY
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -154,12 +167,30 @@ COPY_EXISTING ~60hfslha.itm~ ~override~
 
 BEGIN @6
 
+ACTION_IF subs BEGIN
+  OUTER_SPRINT dam_match   @73
+  OUTER_SPRINT dam_replace @74
+  OUTER_SPRINT hd1_match   @75
+  OUTER_SPRINT hd1_replace @76
+  OUTER_SPRINT feat_match   @77
+  OUTER_SPRINT feat_replace @78
+END    
+
 COPY_EXISTING ~60hfslha.itm~ ~override~
               ~60swdlha.itm~ ~override~
   WRITE_LONG  0x18 THIS | BIT1 // add two-handed flag
   WRITE_SHORT 0x1c 57          // category: great swords
   WRITE_ASCII 0x22 "S2"        // inventory icon
-  LPF ALTER_HEADER INT_VAR type = 1 range = 2 dicenumber = 2 dicesize = 6 END // range 2, base damage 2d6
+  LPF ALTER_HEADER_IWD2 INT_VAR match_type = 1 range = 2 dicenumber = 2 dicesize = 6 END // range 2, base damage 2d6
+  PATCH_IF subs BEGIN // for english, sub text in the description directly
+    READ_STRREF 0x54 desc
+    INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+      REPLACE_TEXTUALLY ~%dam_match%~  ~%dam_replace%~  // replace damagae line with 2d6
+      REPLACE_TEXTUALLY ~%hd1_match%~  ~%hd1_replace%~  // replace one-handed line with two-handed
+      REPLACE_TEXTUALLY ~%feat_match%~ ~%feat_replace%~ // replace 'large sword' with 'great sword' in feat line
+    END
+    SAY_EVALUATED 0x54 ~%desc%~
+  END
   BUT_ONLY
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -190,7 +221,14 @@ COPY_EXISTING ~strtxp.2da~ ~override~
   REPLACE_TEXTUALLY ~^\(GNOME_DEEP[ %TAB%]+\)[0-9]+~ ~\19000~
   BUT_ONLY
 
-///////////////////////////////////////////////////////////////////////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Improved Moonblades                              \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
 BEGIN @9
 
 COPY    ~iwd2-ease/moonblade~        ~override~

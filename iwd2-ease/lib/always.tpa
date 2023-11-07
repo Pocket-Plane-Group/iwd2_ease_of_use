@@ -1,3 +1,5 @@
+ACTION_IF ("%LANGUAGE%" STRING_COMPARE_CASE "english" = 0) BEGIN OUTER_SET subs = 1 END ELSE BEGIN OUTER_SET subs = 0 END
+
 /////                                                  \\\\\
 ///// alter_header_iwd2                                \\\\\
 /////                                                  \\\\\
@@ -26,7 +28,6 @@ DEFINE_PATCH_FUNCTION ALTER_HEADER_IWD2
           // item headers only
           match_identify       = "-1"
           match_launcher       = "-1"
-          match_alt_damage     = "-1"
           match_to_hit         = "-1"
           match_dicesize       = "-1"
           match_primary        = "-1"
@@ -62,7 +63,6 @@ DEFINE_PATCH_FUNCTION ALTER_HEADER_IWD2
           // item headers only
           identify       = "-1"
           launcher       = "-1"
-          alt_damage     = "-1"
           to_hit         = "-1"
           dicesize       = "-1"
           primary        = "-1"
@@ -153,7 +153,6 @@ BEGIN
           PATCH_IF (abil_length = 0x38) BEGIN  // item-specific checks
             PATCH_IF (((match_identify       = o_identify)       OR (match_identify < 0))       AND
                       ((match_launcher       = o_launcher)       OR (match_launcher < 0))       AND
-                      ((match_alt_damage     = o_alt_damage)     OR (match_alt_damage < 0))     AND
                       ((match_to_hit         = o_to_hit)         OR (match_to_hit < 0))         AND
                       ((match_dicesize       = o_dicesize)       OR (match_dicesize < 0))       AND
                       ((match_primary        = o_primary)        OR (match_primary < 0))        AND
@@ -174,12 +173,6 @@ BEGIN
                       ((match_flag_break < 0) OR
                        (match_flag_break = (flags & BIT1)) OR // not set
                        (match_flag_break > 0 AND (flags & BIT1) = BIT1)) AND
-                      ((match_flag_str_damage < 0) OR
-                       (match_flag_str_damage = (flags & BIT2)) OR // not set
-                       (match_flag_str_damage > 0 AND (flags & BIT2) = BIT2)) AND
-                      ((match_flag_str_to_hit < 0) OR
-                       (match_flag_str_to_hit = (flags & BIT3)) OR // not set
-                       (match_flag_str_to_hit > 0 AND (flags & BIT3) = BIT3)) AND
                       ((match_flag_hostile < 0) OR
                        (match_flag_hostile = (flags & BIT10)) OR // not set
                        (match_flag_hostile > 0 AND (flags & BIT10) = BIT10)) AND
@@ -191,13 +184,7 @@ BEGIN
                        (match_flag_bypass > 0 AND (flags & BIT16) = BIT16)) AND
                       ((match_flag_keenedge < 0) OR
                        (match_flag_keenedge = (flags & BIT17)) OR // not set
-                       (match_flag_keenedge > 0 AND (flags & BIT17) = BIT17)) AND
-                      ((match_flag_backstab < 0) OR
-                       (match_flag_backstab = (flags & BIT25)) OR // not set
-                       (match_flag_backstab > 0 AND (flags & BIT25) = BIT25)) AND
-                      ((match_flag_noinvisible < 0) OR
-                       (match_flag_noinvisible = (flags & BIT26)) OR // not set
-                       (match_flag_noinvisible > 0 AND (flags & BIT26) = BIT26))) BEGIN
+                       (match_flag_keenedge > 0 AND (flags & BIT17) = BIT17))) BEGIN
               SET proceed = 1
             END
           END ELSE BEGIN // spell-specific checks
@@ -324,8 +311,8 @@ BEGIN
 
   READ_LONG  0x616 item_off ELSE 0
   READ_LONG  0x61a item_num ELSE 0
-  LPF ALTER_AREA-CREATURE_ITEM INT_VAR expiry charge1 charge2 charge3 flags flag_identified flag_unstealable flag_stolen flag_undroppable item_num item_off
-                               STR_VAR item match_item END
+  LPF ALTER_AREA-CREATURE_ITEM_IWD2 INT_VAR expiry charge1 charge2 charge3 flags flag_identified flag_unstealable flag_stolen flag_undroppable item_num item_off
+                                    STR_VAR item match_item END
 
 END
 
