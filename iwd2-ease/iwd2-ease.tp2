@@ -285,21 +285,41 @@ BEGIN @11
 
 EXTEND_BOTTOM ~baldur.bcs~ ~iwd2-ease/baf/ce.baf~
 
-///////////////////////////////////////////////////////////////////////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// No Alignment Class Restrictions                  \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
 BEGIN @12
 
-COPY    ~iwd2-ease/all-align~   ~override~
+COPY_EXISTING ~alignmnt.2da~ ~override~
+  REPLACE_TEXTUALLY 
+    ~^\([^ %TAB%]+\)[ %TAB%]+[0-9][ %TAB%]+[0-9][ %TAB%]+[0-9][ %TAB%]+[0-9][ %TAB%]+[0-9][ %TAB%]+[0-9][ %TAB%]+[0-9][ %TAB%]+[0-9][ %TAB%]+[0-9]~
+    ~\1 1 1 1 1 1 1 1 1 1~
+  PRETTY_PRINT_2DA
+  BUT_ONLY  
 
-///////////////////////////////////////////////////////////////////////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Magic Weapon Finesse                             \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
 BEGIN @13
 
-COPY_EXISTING_REGEXP ~bbodisa.itm~      ~override~
-                     ~ltouch.itm~       ~override~
-                     ~gtouch.itm~       ~override~
-                     ~harm.itm~       ~override~
-                     ~destruc.itm~       ~override~
-                     ~mswrd.*itm~       ~override~
+COPY_EXISTING_REGEXP GLOB ~^bbodisa\.itm$~         ~override~
+                          ~^ltouch\.itm$~          ~override~
+                          ~^gtouch\.itm$~          ~override~
+                          ~^harm\.itm$~            ~override~
+                          ~^destruc\.itm$~         ~override~
+                          ~^mswrd[0-9][0-9]\.itm$~ ~override~
   WRITE_SHORT 0x1c 19 // short sword
+  BUT_ONLY  
 
 ///////////////////////////////////////////////////////////////////////
 BEGIN @14
