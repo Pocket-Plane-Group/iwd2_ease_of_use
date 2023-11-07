@@ -107,10 +107,21 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~    ~override~ // check all items
   END
   BUT_ONLY
 
-///////////////////////////////////////////////////////////////////////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Non-Combat War Chant of the Sith                 \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
 BEGIN @2
 
-COPY ~iwd2-ease/war-chant/spin148.spl~     ~override/spin148.spl~
+// small chane from v15: war chant still wn't apply to deafened party members or non-allies
+COPY_EXISTING ~spin148.spl~ ~override~
+  WRITE_BYTE 0x27 13 // secondary: non-combat
+  LPF DELETE_EFFECT INT_VAR match_opcode = 206 match_parameter2 = 81 END // remove 206 for 'not near enemies'
+  BUT_ONLY
 
 ///////////////////////////////////////////////////////////////////////
 BEGIN @3
