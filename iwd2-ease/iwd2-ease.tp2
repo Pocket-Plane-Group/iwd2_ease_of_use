@@ -441,16 +441,22 @@ ACTION_FOR_EACH sword IN 00swdbrc 00hfsbrc BEGIN
     LPF ALTER_EFFECT INT_VAR check_headers = 0 power = 0 timing = 2 duration = 0 resist_dispel = 0 END
     
 END  
-  
 
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// All Items Identified                             \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
+BEGIN @30 DESIGNATED 15
+REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+LABEL ~ww_iwd_ease_of_use_id_all_items~
 
-
-
-BEGIN @30
-
-COPY_EXISTING_REGEXP ~.*\.ITM~ ~override~
-  WRITE_SHORT 0x42 0
+COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
+  WRITE_SHORT 0x42 0 // lore
+  BUT_ONLY
 
 // produce fire, sppr411
 // righteous wrath, sppr511, look in listspll for details
