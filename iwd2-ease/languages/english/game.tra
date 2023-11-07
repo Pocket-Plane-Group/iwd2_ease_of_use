@@ -1,7 +1,7 @@
+// @0 through @3 in weidu.tra
 /* 
 
 @4, @5 are deprecated in favor of subbing text in the description (see @2001, @2002)
-
 
 @4    = ~The holy avenger is the paladin's ultimate weapon against the forces of evil.  There are few creatures on the Lower Planes that would not hesitate to confront a holy warrior wielding such a weapon... and this one, perhaps more so than others.  Once, it was nothing more than a simple iron sword, but through the courage and faith of one man, it became something more. 
    
@@ -80,6 +80,243 @@ Weight:  5 lb.
 Feat Requirement:  Martial Weapon, Large Sword 
 Type:  One-handed~
 */
+
+// @6 through @16 in weidu.tra
+
+@17   = ~The great warlord of the North, Kresselack the Black Wolf, is said to have sired many children during his long reign, and so it came that one of these, a sickly young man by the name of Thomas, sought out his father after his mother died and bequeathed an ugly sword of iron to Thomas in her legacy.  Upon the blade was inscribed "Know thy family," and Thomas took the motto to heart.  Bolstered by the sword and his mother's loss, he became determined to find Kresselack - whether out of a need for a new family to belong to or to take revenge on Kresselack for abandoning his mother, it is not known.   
+ 
+When he found the Black Wolf, Kresselack spurned the young man, claiming that the sickly and weak-looking Thomas shared no blood with him, then ordered him beaten and left beneath the shadow of Kelvin's Cairn to die.  After two days in the freezing cold, Thomas was rescued by a tribe of Uthgart barbarians fleeing Kresselack's army.  Nursing the man back to health, the barbarians adopted Thomas into their tribe and he eventually became one of their greatest hunters.  When he passed away from winter chill many years later, he left his sword to his youngest son to help him find his way in the world.  
+
+This powerful sword grants its user the ability to know the heart of an opponent's weakness.  
+ 
+STATISTICS: 
+ 
+Damage:  1d10 + 2 
+Attack Bonus:  +2  
+Enchantment:  +2 
+Damage Type:  Slashing 
+Special:
+  Constant Effect: Executioner's Eyes while equipped 
+Weight:  9 lb. 
+Feat Requirement:  Exotic Weapon, Bastard Sword 
+Type:  One-handed~
+@18   = ~The great warlord of the North, Kresselack the Black Wolf, is said to have sired many children during his long reign, and so it came that one of these, a sickly young man by the name of Thomas, sought out his father after his mother died and bequeathed an ugly sword of iron to Thomas in her legacy.  Upon the blade was inscribed "Know thy family," and Thomas took the motto to heart.  Bolstered by the sword and his mother's loss, he became determined to find Kresselack - whether out of a need for a new family to belong to or to take revenge on Kresselack for abandoning his mother, it is not known.   
+ 
+When he found the Black Wolf, Kresselack spurned the young man, claiming that the sickly and weak-looking Thomas shared no blood with him, then ordered him beaten and left beneath the shadow of Kelvin's Cairn to die.  After two days in the freezing cold, Thomas was rescued by a tribe of Uthgart barbarians fleeing Kresselack's army.  Nursing the man back to health, the barbarians adopted Thomas into their tribe and he eventually became one of their greatest hunters.  When he passed away from winter chill many years later, he left his sword to his youngest son to help him find his way in the world.  
+
+This powerful sword grants its user the ability to know the heart of an opponent's weakness.  
+ 
+STATISTICS: 
+ 
+Damage:  1d10 + 3 
+Attack Bonus:  +3  
+Enchantment:  +3 
+Damage Type:  Slashing 
+Special:
+  Constant Effect: Executioner's Eyes while equipped 
+Weight:  9 lb. 
+Feat Requirement:  Exotic Weapon, Bastard Sword 
+Type:  One-handed~
+@19   = ~This weapon is a sight to behold.  The blade is crafted of red-gold with a silver edge.  The guard is finely polished platinum, and the wire wound hilt is crafted of black adamantine.  When drawn, the blade radiates a rainbow of colors. 
+   
+This weapon has been considered quite a blessing by those who wield it.  Against lawful creatures it does devastating damage and attacks are made with an uncanny accuracy.  Rage of Chaos has been known to turn the tide in many a battle.  In addition, the victim may loses control of his or her faculties and flies into a state of confusion when struck by the weapon.  The chaotic powers of the blade also prevent the wielder from being controlled of confused in battle. 
+ 
+The history of Rage of Chaos is unknown.  The weapon has appeared throughout the realms in various battles over the centuries only to be lost once again. 
+ 
+STATISTICS: 
+ 
+Damage: 1d10 + 3 
+Attack Bonus: +3  
+Enchantment:  +3 
+Damage Type: Slashing 
+Special: 
+  Constant Effect: Chaotic Commands while equipped 
+  Spell Process:  Target under the effects of the spell Chaos for 3 rounds upon successful hit (Will save at -4 negates) 
+  Chaotic: +2d6 damage to lawful creatures 
+Weight: 8 lb. 
+Feat Requirement:  Exotic Weapon, Bastard Sword 
+Type:  One-handed~
+@20   = ~This weapon is a sight to behold.  The blade is crafted of red-gold with a silver edge.  The guard is finely polished platinum, and the wire wound hilt is crafted of black adamantine.  When drawn, the blade radiates a rainbow of colors. 
+
+This weapon has been considered quite a blessing by those who wield it.  Against lawful creatures it does devastating damage and attacks are made with an uncanny accuracy.  Order's Nemesis has been known to turn the tide in many a battle.  In addition, the victim may loses control of his or her faculties and flies into a state of confusion when struck by the weapon.  The chaotic powers of the blade also prevent the wielder from being controlled of confused in battle. 
+ 
+The history of Order's Nemesis is unknown.  The weapon has appeared throughout
+the realms in various battles over the centuries only to be lost once again. 
+ 
+STATISTICS: 
+ 
+Damage: 1d10 + 5 
+Attack Bonus: +5 
+Enchantment:  +5 
+Damage Type: Slashing 
+Special: 
+  Constant Effect: Chaotic Commands while equipped 
+  Spellward: Immunity to the spells, Sleep, Power Word: Sleep, Hold Person, Cloak of Fear and Dire Charm 
+  Spell Process:  Target under the effects of the spell Chaos for 3 rounds upon successful hit (Will save at -4 negates) 
+  Chaotic: +2d6 damage to lawful creatures 
+Weight: 8 lb. 
+Feat Requirement:  Exotic Weapon, Bastard Sword 
+Type:  One-handed~
+@21   = ~"It was during Borab the Reaver's sacking of the Blue Citadel that Alemis Peacemaker - youngest son of Earl Marimor Peacemaker, lord of the Blue Citadel - stole into the locked vault his father had thought so well-hidden.  There, alone in the cavernous chamber, were Wroth, Hateful, and Furious - the dread sword, axe, and armor of Hurom, ancient ancestor of Alemis, once known as the Bloody Juggernaut before he broke his cursed iron's spell and took the Peacemaker name." 
+ 
+"Alemis, a mere boy, donned the fell armor and took Wroth and Hateful in hand.  Alone he cut his way through Borab's motley horde of humanoid raiders until he faced the towering half-giant himself, hacking him down and scattering his army to the wind.  His family - father, mother, brothers and sisters alike - had all died by then, but Alemis no longer cared.  He stalked the realms, eyes ablaze with madness, slaying monsters and brigands wherever he found them.  But as the years passed and Alemis found no more of such wheat to thresh, he took to turning his thirsting blades on all who crossed his path... and so, once more, the Bloody Juggernaut had returned." 
+
+  -- from "Master Pelib's Bedtime Tales" 
+ 
+This heavy, unadorned bastard sword of dull gray steel is a dangerous thing, showing its true form in the rage that overtakes its wielder. Should a warrior carry Wroth along with its brothers Hateful and Furious, his or her soul would be lost to the hell-forged arms and armor.  To wield even Wroth alone might be construed as insanity... but there will always be those for whom it may be just the weapon they're looking for.  
+
+STATISTICS: 
+ 
+Damage:  1d10 + 1 
+Attack Bonus: +1 bonus 
+Enchantment:  +1 
+Damage Type:  Slashing 
+Special: 
+  Wrathful Blood: Positive benefits of Animal Rage while equipped (listed below)
+    Strength: +4 
+    Constitution: +4
+    Movement Rate: +20%
+    Saving Throws: +2
+Weight: 10 lb. 
+Feat Requirement:  Exotic Weapon, Bastard Sword 
+Type:  One-handed~
+@22   = ~"It was during Borab the Reaver's sacking of the Blue Citadel that Alemis Peacemaker - youngest son of Earl Marimor Peacemaker, lord of the Blue Citadel - stole into the locked vault his father had thought so well-hidden.  There, alone in the cavernous chamber, were Bloody Wroth, Hateful, and Furious - the dread sword, axe, and armor of Hurom, ancient ancestor of Alemis, once known as the Bloody Juggernaut before he broke his cursed iron's spell and took the Peacemaker name." 
+ 
+"Alemis, a mere boy, donned the fell armor and took Bloody Wroth and Hateful in hand.  Alone he cut his way through Borab's motley horde of humanoid raiders until he faced the towering half-giant himself, hacking him down and scattering his army to the wind.  His family - father, mother, brothers and sisters alike - had all died by then, but Alemis no longer cared.  He stalked the realms, eyes ablaze with madness, slaying monsters and brigands wherever he found them.  But as the years passed and Alemis found no more of such wheat to thresh, he took to turning his thirsting blades on all who crossed his path... and so, once more, the Bloody Juggernaut had returned." 
+ 
+  -- from "Master Pelib's Bedtime Tales" 
+ 
+This heavy, unadorned bastard sword of dull gray steel is a dangerous thing, showing its true form in the rage that overtakes its wielder. Should a warrior carry Bloody Wroth along with its brothers Hateful and Furious, his or her soul would be lost to the hell-forged arms and armor.  To wield even Bloody Wroth alone might be construed as insanity... but there will always be those for whom it may be just the weapon they're looking for.  
+ 
+STATISTICS: 
+ 
+Damage:  1d10 + 3 
+Attack Bonus: +3 bonus 
+Enchantment:  +3 
+Damage Type:  Slashing 
+Special: 
+  Wrathful Blood: Double the positive benefits of Animal Rage while equipped (listed below)
+    Strength: +8 
+    Constitution: +8
+    Movement Rate: +40%
+    Saving Throws: +4
+Weight: 10 lb. 
+Feat Requirement:  Exotic Weapon, Bastard Sword 
+Type:  One-handed~
+@23   = ~Also known as the hand-and-a-half sword, the bastard sword derives its name from the fact that it is halfway between the greatsword and the longsword. The bastard sword has a double-edged blade and a long grip, which can accommodate both hands if preferred.  The overall length of the bastard sword ranges between four feet and four feet ten inches.    
+
+This particular bastard sword was forged in the frozen wastes of the far North to grant its wielder dominion over icy cold. 
+   
+STATISTICS: 
+ 
+Damage:  1d10 + 1 
+Attack Bonus:  +1  
+Enchantment:  +5 
+Damage Type:  Slashing 
+Special: 
+  Sure Striking: Weapon is treated as having a +5 enchantment for the purpose of hitting creatures that require magical weapons to hit 
+  Resistance: 15/- Cold Resistance 
+  Chilling Frost: +5d6 Cold damage 
+Weight:  9 lb. 
+Feat Requirement:  Exotic Weapon, Bastard Sword 
+Type:  One-handed~
+@24   = ~Also known as the hand-and-a-half sword, the bastard sword derives its name from the fact that it is halfway between the greatsword and the longsword. The bastard sword has a double-edged blade and a long grip, which can accommodate both hands if preferred.  The overall length of the bastard sword ranges between four feet and four feet ten inches.    
+
+This particular blade is said to have been forged by a storm giant for use as a small blade. It protects its bearer from electrical damage and shocks opponents with a powerful static discharge. 
+   
+STATISTICS: 
+ 
+Damage:  1d10 
+Damage Type:  Slashing 
+Enchantment:  +5 
+Special: 
+  Sure Striking: Weapon is treated as having a +5 enchantment for the purpose of hitting creatures that require magical weapons to hit 
+  Resistance: 15/- Electrical Resistance 
+  Static Shock: +5d6 electrical damage 
+Weight:  9 lb. 
+Feat Requirement:  Exotic Weapon, Bastard Sword 
+Type:  One-handed~
+@25   = ~Besides its superb craftsmanship, tiny runes of power can be seen etched all along the surface. It's obvious a lot of time and effort went into its creation and although not apparent at first, a slight blue glow can be seen emanating from the runes. This sword deals a phenominal amount of damage in combat. 
+   
+STATISTICS: 
+ 
+Damage:  4d10 + 3 
+Attack Bonus: +3  
+Enchantment:  +5 
+Damage Type:  Slashing 
+Special: 
+  Sure Striking: Weapon is treated as having a +5 enchantment for the purpose of hitting creatures that require magical weapons to hit 
+  Keen: Increases chance of scoring a critical hit 
+Weight: 10 lb. 
+Feat Requirement:  Exotic Weapon, Bastard Sword 
+Type:  One-handed~
+@26   = ~Also known as the hand-and-a-half sword, the bastard sword derives its name from the fact that it is halfway between the greatsword and the longsword. The bastard sword has a double-edged blade and a long grip, which can accommodate both hands if preferred.  The overall length of the bastard sword ranges between four feet and four feet ten inches.    
+
+This particular bastard sword grants dominion over the opposing elements of fire and ice. It protects its user from their adverse effects and uses those same effects to smite its targets.
+   
+STATISTICS: 
+ 
+Damage:  1d10 + 3 
+Attack Bonus:  +3  
+Enchantment:  +3 
+Damage Type:  Slashing 
+Special: 
+  Frost: +3d6 Cold damage 
+  Flame: +3d6 Fire damage 
+  Resistance: 7/- Cold Resistance 
+  Resistance: 7/- Fire Resistance 
+Weight:  9 lb. 
+Feat Requirement:  Exotic Weapon, Bastard Sword 
+Type:  One-handed~
+@27   = ~Also known as the hand-and-a-half sword, the bastard sword derives its name from the fact that it is halfway between the greatsword and the longsword. The bastard sword has a double-edged blade and a long grip, which can accommodate both hands if preferred.  The overall length of the bastard sword ranges between four feet and four feet ten inches.    
+
+This particular bastard sword is was forged with the blood of a black adder and enchanted by a Yuan-Ti pureblood sorcerer. The sword blade is decorated with intertwined runic images of snakes. During combat the runes sometimes spring to life to aid the wielder. 
+ 
+STATISTICS: 
+ 
+Damage:  1d10 + 2 
+Attack Bonus:  +2  
+Enchantment:  +2 
+Damage Type:  Slashing 
+Special: 
+  Spell Process: 33% chance of spitting forth a viper as per the Vipergout spellon each successful hit
+  Venom: +2 points of poison damage every second for 6 seconds, Fortitude save
+for none 
+  Keen: Increases chance of scoring a critical hit 
+Weight:  9 lb. 
+Feat Requirement:  Exotic Weapon, Bastard Sword 
+Type:  One-handed~
+@28   = ~This uniquely made Bastard Sword is imbued with an ever present supply of acidic venom.  While not poisonous, the venom will burn upon contact if it contacts directly with flesh.  In addition, the power of the blade abjures its user against corrosive damage. 
+   
+STATISTICS: 
+ 
+Damage:  1d10 
+Damage Type:  Slashing 
+Enchantment: +5
+Special:  
+  Sure Striking: Weapon is treated as having a +5 enchantment for the purpose of hitting creatures that require magical weapons to hit 
+  Corrosion: +5d6 acid damage 
+  Resistance: 15/- Acid Resistance 
+Weight: 10 lb. 
+Feat Requirement:  Exotic Weapon, Bastard Sword 
+Type:  One-handed~
+@29   = ~Also known as the hand-and-a-half sword, the bastard sword derives its name from the fact that it is halfway between the greatsword and the longsword. The bastard sword has a double-edged blade and a long grip, which can accommodate both hands if preferred.  The overall length of the bastard sword ranges between four feet and four feet ten inches.    
+
+This particular bastard sword was forged with one purpose and one purpose alone: to rid the world of the scourge of the undead. Unlike traditional weapons of Disruption it does not hurt Outsiders. However, also unlike traditional weapons of Disruption it never fails. Any creature from beyond the grave struck by this blade is destroyed. Legend has it that when the blade was formed it was blessed by both Myrkul and Amaunator, although no one still living can imagine a set of circumstances that would have inspired those two to work together.
+   
+STATISTICS: 
+ 
+Damage:  1d10 + 1 
+Attack Bonus: +1  
+Enchantment:  +5 
+Damage Type:  Slashing 
+Special: 
+  Sure Striking: Weapon is treated as having a +5 enchantment for the purpose of hitting creatures that require magical weapons to hit 
+  Disruption: All undead hit by this weapon are destroyed (no save)
+Weight:  9 lb. 
+Feat Requirement:  Exotic Weapon, Bastard Sword 
+Type:  One-handed~
+
 
 // game and weidu share the 0-70 range; use 1000s for weidu and 2000s for game going forward
 

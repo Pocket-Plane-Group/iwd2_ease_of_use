@@ -374,54 +374,61 @@ LABEL ~ww_iwd_ease_of_use_hof_items_in_regular~
 
 COPY_EXISTING ~rt_fury.2da~     ~override/rt_norm.2da~
 
-///////////////////////////////////////////////////////////////////////
-BEGIN @16
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Stronger Bastard Swords                          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-COPY ~iwd2-ease/bastard/00swdbbs.itm~   ~override/00swdbbs.itm~
+BEGIN @16 DESIGNATED 14
+REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+LABEL ~ww_iwd_ease_of_use_stronger_bastard_swords~
+
+COPY ~iwd2-ease/itm/00swdbbs.itm~   ~override~
   SAY DESC @17
 
-COPY ~iwd2-ease/bastard/00hfsbbs.itm~   ~override/00hfsbbs.itm~
+COPY ~iwd2-ease/itm/00hfsbbs.itm~   ~override~
   SAY DESC @18
 
-COPY ~iwd2-ease/bastard/00swdbrc.itm~   ~override/00swdbrc.itm~
+COPY ~iwd2-ease/itm/00swdbrc.itm~   ~override~
   SAY DESC @19
 
-COPY ~iwd2-ease/bastard/00hfsbrc.itm~   ~override/00hfsbrc.itm~
+COPY ~iwd2-ease/itm/00hfsbrc.itm~   ~override~
   SAY DESC @20
 
-COPY ~iwd2-ease/bastard/00swdbwr.itm~   ~override/00swdbwr.itm~
+COPY ~iwd2-ease/itm/00swdbwr.itm~   ~override~
   SAY DESC @21
 
-COPY ~iwd2-ease/bastard/00hfsbwr.itm~   ~override/00hfsbwr.itm~
+COPY ~iwd2-ease/itm/00hfsbwr.itm~   ~override~
   SAY DESC @22
 
-COPY ~iwd2-ease/bastard/00swdb91.itm~   ~override/00swdb91.itm~
-     ~iwd2-ease/bastard/00swdb91.itm~   ~override/00swdb98.itm~
+COPY ~iwd2-ease/itm/00swdb91.itm~   ~override~
+     ~iwd2-ease/itm/00swdb91.itm~   ~override/00swdb98.itm~
   SAY DESC @23
 
-COPY ~iwd2-ease/bastard/00swdb92.itm~   ~override/00swdb92.itm~
+COPY ~iwd2-ease/itm/00swdb92.itm~   ~override~
   SAY DESC @24
 
-COPY ~iwd2-ease/bastard/00swdb93.itm~   ~override/00swdb93.itm~
+COPY ~iwd2-ease/itm/00swdb93.itm~   ~override~
   SAY DESC @25
 
-COPY ~iwd2-ease/bastard/00swdb96.itm~   ~override/00swdb96.itm~
+COPY ~iwd2-ease/itm/00swdb96.itm~   ~override~
   SAY DESC @26
 
-
-
-COPY ~iwd2-ease/bastard/00swdb97.itm~   ~override/00swdb97.itm~
+COPY ~iwd2-ease/itm/00swdb97.itm~   ~override~
   SAY DESC @27
 
-COPY ~iwd2-ease/bastard/00swdb99.itm~   ~override/00swdb99.itm~
-  WRITE_LONG  0x34 11675 // five times the original price
+COPY ~iwd2-ease/itm/00swdb99.itm~   ~override~
   SAY DESC @28
 
-COPY ~iwd2-ease/bastard/effzzj6.spl~ ~override/effzzj6.spl~
-COPY ~iwd2-ease/bastard/zzj6bs.itm~  ~override/zzj6bs.itm~
+COPY ~iwd2-ease/spl/effzzj6.spl~ ~override~
+COPY ~iwd2-ease/itm/zzj6bs.itm~  ~override~
   SAY DESC @29
 
-COPY ~iwd2-ease/bastard/11deird.sto~    ~override/11deird.sto~
+COPY_EXISTING ~11deird.sto~ ~override~
+  ADD_STORE_ITEM ~00swdb99~ AFTER ~00swdb02~ #0 #0 #0 ~IDENTIFIED~ #1 // insert fang after masterwork bastard sword
 
 BEGIN @30
 
