@@ -1,11 +1,4 @@
-/*************************************************************************
- * IWD2 Ease-Of-Use Mod
- *
- * http://www.cs.berkeley.edu/~weimer/bgate
- *
- *************************************************************************/
 BACKUP ~weidu_external/iwd2-ease/backup~ // where should we put backup files? 
-// where should tell the user to send email if something goes wrong? 
 SUPPORT ~https://forums.pocketplane.net/index.php?board=43.0~
 
 ALWAYS
@@ -15,7 +8,6 @@ ALWAYS
   END
 END  
   
-
 AUTO_TRA ~iwd2-ease/languages/%s~
 
 LANGUAGE 
@@ -28,11 +20,14 @@ LANGUAGE
   ~iwd2-ease/languages/english/setup.tra~
   ~iwd2-ease/languages/spanish/setup.tra~
 
-///////////////////////////////////////////////////////////////////////
-// Ease-Of-Use Mod
-///////////////////////////////////////////////////////////////////////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Bugfixes                                         \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-///////////////////////////////////////////////////////////////////////
 BEGIN @0
 
 COPY_EXISTING ~00swdb93.itm~    ~override~ // Bastard Sword of Heroism
@@ -71,33 +66,46 @@ COPY_EXISTING ~00cwshm1.itm~    ~override~ // shambling mound attack
   LPF ALTER_EFFECT INT_VAR match_opcode = 413 opcode = 154  END // change 'run visual effect' to 'entangle overlay'
   BUT_ONLY
 
-///////////////////////////////////////////////////////////////////////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Infinite Stacking                                \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
 BEGIN @1
 
-COPY_EXISTING_REGEXP
-    ~.*AROW.*.ITM~            ~override~
-    ~.*BOLT.*.ITM~            ~override~
-    ~.*DART.*.ITM~            ~override~
-    ~.*BULL.*.ITM~            ~override~
-    ~.*GEM.*.ITM~             ~override~
-    ~.*POTN.*.ITM~            ~override~
-    ~SPWI.*Z.ITM~            ~override~
-    ~SPPR.*Z.ITM~            ~override~
-    ~00misc31.itm~            ~override~  // lamp oil
-    ~00misc32.itm~            ~override~  // flaming oil
-    ~00genir.itm~             ~override~  // iron rations
-
-  WRITE_SHORT 0x38 9999
-
-COPY_EXISTING 
-  ~00AROW86.ITM~ ~override/00AROW86.ITM~
-  ~00AROW91.ITM~ ~override/00AROW91.ITM~
-  ~00BULL86.ITM~ ~override/00BULL86.ITM~
-  ~00DART83.ITM~ ~override/00DART83.ITM~
-  ~00DART84.ITM~ ~override/00DART84.ITM~
-  ~00DART86.ITM~ ~override/00DART86.ITM~
-  ~00DARTDD.ITM~ ~override/00DARTDD.ITM~
-  WRITE_SHORT 0x38 1
+// code essentially stolen and adapted from Tweaks Anthology
+OUTER_SET stack = 9999
+COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~    ~override~ // check all items
+  READ_SHORT  0x1c "type" ELSE 0
+  READ_SHORT  0x38 "max"  ELSE 0
+  PATCH_IF (
+             ("%max%" > 1) AND // if item can already stack and is of the type...
+             (
+               ("%type%" =  5) OR // arrows,
+               ("%type%" =  9) OR // potions,
+               ("%type%" = 11) OR // scrolls,
+               ("%type%" = 14) OR // bullets,
+               ("%type%" = 16) OR // dagger
+               ("%type%" = 21) OR // hammer (iwd2)
+               ("%type%" = 24) OR // darts,
+               ("%type%" = 25) OR // axe,
+               ("%type%" = 29) OR // spears,
+               ("%type%" = 31) OR // bolts,
+               ("%type%" = 34) OR // gems
+               ("%type%" = 71) OR // rations
+               ("%SOURCE_RES%" STRING_COMPARE_CASE "00misc31" = 0) OR // lamp oil
+               ("%SOURCE_RES%" STRING_COMPARE_CASE "00misc32" = 0)    // flaming oil
+             )
+           ) BEGIN
+    READ_SHORT 0x38 current
+    PATCH_IF (stack > current) BEGIN
+      WRITE_SHORT  0x38 stack
+    END
+  END
+  BUT_ONLY
 
 ///////////////////////////////////////////////////////////////////////
 BEGIN @2
