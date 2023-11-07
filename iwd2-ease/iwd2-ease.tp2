@@ -144,17 +144,23 @@ COPY_EXISTING ~60hfslha.itm~ ~override~
   LPF ADD_ITEM_EFFECT INT_VAR type = 1 opcode = 402 target = 2                 timing = 1 resist_dispel = 2 STR_VAR resource = ~effdm1~  END // dispel magic vs. everyone
   BUT_ONLY
 
-///////////////////////////////////////////////////////////////////////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Two-Handed Greatsword Holy Avenger               \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
 BEGIN @6
 
-COPY_EXISTING ~60HFSLHA.ITM~ ~override/60HFSLHA.ITM~
-              ~60SWDLHA.ITM~ ~override/60SWDLHA.ITM~
-  WRITE_SHORT 0x18 110  // two-handed magical weapon
-  WRITE_SHORT 0x1c 57   // category: great swords
-  WRITE_ASCII 0x22 "S2" // inventory icon
-  WRITE_SHORT 0x90 2    // range: 2
-  WRITE_SHORT 0x98 6    // dice size: 6
-  WRITE_SHORT 0x9a 2    // dice number: 2
+COPY_EXISTING ~60hfslha.itm~ ~override~
+              ~60swdlha.itm~ ~override~
+  WRITE_LONG  0x18 THIS | BIT1 // add two-handed flag
+  WRITE_SHORT 0x1c 57          // category: great swords
+  WRITE_ASCII 0x22 "S2"        // inventory icon
+  LPF ALTER_HEADER INT_VAR type = 1 range = 2 dicenumber = 2 dicesize = 6 END // range 2, base damage 2d6
+  BUT_ONLY
 
 ///////////////////////////////////////////////////////////////////////
 BEGIN @7
