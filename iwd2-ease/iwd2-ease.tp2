@@ -8,6 +8,14 @@ BACKUP ~weidu_external/iwd2-ease/backup~ // where should we put backup files?
 // where should tell the user to send email if something goes wrong? 
 SUPPORT ~https://forums.pocketplane.net/index.php?board=43.0~
 
+ALWAYS
+  ACTION_IF NOT VARIABLE_IS_SET cd_iwd2_ease_always THEN BEGIN // check to make this happen only once per install
+    OUTER_SET cd_iwd2_ease_always = 1
+    INCLUDE ~iwd2-ease/lib/always.tpa~
+  END
+END  
+  
+
 AUTO_TRA ~iwd2-ease/languages/%s~
 
 LANGUAGE 
@@ -27,30 +35,41 @@ LANGUAGE
 ///////////////////////////////////////////////////////////////////////
 BEGIN @0
 
-COPY_EXISTING ~00swdb93.itm~    ~override/00swdb93.itm~
-  WRITE_SHORT 0x96 3    // to hit bonus is 0, should be +3
+COPY_EXISTING ~00swdb93.itm~    ~override~ // Bastard Sword of Heroism
+  LPF ALTER_HEADER INT_VAR type = 1 to_hit = 3 END // to hit bonus is 0, should be +3
+  BUT_ONLY
 
-COPY_EXISTING ~11phaen.cre~     ~override/11phaen.cre~
-              ~12phaen.cre~     ~override/12phaen.cre~
-  REPLACE_TEXTUALLY ~00STAF01~  ~11RTHF21~
+COPY_EXISTING ~11phaen.cre~     ~override~ // Phaen of the Rags
+              ~12phaen.cre~     ~override~
+  LPF ALTER_CREATURE_ITEM_IWD2 STR_VAR match_item = ~00staf01~ item = ~11rthf21~ END    
+  BUT_ONLY
 
-COPY_EXISTING ~00AX1HSC.ITM~    ~override/00AX1HSC.ITM~
-  WRITE_BYTE 0xa8 1     // strength bonus
+COPY_EXISTING ~00ax1hsc.itm~    ~override~ // Screamer
+  LPF ALTER_HEADER INT_VAR type = 2 flag_strength = 1 END // strength bonus
+  BUT_ONLY
 
-COPY_EXISTING ~63HALBPB.ITM~    ~override/63HALBPB.ITM~
-  WRITE_BYTE 0x1ec 25   // stunning chance
+//COPY_EXISTING ~63halbpb.itm~    ~override~ // Pudu's Blight
+//  WRITE_BYTE 0x1ec 25   // stunning chance (already correct as 0-24 is 25%)
 
-COPY_EXISTING ~00AROW88.ITM~    ~override/00AROW88.ITM~
-  WRITE_BYTE 0xcc 25   // stunning chance
+COPY_EXISTING ~00arow88.itm~    ~override~
+  LPF ALTER_EFFECT INT_VAR check_globals = 0 match_probability1 = 25 probability1 = 49 END // stun on hit
+  BUT_ONLY
 
-COPY_EXISTING ~00FLAL87.ITM~    ~override/00FLAL87.ITM~
-  WRITE_BYTE 0x15c 25   // stunning chance
+COPY_EXISTING ~00flal87.itm~    ~override~
+  LPF ALTER_EFFECT INT_VAR check_globals = 0 match_probability1 = 25 probability1 = 49 END // stun on hit
+  BUT_ONLY
 
-COPY_EXISTING ~RT_FURY.2DA~     ~override/RT_FURY.2DA~
+COPY_EXISTING ~rt_fury.2da~     ~override~
   REPLACE_TEXTUALLY ~SPEAR~ ~SPER~
   REPLACE_TEXTUALLY ~STAFF~ ~STAF~
+  BUT_ONLY
 
-COPY ~iwd2-ease/bugfix~ ~override~
+COPY_EXISTING ~00cwshm1.itm~    ~override~ // shambling mound attack
+              ~00cwshm2.itm~    ~override~ // shambling mound attack
+  WRITE_SHORT 0x1c 19 // type: small sword
+  LPF ALTER_EFFECT INT_VAR match_opcode = 176 parameter1 = 50 parameter2 = 2 END // set movement speed to 50%
+  LPF ALTER_EFFECT INT_VAR match_opcode = 413 opcode = 154  END // change 'run visual effect' to 'entangle overlay'
+  BUT_ONLY
 
 ///////////////////////////////////////////////////////////////////////
 BEGIN @1
