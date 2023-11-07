@@ -4,9 +4,9 @@
  * http://www.cs.berkeley.edu/~weimer/bgate
  *
  *************************************************************************/
-BACKUP ~iwd2-ease/backup~ // where should we put backup files? 
+BACKUP ~weidu_external/iwd2-ease/backup~ // where should we put backup files? 
 // where should tell the user to send email if something goes wrong? 
-AUTHOR "weimer@cs.berkeley.edu (http://www.cs.berkeley.edu/~weimer/bgate)"
+SUPPORT ~https://forums.pocketplane.net/index.php?board=43.0~
 
 AUTO_TRA ~iwd2-ease/languages/%s~
 
