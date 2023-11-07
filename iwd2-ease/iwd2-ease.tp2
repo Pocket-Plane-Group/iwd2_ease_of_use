@@ -162,10 +162,19 @@ COPY_EXISTING ~60hfslha.itm~ ~override~
   LPF ALTER_HEADER INT_VAR type = 1 range = 2 dicenumber = 2 dicesize = 6 END // range 2, base damage 2d6
   BUT_ONLY
 
-///////////////////////////////////////////////////////////////////////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// No-Fists for Iron Body                           \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
 BEGIN @7
 
-COPY    ~iwd2-ease/iron-body~        ~override~
+COPY_EXISTING ~spwi807.spl~ ~override~ // iron body
+  LPF DELETE_EFFECT INT_VAR match_opcode = 111 END // delete opcode that creates fist
+  BUT_ONLY
 
 ///////////////////////////////////////////////////////////////////////
 BEGIN @8
