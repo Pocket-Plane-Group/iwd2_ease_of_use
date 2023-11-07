@@ -151,7 +151,7 @@ Enchantment:  +5
 Damage Type: Slashing 
 Special: 
   Constant Effect: Chaotic Commands while equipped 
-  Spellward: Immunity to the spells, Sleep, Power Word: Sleep, Hold Person, Cloak of Fear and Dire Charm 
+  Spellward: Immunity to the spells Sleep, Power Word: Sleep, Hold Person, Cloak of Fear and Dire Charm 
   Spell Process:  Target under the effects of the spell Chaos for 3 rounds upon successful hit (Will save at -4 negates) 
   Chaotic: +2d6 damage to lawful creatures 
 Weight: 8 lb. 
@@ -279,7 +279,7 @@ Attack Bonus:  +2
 Enchantment:  +2 
 Damage Type:  Slashing 
 Special: 
-  Spell Process: 33% chance of spitting forth a viper as per the Vipergout spellon each successful hit
+  Spell Process: 33% chance of spitting forth a viper as per the Vipergout spell on each successful hit
   Venom: +2 points of poison damage every second for 6 seconds, Fortitude save
 for none 
   Keen: Increases chance of scoring a critical hit 

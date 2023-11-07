@@ -430,6 +430,23 @@ COPY ~iwd2-ease/itm/zzj6bs.itm~  ~override~
 COPY_EXISTING ~11deird.sto~ ~override~
   ADD_STORE_ITEM ~00swdb99~ AFTER ~00swdb02~ #0 #0 #0 ~IDENTIFIED~ #1 // insert fang after masterwork bastard sword
 
+// add chaos-on-hit, equipped-chaotic-commands dynamically to Order's Nemesis and Rage of Chaos
+ACTION_FOR_EACH sword IN 00swdbrc 00hfsbrc BEGIN
+  LAF cd_items_casting_spells INT_VAR cast_at_level = 1 duration = 21 item_header = 1 probability = 100 
+                              STR_VAR item  = EVAL ~%sword%~ spell = spwi509 END
+  LAF cd_items_casting_spells INT_VAR cast_at_level = 1 item_header = 0 probability = 100 
+                              STR_VAR item  = EVAL ~%sword%~ spell = sppr508 END
+                              
+  COPY_EXISTING ~%sword%.itm~ ~override~ // fix params on newly-added global effects from chaotic commands
+    LPF ALTER_EFFECT INT_VAR check_headers = 0 power = 0 timing = 2 duration = 0 resist_dispel = 0 END
+    
+END  
+  
+
+
+
+
+
 BEGIN @30
 
 COPY_EXISTING_REGEXP ~.*\.ITM~ ~override~
