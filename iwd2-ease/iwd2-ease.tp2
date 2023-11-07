@@ -231,9 +231,33 @@ COPY_EXISTING ~strtxp.2da~ ~override~
 
 BEGIN @9
 
-COPY    ~iwd2-ease/moonblade~        ~override~
-COPY_EXISTING ~moonbla.itm~   ~override/moonbla.itm~
+ACTION_IF subs BEGIN
+  OUTER_SPRINT dam_match    @79
+  OUTER_SPRINT dam_replace  @80
+  OUTER_SPRINT atk_match    @81
+  OUTER_SPRINT feat_match   @77
+  OUTER_SPRINT feat_replace @82
+END    
+
+COPY_EXISTING ~00swdl09.itm~   ~override~
   WRITE_SHORT 0x1c 19   // short sword
+  LPF ALTER_HEADER_IWD2 INT_VAR match_type = 1 to_hit = 0 END // remove +2 to-hit
+  LPF ALTER_EFFECT INT_VAR match_opcode = 12 parameter1 = 4 dicenumber = 1 dicesize = 12 END // was 1d8+2 magic damage, now 1d12+4
+  LPF ADD_ITEM_EFFECT INT_VAR type = 1 opcode = 60 target = 2 power = 3 parameter1 = 100 parameter2 = 2 resist_dispel = 1 duration = 7 END // 100% casting failure for one round
+  PATCH_IF subs BEGIN // for english, sub text in the description directly
+    READ_STRREF 0x50 desc
+    INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+      REPLACE_TEXTUALLY ~%dam_match%~  ~%dam_replace%~  // replace damagae line with 1d12+4
+      REPLACE_TEXTUALLY ~%atk_match%~  ~~               // remove attack bonus line
+      REPLACE_TEXTUALLY ~%feat_match%~ ~%feat_replace%~ // replace 'large sword' with 'small blade' in feat line
+    END
+    SAY_EVALUATED 0x50 ~%desc%~
+  END
+  BUT_ONLY
+  
+COPY_EXISTING ~moonbla.itm~   ~override~
+  WRITE_SHORT 0x1c 19   // short sword
+  BUT_ONLY
 
 ///////////////////////////////////////////////////////////////////////
 BEGIN @10

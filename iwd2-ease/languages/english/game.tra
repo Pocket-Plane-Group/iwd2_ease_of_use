@@ -86,3 +86,7 @@ Type:  One-handed~
 @76 = ~\1Two-handed~
 @77 = ~^\([ %TAB%]*Feat[ %TAB%]+Requirement:.+\)[Ll]arge[ %TAB%]+[Ss]word~
 @78 = ~\1Great Sword~
+@79 = ~^\([ %TAB%]*Damage:[ %TAB%]*\)[0-9][Dd][0-9][ %TAB%]*\+[ %TAB%]*[0-9]+~
+@80 = ~\11d12 + 4~
+@81 = ~^[ %TAB%]*[Aa]ttack[ %TAB%]+[Bb]onus:?[ %TAB%]+\+[0-9]+[ %TAB%%LNL%%MNL%%WNL%]+~
+@82 = ~\1Small Blade~
