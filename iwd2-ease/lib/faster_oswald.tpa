@@ -1,0 +1,9 @@
+COPY_EXISTING ~11oswald.dlg~ ~override~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~StartCutscene(#53cKulda#)~ ~StartCutscene("53cKulda")~
+    REPLACE_EVALUATE ~\(SetGlobalTimer("[^"]+","[^"]+",\)\([0-9]+\)~ BEGIN
+      SET newtime = ((MATCH2 * multiplier) / 100)
+      PATCH_IF newtime < 1 BEGIN SET newtime = 1 END // make a minimum of one second
+    END ~%MATCH1%%newtime%~
+  END
+  BUT_ONLY  

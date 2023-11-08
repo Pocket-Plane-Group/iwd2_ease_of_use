@@ -939,6 +939,21 @@ COMPILE ~iwd2-ease/dlg/41goleic.d~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
+///// Faster Oswald                                    \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @70 DESIGNATED 23
+REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+LABEL ~ww_iwd2_eou_faster_oswald~
+
+OUTER_SET multiplier = 0 // set timers to this%, 0% = no time, 50 = 50% (half time)
+INCLUDE ~iwd2-ease/lib/faster_oswald.tpa~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
 ///// Randomized Treasure                              \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -950,8 +965,4 @@ LABEL ~ww_iwd2_eou_randomized_treasure~
 
 INCLUDE ~iwd2-ease/lib/random.tpa~
 
-///////////////////////////////////////////////////////////////////////
-
-BEGIN @70
-
-COMPILE        ~iwd2-ease/fo/os-fast.d~
+// always keep randomized treasure last in the tp2 for compat reasons
