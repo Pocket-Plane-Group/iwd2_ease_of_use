@@ -73,6 +73,11 @@ COPY_EXISTING ~00sbrskr.cre~ ~override~ // berserkers from horn of valhalla drop
   LPF ALTER_CREATURE_ITEM_IWD2 INT_VAR flag_undroppable = 1 STR_VAR match_item = 00hide06 END
   BUT_ONLY
 
+COPY_EXISTING ~00chan08.itm~  ~override~
+  LPF DELETE_EFFECT INT_VAR match_opcode = 144 END // delete effects blocking thieving
+  LPF DELETE_EFFECT INT_VAR match_opcode = 145 END // delete effects blocking spellcasting
+  BUT_ONLY
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -597,11 +602,6 @@ LABEL ~ww_iwd2_eou_forgotten_armor_and_shields~
 COPY  ~iwd2-ease/itm/00rtww1.itm~  ~override/00rtar1.itm~
       ~iwd2-ease/itm/00rtww1.itm~  ~override/00rtar2.itm~
       ~iwd2-ease/itm/00rtww1.itm~  ~override/00rtar3.itm~
-
-COPY_EXISTING ~00chan08.itm~  ~override~
-  LPF DELETE_EFFECT INT_VAR match_opcode = 144 END // delete effects blocking thieving
-  LPF DELETE_EFFECT INT_VAR match_opcode = 145 END // delete effects blocking spellcasting
-  BUT_ONLY
 
 APPEND ~rt_norm.2da~
 ~00RTAR1  12SHLDCT
