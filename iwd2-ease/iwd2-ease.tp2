@@ -78,6 +78,11 @@ COPY_EXISTING ~00chan08.itm~  ~override~
   LPF DELETE_EFFECT INT_VAR match_opcode = 145 END // delete effects blocking spellcasting
   BUT_ONLY
 
+// also in Alternate Shapeshifting
+COPY_EXISTING ~spin280.spl~ ~override~
+  WRITE_ASCII 0x3a ~spin280b~ // typo, using spln280 (L for I)
+  BUT_ONLY
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -743,6 +748,18 @@ ACTION_PHP_EACH cd_druid AS spell => level BEGIN
   
 END
 
+COPY_EXISTING ~listspll.2da~ ~override~
+  COUNT_2DA_ROWS 2 count
+  READ_2DA_ENTRY (count - 1) 0 2 entry
+  BUT_ONLY
+
+OUTER_SET entry += 1
+APPEND ~listspll.2da~ ~%entry% 0 0 2 0 0 0 0 SPPR411~ UNLESS ~[ %TAB%]SPPR411~
+
+COPY_EXISTING ~listspll.2da~ ~override~
+  PRETTY_PRINT_2DA
+  BUT_ONLY
+  
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
