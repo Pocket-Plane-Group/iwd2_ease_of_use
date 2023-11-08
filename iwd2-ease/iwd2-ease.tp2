@@ -710,97 +710,217 @@ COPY_EXISTING ~listspll.2da~ ~override~
   END  
   PRETTY_PRINT_2DA
   BUT_ONLY
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Alternate Shapeshifting                          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @40 DESIGNATED 20
+REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+LABEL ~ww_iwd2_eou_alternate_shapeshifting~
+
+COPY_EXISTING ~clabdr01.2da~ ~override~
+  COUNT_2DA_COLS cols
+  COUNT_2DA_ROWS cols rows
+  REPLACE_TEXTUALLY 
+    ~[ %TAB%]\(GA_SPIN\(107\|110\|244\|261\|262\|141\|142\|143\|280\)\|FA_\(24895\|24896\)\|AP_EFFREST\)[ %TAB%]~ 
+    ~ **** ~ // remove existing shifts, remove tireless body as it's moved one level earlier
+  BUT_ONLY
   
-///////////////////////////////////////////////////////////////////////
+OUTER_FOR (row = rows + 1 ; row < 7 ; ++row) BEGIN // pad table if not enough rows
+  OUTER_SPRINT newrow ~ABILITY%row%~
+  OUTER_FOR (index2 = 1 ; index2 < cols ; ++index2) BEGIN
+    OUTER_SPRINT newrow ~%newrow% ****~
+  END
+  APPEND ~clabdr01.2da~ ~%newrow%~
+END  
 
-BEGIN @40
+COPY_EXISTING ~clabdr01.2da~ ~override~
+  LPF ADD_CLAB_ENTRY INT_VAR level =  5 STR_VAR entry1 = ~GA_W#DRU01~ END
+  LPF ADD_CLAB_ENTRY INT_VAR level =  6 STR_VAR entry1 = ~GA_W#DRU01~ END
+  LPF ADD_CLAB_ENTRY INT_VAR level =  7 STR_VAR entry1 = ~GA_W#DRU01~ entry2 = ~GA_W#DRU02~ END
+  LPF ADD_CLAB_ENTRY INT_VAR level =  8 STR_VAR entry1 = ~GA_W#DRU01~ entry2 = ~GA_W#DRU02~ entry3 = ~FA_24896~ END
+  LPF ADD_CLAB_ENTRY INT_VAR level =  9 STR_VAR entry1 = ~GA_W#DRU01~ entry2 = ~GA_W#DRU02~ entry3 = ~GA_W#DRU03~ END
+  LPF ADD_CLAB_ENTRY INT_VAR level = 10 STR_VAR entry1 = ~GA_W#DRU01~ entry2 = ~GA_W#DRU02~ entry3 = ~GA_W#DRU03~ END
+  LPF ADD_CLAB_ENTRY INT_VAR level = 11 STR_VAR entry1 = ~GA_W#DRU01~ entry2 = ~GA_W#DRU02~ entry3 = ~GA_W#DRU03~ entry4 = ~GA_W#DRU04~ END
+  LPF ADD_CLAB_ENTRY INT_VAR level = 12 STR_VAR entry1 = ~GA_W#DRU01~ entry2 = ~GA_W#DRU02~ entry3 = ~GA_W#DRU03~ entry4 = ~GA_W#DRU04~ END
+  LPF ADD_CLAB_ENTRY INT_VAR level = 13 STR_VAR entry1 = ~GA_W#DRU01~ entry2 = ~GA_W#DRU02~ entry3 = ~GA_W#DRU03~ entry4 = ~GA_W#DRU04~ entry5 = ~GA_W#DRU05~ END
+  LPF ADD_CLAB_ENTRY INT_VAR level = 14 STR_VAR entry1 = ~FA_24895~   entry2 = ~AP_EFFREST~ entry3 = ~GA_W#DRU02~ entry4 = ~GA_W#DRU03~ entry5 = ~GA_W#DRU04~ entry6 = ~GA_W#DRU05~ END
+  LPF ADD_CLAB_ENTRY INT_VAR level = 15 STR_VAR entry1 = ~GA_W#DRU02~ entry2 = ~GA_W#DRU03~ entry3 = ~GA_W#DRU04~ entry4 = ~GA_W#DRU05~ END
+  LPF ADD_CLAB_ENTRY INT_VAR level = 16 STR_VAR entry1 = ~GA_W#DRU03~ entry2 = ~GA_W#DRU04~ entry3 = ~GA_W#DRU05~ entry4 = ~GA_W#DRU06~ END
+  LPF ADD_CLAB_ENTRY INT_VAR level = 17 STR_VAR entry1 = ~GA_W#DRU03~ entry2 = ~GA_W#DRU04~ entry3 = ~GA_W#DRU05~ entry4 = ~GA_W#DRU06~ entry5 = ~GA_W#DRU07~ END
+  LPF ADD_CLAB_ENTRY INT_VAR level = 18 STR_VAR entry1 = ~GA_W#DRU04~ entry2 = ~GA_W#DRU05~ entry3 = ~GA_W#DRU06~ entry4 = ~GA_W#DRU07~ END
+  LPF ADD_CLAB_ENTRY INT_VAR level = 19 STR_VAR entry1 = ~GA_W#DRU04~ entry2 = ~GA_W#DRU05~ entry3 = ~GA_W#DRU06~ entry4 = ~GA_W#DRU07~ entry5 = ~GA_W#DRU08~ END
+  LPF ADD_CLAB_ENTRY INT_VAR level = 20 STR_VAR entry1 = ~GA_W#DRU05~ entry2 = ~GA_W#DRU06~ entry3 = ~GA_W#DRU07~ entry4 = ~GA_W#DRU08~ END
+  LPF ADD_CLAB_ENTRY INT_VAR level = 21 STR_VAR entry1 = ~GA_W#DRU05~ entry2 = ~GA_W#DRU06~ entry3 = ~GA_W#DRU07~ entry4 = ~GA_W#DRU08~ entry5 = ~GA_W#DRU09~ END
+  LPF ADD_CLAB_ENTRY INT_VAR level = 22 STR_VAR entry1 = ~GA_W#DRU06~ entry2 = ~GA_W#DRU07~ entry3 = ~GA_W#DRU08~ entry4 = ~GA_W#DRU09~ END
+  LPF ADD_CLAB_ENTRY INT_VAR level = 23 STR_VAR entry1 = ~GA_W#DRU06~ entry2 = ~GA_W#DRU07~ entry3 = ~GA_W#DRU08~ entry4 = ~GA_W#DRU09~ END
+  LPF ADD_CLAB_ENTRY INT_VAR level = 24 STR_VAR entry1 = ~GA_W#DRU07~ entry2 = ~GA_W#DRU08~ entry3 = ~GA_W#DRU09~ END
+  LPF ADD_CLAB_ENTRY INT_VAR level = 25 STR_VAR entry1 = ~GA_W#DRU07~ entry2 = ~GA_W#DRU08~ entry3 = ~GA_W#DRU09~ END
+  LPF ADD_CLAB_ENTRY INT_VAR level = 26 STR_VAR entry1 = ~GA_W#DRU08~ entry2 = ~GA_W#DRU09~ END
+  LPF ADD_CLAB_ENTRY INT_VAR level = 27 STR_VAR entry1 = ~GA_W#DRU08~ entry2 = ~GA_W#DRU09~ END
+  LPF ADD_CLAB_ENTRY INT_VAR level = 28 STR_VAR entry1 = ~GA_W#DRU09~ END
+  LPF ADD_CLAB_ENTRY INT_VAR level = 29 STR_VAR entry1 = ~GA_W#DRU09~ END
+  PRETTY_PRINT_2DA
 
-COPY ~iwd2-ease/shift/copy~     ~override~
+COPY ~iwd2-ease/bam/spin107b.bam~ ~override~
+COPY_EXISTING ~spin107.spl~ ~override~ // Polar Bear > Remorhaz
+  SAY 0x08 @43
+  LPF ALTER_EFFECT INT_VAR match_opcode = 135 STR_VAR resource = ~w#dru06~ END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 111 STR_VAR resource = ~w#dru06~ END
 
-COPY ~iwd2-ease/shift/spin244.spl~     ~override/spin244.spl~
-     ~iwd2-ease/shift/spin244.spl~     ~override/w#dru01.spl~
-  SAY 8 @41
-COPY ~iwd2-ease/shift/spin110.spl~     ~override/spin110.spl~
-     ~iwd2-ease/shift/spin110.spl~     ~override/w#dru02.spl~
-  SAY 8 @42
-COPY ~iwd2-ease/shift/spin107.spl~     ~override/spin107.spl~
-     ~iwd2-ease/shift/spin107.spl~     ~override/w#dru03.spl~
-  SAY 8 @43
-COPY ~iwd2-ease/shift/spin261.spl~     ~override/spin261.spl~
-     ~iwd2-ease/shift/spin261.spl~     ~override/w#dru04.spl~
-  SAY 8 @44
-COPY ~iwd2-ease/shift/spin262.spl~     ~override/spin262.spl~
-     ~iwd2-ease/shift/spin262.spl~     ~override/w#dru05.spl~
-  SAY 8 @45
-COPY ~iwd2-ease/shift/spin141.spl~     ~override/spin141.spl~
-     ~iwd2-ease/shift/spin141.spl~     ~override/w#dru06.spl~
-  SAY 8 @46
-COPY ~iwd2-ease/shift/spin142.spl~     ~override/spin142.spl~
-     ~iwd2-ease/shift/spin142.spl~     ~override/w#dru07.spl~
-  SAY 8 @47
-COPY ~iwd2-ease/shift/spin143.spl~     ~override/spin143.spl~
-     ~iwd2-ease/shift/spin143.spl~     ~override/w#dru08.spl~
-  SAY 8 @48
-COPY ~iwd2-ease/shift/spin280.spl~     ~override/spin280.spl~
-     ~iwd2-ease/shift/spin280.spl~     ~override/w#dru09.spl~
-  SAY 8 @49
+COPY ~iwd2-ease/bam/spin110b.bam~ ~override~
+COPY_EXISTING ~spin110.spl~ ~override~ // Winter Wolf > Fomorian Giant
+  SAY 0x08 @42
+  LPF DELETE_EFFECT INT_VAR match_opcode = 174 STR_VAR match_resource = wolff04 END // remove wolf howl from transformation
+  LPF ALTER_EFFECT  INT_VAR match_opcode = 135 STR_VAR resource = ~w#dru04~ END
+  LPF ALTER_EFFECT  INT_VAR match_opcode = 111 STR_VAR resource = ~w#dru04~ END
 
-COPY ~iwd2-ease/shift/spin111.spl~     ~override/spin111.spl~
-  SAY 8 @50
-COPY ~iwd2-ease/shift/spin245.spl~     ~override/spin245.spl~
-  SAY 8 @51
-COPY ~iwd2-ease/shift/spin246.spl~     ~override/spin246.spl~
-  SAY 8 @52
-        
-COPY ~iwd2-ease/shift/w#dru01.itm~     ~override/w#dru01.itm~
-  SAY 12 @53
-COPY ~iwd2-ease/shift/w#dru02.itm~     ~override/w#dru02.itm~
-  SAY 12 @54
-COPY ~iwd2-ease/shift/w#dru03.itm~     ~override/w#dru03.itm~
-  SAY 12 @55
-COPY ~iwd2-ease/shift/w#dru04.itm~     ~override/w#dru04.itm~
-  SAY 12 @56
-COPY ~iwd2-ease/shift/w#dru05.itm~     ~override/w#dru05.itm~
-  SAY 12 @57
-COPY ~iwd2-ease/shift/w#dru06.itm~     ~override/w#dru06.itm~
-  SAY 12 @58
-COPY ~iwd2-ease/shift/w#dru07.itm~     ~override/w#dru07.itm~
-  SAY 12 #28340 // wyvern stinger
-COPY ~iwd2-ease/shift/w#dru08.itm~     ~override/w#dru08.itm~
-  SAY 12 @59
-COPY ~iwd2-ease/shift/w#dru09.itm~     ~override/w#dru09.itm~
-  SAY 12 @60
-COPY ~iwd2-ease/shift/w#dru10.itm~     ~override/w#dru10.itm~
-  SAY 12 @61
-COPY ~iwd2-ease/shift/w#dru11.itm~     ~override/w#dru11.itm~
-  SAY 12 @62
-COPY ~iwd2-ease/shift/w#dru12.itm~     ~override/w#dru12.itm~
-  SAY 12 @63
+COPY ~iwd2-ease/bam/spin111b.bam~ ~override~
+COPY_EXISTING ~spin111.spl~ ~override~ // Boring Beetle > Will o' Wisp
+  SAY 0x08 @50
+  LPF ALTER_EFFECT INT_VAR match_opcode = 135 STR_VAR resource = ~w#dru02~ END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 111 STR_VAR resource = ~w#dru02~ END
 
-COPY_EXISTING ~feats.2da~       ~override/feats.2da~
-  REPLACE ~37272~ @50
+COPY ~iwd2-ease/bam/spin141b.bam~ ~override~
+     ~iwd2-ease/cre/w#dru09.cre~  ~override~
+COPY_EXISTING ~spin141.spl~ ~override~ // Fire Elemental > Red Half-Dragon
+  SAY 0x08 @46
+  LPF ALTER_EFFECT INT_VAR match_opcode = 135 STR_VAR resource = ~w#dru09~ END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 111 STR_VAR resource = ~w#dru09~ END
+
+COPY ~iwd2-ease/bam/spin142b.bam~ ~override~
+COPY_EXISTING ~spin142.spl~ ~override~ // Earth Elemental > Blue Half-Dragon
+  SAY 0x08 @47
+  LPF ALTER_EFFECT INT_VAR match_opcode = 135 STR_VAR resource = ~w#dru10~ END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 111 STR_VAR resource = ~w#dru10~ END
+
+COPY ~iwd2-ease/bam/spin143b.bam~ ~override~
+COPY_EXISTING ~spin143.spl~ ~override~ // Water Elemental > Black Half-Dragon
+  SAY 0x08 @48
+  LPF ALTER_EFFECT INT_VAR match_opcode = 135 STR_VAR resource = ~w#dru11~ END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 111 STR_VAR resource = ~w#dru11~ END
+
+COPY ~iwd2-ease/bam/spin244b.bam~ ~override~
+COPY_EXISTING ~spin244.spl~ ~override~ // Boar > Verbeeg
+  SAY 0x08 @41
+  LPF DELETE_EFFECT INT_VAR match_opcode = 174 STR_VAR match_resource = pbear01 END // remove animal growl from transformation
+  LPF ALTER_EFFECT INT_VAR match_opcode = 135 STR_VAR resource = ~w#dru01~ END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 111 STR_VAR resource = ~w#dru01~ END
+
+COPY ~iwd2-ease/bam/spin245b.bam~ ~override~
+COPY_EXISTING ~spin245.spl~ ~override~ // Black Panther > Yeti
+  SAY 0x08 @51
+  LPF DELETE_EFFECT INT_VAR match_opcode = 174 STR_VAR match_resource = pbear01 END // remove animal growl from transformation
+  LPF ALTER_EFFECT INT_VAR match_opcode = 135 STR_VAR resource = ~w#dru03~ END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 111 STR_VAR resource = ~w#dru03~ END
+
+COPY ~iwd2-ease/bam/spin246b.bam~ ~override~
+COPY_EXISTING ~spin246.spl~ ~override~ // Shambling Mound > Treant
+  SAY 0x08 @52
+  LPF DELETE_EFFECT INT_VAR match_opcode = 174 STR_VAR match_resource = pbear01 END // remove animal growl from transformation
+  LPF ALTER_EFFECT INT_VAR match_opcode = 135 STR_VAR resource = ~w#dru05~ END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 111 STR_VAR resource = ~w#dru05~ END
+
+COPY ~iwd2-ease/bam/spin261b.bam~ ~override~
+COPY_EXISTING ~spin261.spl~ ~override~ // Dire Bear > Wyvern
+  SAY 0x08 @44
+  LPF DELETE_EFFECT INT_VAR match_opcode = 174 STR_VAR match_resource = pbear01 END // remove animal growl from transformation
+  LPF ALTER_EFFECT INT_VAR match_opcode = 135 STR_VAR resource = ~w#dru07~ END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 111 STR_VAR resource = ~w#dru07~ END
+
+COPY ~iwd2-ease/bam/spin262b.bam~ ~override~
+COPY_EXISTING ~spin262.spl~ ~override~ // Dire Panther > White Half-Dragon
+  SAY 0x08 @45
+  LPF DELETE_EFFECT INT_VAR match_opcode = 174 STR_VAR match_resource = pbear01 END // remove animal growl from transformation
+  LPF ALTER_EFFECT INT_VAR match_opcode = 135 STR_VAR resource = ~w#dru08~ END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 111 STR_VAR resource = ~w#dru08~ END
+
+COPY ~iwd2-ease/bam/spin280b.bam~ ~override~
+COPY_EXISTING ~spin280.spl~ ~override~ // Air Elemental > Elemental Half-Dragon
+  SAY 0x08 @49
+  WRITE_ASCII 0x3a ~spin280b~ // type, using spln280 (L for I)
+  LPF ALTER_EFFECT INT_VAR match_opcode = 135 STR_VAR resource = ~w#dru12~ END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 111 STR_VAR resource = ~w#dru12~ END
+
+COPY_EXISTING ~spin244.spl~ ~override/w#dru01.spl~
+              ~spin110.spl~ ~override/w#dru02.spl~
+              ~spin107.spl~ ~override/w#dru03.spl~
+              ~spin261.spl~ ~override/w#dru04.spl~
+              ~spin262.spl~ ~override/w#dru05.spl~
+              ~spin141.spl~ ~override/w#dru06.spl~
+              ~spin142.spl~ ~override/w#dru07.spl~
+              ~spin143.spl~ ~override/w#dru08.spl~
+              ~spin280.spl~ ~override/w#dru09.spl~
+
+COPY ~iwd2-ease/cre/w#dru01.cre~     ~override~ // this batch uses existing iwd2 strings
+     ~iwd2-ease/cre/w#dru02.cre~     ~override~
+     ~iwd2-ease/cre/w#dru03.cre~     ~override~
+     ~iwd2-ease/cre/w#dru04.cre~     ~override~
+     ~iwd2-ease/cre/w#dru05.cre~     ~override~
+     ~iwd2-ease/cre/w#dru06.cre~     ~override~
+     ~iwd2-ease/cre/w#dru07.cre~     ~override~
+     ~iwd2-ease/cre/w#dru09.cre~     ~override~
+COPY ~iwd2-ease/cre/w#dru08.cre~     ~override~
+  SAY 0x08 @2014
+  SAY 0x0c @2014
+COPY ~iwd2-ease/cre/w#dru10.cre~     ~override~
+  SAY 0x08 @2015
+  SAY 0x0c @2015
+COPY ~iwd2-ease/cre/w#dru11.cre~     ~override~
+  SAY 0x08 @2016
+  SAY 0x0c @2016
+COPY ~iwd2-ease/cre/w#dru12.cre~     ~override~
+  SAY 0x08 @2017
+  SAY 0x0c @2017
+  
+COPY ~iwd2-ease/itm/w#dru01.itm~     ~override~
+  SAY 0x0c @53  
+COPY ~iwd2-ease/itm/w#dru02.itm~     ~override~
+  SAY 0x0c @54  
+COPY ~iwd2-ease/itm/w#dru03.itm~     ~override~
+  SAY 0x0c @55  
+COPY ~iwd2-ease/itm/w#dru04.itm~     ~override~
+  SAY 0x0c @56  
+COPY ~iwd2-ease/itm/w#dru05.itm~     ~override~
+  SAY 0x0c @57  
+COPY ~iwd2-ease/itm/w#dru06.itm~     ~override~
+  SAY 0x0c @58  
+COPY ~iwd2-ease/itm/w#dru07.itm~     ~override~ // uses existing string
+COPY ~iwd2-ease/itm/w#dru08.itm~     ~override~
+  SAY 0x0c @59  
+COPY ~iwd2-ease/itm/w#dru09.itm~     ~override~
+  SAY 0x0c @60  
+COPY ~iwd2-ease/itm/w#dru10.itm~     ~override~
+  SAY 0x0c @61
+COPY ~iwd2-ease/itm/w#dru11.itm~     ~override~
+  SAY 0x0c @62
+COPY ~iwd2-ease/itm/w#dru12.itm~     ~override~
+  SAY 0x0c @63
+  
+COPY_EXISTING ~feats.2da~       ~override~
+  REPLACE ~37272~ @50 // Boring Beetle > Will o' Wisp
   REPLACE ~37290~ @64
-
-  REPLACE ~37273~ @51
+  REPLACE ~37273~ @51 // Black Panther > Yeti
   REPLACE ~37291~ @65
-
-  REPLACE ~37274~ @52
+  REPLACE ~37274~ @52 // Shambling Mound > Treant
   REPLACE ~37292~ @66
 
-COPY_EXISTING ~HELP02.2DA~      ~override/help02.2da~
-  REPLACE ~9560~ @67
+COPY_EXISTING ~help02.2da~      ~override~
+  REPLACE ~9560~ @67 // generic druid description
 
-APPEND ~LISTINNT.2DA~
-~180     W#DRU01
-181     W#DRU02
-182     W#DRU03
-183     W#DRU04
-184     W#DRU05
-185     W#DRU06
-186     W#DRU07
-187     W#DRU08
-188     W#DRU09~
-UNLESS ~W#DRU~
+COPY_EXISTING ~listinnt.2da~ ~override~
+  COUNT_2DA_ROWS 2 count
+  READ_2DA_ENTRY (count - 1) 0 2 base_entry
+
+OUTER_FOR (index = 1 ; index < 10 ; ++index) BEGIN
+  OUTER_SET entry = base_entry + index
+  APPEND ~listinnt.2da~ ~%entry% w#dru0%index%~  
+END
 
 ///////////////////////////////////////////////////////////////////////
 

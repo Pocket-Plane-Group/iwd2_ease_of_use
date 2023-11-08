@@ -19,84 +19,10 @@
 @31   = ~Non-Linear Teleportation~
 @32   = ~Armor and Shields Provide Damage Resistance~
 @33   = ~Include Forgotten Armor and Shields~
-// @34 - @37 in game.tra
-@38   = ~Oswald's Secret Stash~
+// @34 - @38 in game.tra
 @39   = ~Additional Druid Spells~
 @40   = ~Alternate Shapeshifting~
-@41   = ~Wild Shape - Verbeeg~
-@42   = ~Wild Shape - Fomorian Giant~
-@43   = ~Wild Shape - Remorhaz~
-@44   = ~Wild Shape - Wyvern~
-@45   = ~Wild Shape - White Half-Dragon~
-@46   = ~Wild Shape - Red Half-Dragon~
-@47   = ~Wild Shape - Blue Half-Dragon~
-@48   = ~Wild Shape - Black Half-Dragon~
-@49   = ~Wild Shape - Elemental Half-Dragon~
-@50   = ~Wild Shape - Will o' Wisp~
-@51   = ~Wild Shape - Yeti~
-@52   = ~Wild Shape - Treant~
-@53   = ~Verbeeg Spear~
-@54   = ~Wisp Lightning~
-@55   = ~Yeti Paw~
-@56   = ~Giant Fist~
-@57   = ~Treant Branch~
-@58   = ~Remorhaz Shell~
-@59   = ~White Icy Sword~
-@60   = ~Red Flaming Sword~
-@61   = ~Blue Shocking Sword~
-@62   = ~Black Corrosive Sword~
-@63   = ~Elemental Sword~
-@64   = ~WILD SHAPE, WILL O' WISP:
-
-Putting yourself more in tune with the creatures of swamps and bogs, you have gained the ability to transform into a Will o' Wisp. Wisps are dexterous but fragile. They are adept at evading blows in combat and are almost impossible to damage with elemental magics. Wisps have a weak electrical attack. 
-
-Prerequisite: 5 Levels of Druid
-
-Benefit:  This grants the ability to shapeshift into a Will o' Wisp.~
-@65   = ~WILD SHAPE, YETI:
-
-Putting yourself more in tune with the creatures of the northern mountains, you have gained the ability to transform into a Yeti. Yetis are quite strong and their thick fur serves to keep out the cold and ward off blows. Their powerful paws are rancid and venomous. Yetis are vulernable to fire. 
-
-Prerequisite: 5 Levels of Druid
-
-Benefit:  This grants the ability to shapeshift into a Yeti.~
-@66   = ~WILD SHAPE, TREANT:
-
-Putting yourself more in tune with the creatures of the forest, you have gained the ability to transform into a Treant. Treants are very strong and their wooden bodies are almost impossible to damage. Treant branches behave like massive clubs while roots and shoots entangle unwary foes and hold them fast. Treants are especially vulernable to fire.
-
-Prerequisite: 10 Levels of Druid
-
-Benefit:  This grants the ability to shapeshift into a Treant.~
-@67   = ~DRUID: 
-
-The druid serves the cause of nature and neutrality; the wilderness is his community. He uses his special powers to protect it and to preserve balance in the world.
-
-NOTE: Wisdom is the casting statistic for a druid. It affects their maximum spellcasting level, spell saving throw DCs, and number of bonus spells.
-
-Hit Points per Level: 1-8
-
-Advantages:
-* Proficient with all simple weapons except for the crossbow, the martial weapons largesword and polearm, plus light armor, medium armor, and shields.
-* Druids can cast powerful offensive and healing spells.
-* 5th level: Druids gain the Wild Shape ability to transform into powerful creatures. While transformed the druid cannot cast spells or use quick slot items (like healing potions). While transformed the druid's normal STR, CON and DEX are replaced by the physical attributes of the shape. Transforming also heals some damage. When a druid first learns a new Wild Shape, that shape can be used once per day. Each additional level gained allows the druid to use that shape an additional time per day (to a maximum of 9 times per day). 
-* 5th level: Wild Shape - Verbeeg. Verbeeg are strong but slow giantkin that attack with massive spears. 
-* 5th level (or above): At this point the druid may choose Wild Shape - Will o' Wisp as a Feat. Wisps are dexterous but fragile. They are adept at evading blows in combat and are almost impossible to damage with elemental magics. Wisps have a weak electrical attack. The druid will not be able to transform into Feat-based shapes as often, and all Feat-based shapes share the same pool of transformations per day. [ Because of bugs in the original game, even if you choose a Wild Shape Feat you may not be able to use it until you gain a few more levels. Sorry. ]
-* 5th level (or above): At this point the druid may choose Wild Shape - Yeti as a Feat. Yetis are quite strong and their thick fur serves to keep out the cold and ward off blows. Their powerful paws are rancid and venomous. Yetis are vulernable to fire. 
-* 7th level: Wild Shape - Fomorian Giant. Fomorian Giants are stronger and tougher than the Verbeeg. They attack with massive fists and can stun their foes with the force of their blows. 
-* 8th level: Immunity to Poison. The druid becomes immune to all forms of poison.
-* 9th level: Wild Shape - Remorhaz. Remorhaz are massive fiery lizards. They are exceptionally strong and their chitinous shells deal bludgeoning damage and burn their foes.  Remorhaz are resistant to heat. 
-* 10th level (or above): At this point the druid may choose Wild Shape - Treant as a Feat. Treants are very strong and their wooden bodies are almost impossible to damage. Treant branches behave like massive clubs while roots and shoots entangle unwary foes and hold them fast. Treants are especially vulernable to fire.[ Again, game bugs mean that even if you pick this Feat you may not be able to use it until, for example, level 14. ] 
-* 11th level: Wild Shape - Wyvern. Wyverns are lizards that attack with venomous and acidic stingers. Wyverns are not as strong as previous Wild Shapes but they are heavily armored and resistant to magical spells. 
-* 13th level: Wild Shape - White Half-Dragon. Half-Dragons are tremendously strong, fairly quick and quite tough. They are also resistant to magical spells. White Half-Dragons are immune to cold and attack with chilling blades. 
-* 14th level: Timeless Body. The druid is immune to the effects of fatigue.
-* 15th level: Wild Shape - Red Half-Dragon. Each Half-Dragon form is stronger, faster, tougher and more heavily armored than the last. Red Half-Dragons are immune to flames and attack with fiery blades.
-* 17th level: Wild Shape - Blue Half-Dragon. Blue Half-Dragons are immune to electricity and attack with shocking blades. 
-* 19th level: Wild Shape - Black Half-Dragon. Black Half-Dragons are immune to acid and attack with corrosive blades. 
-* 21st level: Wild Shape - Elemental Half-Dragon. Elemental Half-Dragons are immune to fire, cold, electricity and acid. Their terrible swift swords combine all the offensive powers of all previous half-dragon Wild Shapes. 
-
-Disadvantages:
-* Druids do not have access to many powerful defensive spells.
-* Unless the assume a Wild Shape, druids are not as powerful as fighters, rangers, paladins, or barbarians in combat.~
+// @41 - @67 in game.tra
 @68   = ~Skip Battle Square~
 @69   = ~Randomized Treasure (mix up items with similar costs)~
 @70   = ~Faster Oswald~

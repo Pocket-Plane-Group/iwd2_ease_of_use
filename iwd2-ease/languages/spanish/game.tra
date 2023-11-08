@@ -341,3 +341,88 @@ Bonificador de Escudo:  +5
 Penalización a la frenada de armadura:  -0 
 Fallo del Conjuro Arcano:  5% 
 Peso:  2 .~
+
+@41   = ~Forma Salvaje - Verbeeg~
+@42   = ~Forma Salvaje - Gigante Fomorian~
+@43   = ~Forma Salvaje - Remorhaz~
+@44   = ~Forma Salvaje - Wyvern~
+@45   = ~Forma Salvaje - Semi-Dragón Blanco~
+@46   = ~Forma Salvaje - Semi-Dragón Rojo~
+@47   = ~Forma Salvaje - Semi-Dragón Azul~
+@48   = ~Forma Salvaje - Semi-Dragón Negro~
+@49   = ~Forma Salvaje - Semi-Dragón Elemental~
+@50   = ~Forma Salvaje - Will o' Wisp~
+@51   = ~Forma Salvaje - Yeti~
+@52   = ~Forma Salvaje - Treant~
+@53   = ~Lanza de Verbeeg~
+@54   = ~Brizna Relampagueante~
+@55   = ~Pata de Yeti~
+@56   = ~Puño de Gigante~
+@57   = ~Rama de Treant~
+@58   = ~Concha de Remorhaz~
+@59   = ~Espada Helada Blanca~
+@60   = ~Espada Llameante Roja~
+@61   = ~Espada Atontante Azul~
+@62   = ~Espada Corrosiva Negra~
+@63   = ~Espada Elemental~
+@64   = ~FORMA SALVAJE, WILL O' WISP:
+
+Poniéndote más a tono con las criaturas de los pantanos, has ganado la habilidad de transformarte en un Will o' Wisp. Los wisps son hábiles pero frágiles. Son adeptos a evadir barridas en combate y son casi imposibles de dañar con magia elemental. Los wisps tienen un débil ataque eléctrico. 
+
+Prerrequisito: 5 niveles de druida
+
+Beneficio: Esto concede la habilidad de cambiar de forma a un Will o' Wisp.~
+@65   = ~FORMA SALVAJE, YETI:
+
+Poniéndote más a tono con las criaturas de las montañas del norte, has ganado la habilidad de transformarte en un Yeti. Los yetis son muy fuertes y su denso pelaje sirve para abrigarlos del frío y evitar los golpes. Sus poderosas patas son rancias y venenosas. Los yetis son vulnerables al fuego. 
+
+Prerrequisito: 5 niveles de druida
+
+Beneficio: Esto concede la habilidad de cambiar de forma a Yeti.~
+@66   = ~FORMA SALVAJE, TREANT:
+
+Poniéndote más a tono con las criaturas del bosque, has ganado la habilidad de transformarte en un Treant. Los Treants son muy fuertes y sus cuerpos de madera son casi imposibles de dañar. Las ramas del Treant se comportan como garrotes masivos mientras que las raíces y los brotes enredan a los enemigos incautos. Los Treants son especialmente vulnerables al fuego.
+
+Prerrequisito: 10 niveles de druida
+
+Beneficio: Esto concede la habilidad de cambiar de forma a Treant.~
+@67   = ~DRUIDA: 
+
+El druida sirve a la causa de la naturaleza y la neutralidad; el desierto en su comunidad. Él usa sus poderes especiales para proteger y preservar el balance en el mundo.
+
+NOTA: La Sabiduría es la estadística para lanzar conjuros de un druida. Esta afecta su máximo de conjuros por nivel, las tiradas de salvación contra conjuros DCs, y el número de conjuros adicionales.
+
+Puntos de vida por nivel: 1-8
+
+Ventajas:
+* Habilidad con todas las armas simples excepto las ballestas, las armas marciales espada larga y armas de asta, más armadura liviana, armadura media y escudos.
+* Los druidas pueden lanzar poderosos conjuros ofensivos y de sanación.
+* 5to nivel: Los druidas ganan la habilidad de Forma Salvaje para transformarse en poderosas criaturas. Mientras está transformado el druida no puede lanzar conjuros o usar objetos en las casillas rápidas (como pociones de sanación). Mientras estén transformados, la FUE, DES y CON normal del druida son reemplazadas por las características físicas de la nueva forma. La transformación también asna algo de daño. Cuando un druida aprende una nueva Forma Salvaje, esa forma puede ser usada una vez por día. Cada nivel adicional ganado permite al druida usar esa forma una vez adicional por día (hasta un máximo de 9 veces por día). 
+* 5to nivel: Forma Salvaje - Verbeeg. Los Verbeeg son fuertes pero lentos semigigantes que atacan con lanzas masivas. 
+* 5to nivel (o superior): A este punto el druida puede elegir Forma Salvaje - Will o' Wisp como un Feat. Los wisps son hábiles pero frágiles. Son adeptos a evadir barridas en combate y son casi imposibles de dañar con magia elemental. Los wisps tienen un débil ataque eléctrico. El druida no estará habilitado para transformarse en formas basadas en hazañas muy seguido, y las formas basadas en Feats comparten la cantidad de transformaciones por día. [ Esto debido a los bugs en el juego original, aún si eliges Forma Salvaje Feat puedes llegar a no poder usarlo hasta que que ganes unos pocos conjuros más. Lo siento. ]
+* 5to nivel (o superior): A este punto el druida puede elegir Forma Salvaje - Yeti como un Feat. Los yetis son muy fuertes y su denso pelaje sirve para abrigarlos del frío y evitar los golpes. Sus poderosas patas son rancias y venenosas. Los yetis son vulnerables al fuego. 
+* 7mo nivel: Forma Salvaje - Gigante Formorian. Los gigantes Fomorian son más fuertes y resistentes que el Verbeeg. Atacan con puños masivos y pueden aturdir a los enemigos con su tremenda fuerza. 
+* 8vo nivel: Inmunidad al Veneno. El druida se vuelve inmune a todas las formas de veneno.
+* 9no nivel: Forma Salvaje - Remorhaz. Los Remorhaz son lagartos muy fieros. Son excepcionalmente fuertes y sus córneas conchas golpean como cachiporras y queman a sus enemigos. Los Remorhaz son resistentes al calor. 
+* 10mo nivel (o superior): A este punto el druida puede escoger Forma Salvaje - Treant como un Feat. Los Treants son muy fuertes y sus cuerpos de madera son casi imposibles de dañar. Las ramas del Treant se comportan como garrotes masivos mientras que las raíces y los brotes enredan a los enemigos incautos. Los Treants son especialmente vulnerables al fuego.[ De nuevo, los bugs del juego causan que aún si tu escoges este Feat quizás no puedas usarlo hasta, por ejemplo, el nivel 14. ] 
+* 11er nivel: Forma Salvaje - Wyvern. Los Wyverns son lagartos que atacan con aguijones venenosos y ácidos. Los Wyverns no son tan fuertes como su Forma Salvaje previa, pero están fuertemente protegidos y son resistentes a los conjuros mágicos. 
+* 13er nivel: Forma Salvaje - Semi-Dragón Blanco. Los Semi-Dragones son tremendamente fuertes, medianamente rápidos y bastante duros. También son resistentes a los conjuros mágicos. Los Semi-Dragones Blancos son inmunes al frío y atacan con espadas congeladoras. 
+* 14to nivel: Cuerpo Eterno. El druida es inmune a los efectos de la fatiga.
+* 15to nivel: Forma Salvaje - Semi-Dragón Rojo. Cada forma de Semi-Dragón es más fuerte, rápida, resistente y mejor escudada que la última. Los Semi-Dragones Rojos son inmunes a las llamas y atacan con espadas ardientes.
+* 17mo nivel: Forma Salvaje - Semi-Dragón Azul. Los Semi-Dragones Azules son inmunes a la electricidad y atacan con espadas atontadoras. 
+* 19no nivel: Forma Salvaje - Semi-Dragón Negro. Los Semi-Dragones Negros son inmunes al ácido y atacan con espadas corrosivas. 
+* 21er nivel: Forma Salvaje - Semi-Dragón Elemental. Los Semi-Dragones Elementales son inmunes al fuego, frío, electricidad y ácido. Sus terribles espadas combinan todos los poderes de las de las anteriores formas salvajes de Semi-Dragones. 
+
+Desventajas:
+* Los druidas no tienen acceso a muchos poderosos conjuros defensivos.
+* A menos que asuman una Forma Salvaje, los druidas no tan buenos como los guerreros, exploradores, paladines o bárbaros en combate.~
+
+
+// game and weidu share the 0-70 range; use 1000s for weidu and 2000s for game going forward
+
+// @2001 - @2013 needed
+// @2014 - 2017 derved by Cam from strings 45, 47-49. please double-check
+@2014 = ~Semi-Dragón Blanco~
+@2015 = ~Semi-Dragón Azul~
+@2016 = ~Semi-Dragón Negro~
+@2017 = ~Semi-Dragón Elemental~

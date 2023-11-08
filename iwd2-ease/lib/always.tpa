@@ -545,3 +545,54 @@ BEGIN
   END
 
 END
+
+/////                                                  \\\\\
+///// ADD_CLAB_ENTRY                                   \\\\\
+/////                                                  \\\\\
+
+// ugly, but functional
+DEFINE_PATCH_FUNCTION ADD_CLAB_ENTRY
+
+  // defines what we're going to check
+  INT_VAR level  = "-1"
+  STR_VAR entry1 = ""
+          entry2 = ""
+          entry3 = ""
+          entry4 = ""
+          entry5 = ""
+          entry6 = ""
+BEGIN
+
+  PATCH_IF ("%entry1%" STRING_COMPARE_CASE "" = 0) BEGIN
+    PATCH_WARN ~no entries given~
+  END ELSE BEGIN  
+    PATCH_IF ("%entry2%" STRING_COMPARE_CASE "" = 0) BEGIN SET max_entry = 1 END ELSE
+    PATCH_IF ("%entry3%" STRING_COMPARE_CASE "" = 0) BEGIN SET max_entry = 2 END ELSE
+    PATCH_IF ("%entry4%" STRING_COMPARE_CASE "" = 0) BEGIN SET max_entry = 3 END ELSE 
+    PATCH_IF ("%entry5%" STRING_COMPARE_CASE "" = 0) BEGIN SET max_entry = 4 END ELSE
+    PATCH_IF ("%entry6%" STRING_COMPARE_CASE "" = 0) BEGIN SET max_entry = 5 END ELSE BEGIN SET max_entry = 6 END
+    SET current_entry = 1
+    COUNT_2DA_COLS cd_cols
+    COUNT_2DA_ROWS cd_cols cd_rows
+    FOR (index = 0 ; index < cd_rows ; ++index) BEGIN
+      READ_2DA_ENTRY index level cd_cols cd_check
+      PATCH_IF ("%cd_check%" STRING_COMPARE_CASE "****" = 0) BEGIN // blank entry
+        PATCH_IF current_entry = 1 BEGIN SPRINT addthis ~%entry1%~ END ELSE
+        PATCH_IF current_entry = 2 BEGIN SPRINT addthis ~%entry2%~ END ELSE
+        PATCH_IF current_entry = 3 BEGIN SPRINT addthis ~%entry3%~ END ELSE
+        PATCH_IF current_entry = 4 BEGIN SPRINT addthis ~%entry4%~ END ELSE
+        PATCH_IF current_entry = 5 BEGIN SPRINT addthis ~%entry5%~ END ELSE BEGIN SPRINT addthis ~%entry6%~ END
+        SET_2DA_ENTRY index level cd_cols ~%addthis%~
+        SET current_entry += 1
+        PATCH_IF current_entry > max_entry BEGIN // kill loop
+          SET index = cd_rows +1
+        END
+      END
+    END
+    PATCH_IF current_entry <= max_entry BEGIN
+      PATCH_WARN ~not all entries set~
+    END
+  END    
+  
+END
+    
