@@ -69,6 +69,10 @@ COPY_EXISTING ~00cwshm1.itm~    ~override~ // shambling mound attack
   LPF ALTER_EFFECT INT_VAR match_opcode = 413 opcode = 154  END // change 'run visual effect' to 'entangle overlay'
   BUT_ONLY
 
+COPY_EXISTING ~00sbrskr.cre~ ~override~ // berserkers from horn of valhalla drop armor
+  LPF ALTER_CREATURE_ITEM_IWD2 INT_VAR flag_undroppable = 1 STR_VAR match_item = 00hide06 END
+  BUT_ONLY
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -674,6 +678,7 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_druid BEGIN
 
   ~SPPR106~ => 1
   ~SPPR107~ => 1
+  ~SPPR408~ => 3
   ~SPWI103~ => 1
   ~SPWI107~ => 2
   ~SPWI122~ => 1
