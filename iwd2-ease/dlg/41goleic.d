@@ -1,7 +1,6 @@
-BEGIN ~41GOLEIC~ 34006 
+ALTER_TRANS 41GOLEIC BEGIN 0 END BEGIN 0 END BEGIN ~REPLY~ ~@1~ END // add (leave) to existing termination reply
+EXTEND_BOTTOM 41GOLEIC 0 // add "i win" reply
 
-IF ~True()~ THEN BEGIN 0 
- SAY #34006 /* ~This is a construct of solid ice, given life through powerful wizardry. It appears to draw power from the cold around it, healing the myriad tiny cracks and chips that fleck its glimmering surface as it moves.~ */
  IF ~Global("BattleSquareVictory","GLOBAL",0)~ THEN REPLY @0
  DO
 ~GiveItemCreate("00Arow96",Player1,20,0,0) 
@@ -90,5 +89,5 @@ IF ~True()~ THEN BEGIN 0
  GiveItemCreate("41KEYOT",Player1,0,0,0) 
  SetGlobal("41GaveOriaKey","GLOBAL",1)~
 EXIT
- IF ~~ THEN REPLY @1 EXIT
+
 END
