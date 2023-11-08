@@ -33,7 +33,7 @@ LANGUAGE
 
 BEGIN @0 DESIGNATED 0
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
-LABEL ~ww_iwd_ease_of_use_bugfixes~
+LABEL ~ww_iwd2_eou_bugfixes~
 
 COPY_EXISTING ~00swdb93.itm~    ~override~ // Bastard Sword of Heroism
   LPF ALTER_HEADER_IWD2 INT_VAR type = 1 to_hit = 3 END // to hit bonus is 0, should be +3
@@ -79,7 +79,7 @@ COPY_EXISTING ~00cwshm1.itm~    ~override~ // shambling mound attack
 
 BEGIN @1 DESIGNATED 1
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
-LABEL ~ww_iwd_ease_of_use_infinte_stacking~
+LABEL ~ww_iwd2_eou_infinte_stacking~
 
 // code essentially stolen and adapted from Tweaks Anthology
 OUTER_SET stack = 9999
@@ -122,7 +122,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~    ~override~ // check all items
 
 BEGIN @2 DESIGNATED 2
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
-LABEL ~ww_iwd_ease_of_use_non-_combat_war_chant~
+LABEL ~ww_iwd2_eou_non-_combat_war_chant~
 
 // small change from v15: war chant still wn't apply to deafened party members or non-allies
 COPY_EXISTING ~spin148.spl~ ~override~
@@ -140,7 +140,7 @@ COPY_EXISTING ~spin148.spl~ ~override~
 
 BEGIN @3 DESIGNATED 3
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
-LABEL ~ww_iwd_ease_of_use_holy_avenger_improved~
+LABEL ~ww_iwd2_eou_holy_avenger_improved~
 
 ACTION_IF subs BEGIN
   OUTER_SPRINT ha_match   @2001
@@ -176,7 +176,7 @@ COPY_EXISTING ~60hfslha.itm~ ~override~
 
 BEGIN @6 DESIGNATED 4
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
-LABEL ~ww_iwd_ease_of_use_holy_avenger_2h~
+LABEL ~ww_iwd2_eou_holy_avenger_2h~
 
 ACTION_IF subs BEGIN
   OUTER_SPRINT dam_match   @2003
@@ -214,7 +214,7 @@ COPY_EXISTING ~60hfslha.itm~ ~override~
 
 BEGIN @7 DESIGNATED 5
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
-LABEL ~ww_iwd_ease_of_use_iron_body_no_fist~
+LABEL ~ww_iwd2_eou_iron_body_no_fist~
 
 COPY_EXISTING ~spwi807.spl~ ~override~ // iron body
   LPF DELETE_EFFECT INT_VAR match_opcode = 111 END // delete opcode that creates fist
@@ -230,7 +230,7 @@ COPY_EXISTING ~spwi807.spl~ ~override~ // iron body
 
 BEGIN @8 DESIGNATED 6
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
-LABEL ~ww_iwd_ease_of_use_gnome_starting_xp~
+LABEL ~ww_iwd2_eou_gnome_starting_xp~
 
 COPY_EXISTING ~strtxp.2da~ ~override~
   REPLACE_TEXTUALLY ~^\(GNOME_DEEP[ %TAB%]+\)[0-9]+~ ~\19000~
@@ -246,7 +246,7 @@ COPY_EXISTING ~strtxp.2da~ ~override~
 
 BEGIN @9 DESIGNATED 7
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
-LABEL ~ww_iwd_ease_of_use_improved_moonblades~
+LABEL ~ww_iwd2_eou_improved_moonblades~
 
 ACTION_IF subs BEGIN
   OUTER_SPRINT dam_match    @2009
@@ -286,7 +286,7 @@ COPY_EXISTING ~moonbla.itm~   ~override~
 
 BEGIN @10 DESIGNATED 8
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
-LABEL ~ww_iwd_ease_of_use_improved_monk_fists~
+LABEL ~ww_iwd2_eou_improved_monk_fists~
 
 COPY_EXISTING_REGEXP GLOB ~^00mfist[1-9]\.itm$~ ~override~
   WRITE_SHORT 0x1c 19 // short sword
@@ -302,7 +302,7 @@ COPY_EXISTING_REGEXP GLOB ~^00mfist[1-9]\.itm$~ ~override~
 
 BEGIN @11 DESIGNATED 9
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
-LABEL ~ww_iwd_ease_of_use_ce_items~
+LABEL ~ww_iwd2_eou_ce_items~
 
 EXTEND_BOTTOM ~baldur.bcs~ ~iwd2-ease/baf/ce.baf~
 
@@ -316,7 +316,7 @@ EXTEND_BOTTOM ~baldur.bcs~ ~iwd2-ease/baf/ce.baf~
 
 BEGIN @12 DESIGNATED 10
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
-LABEL ~ww_iwd_ease_of_use_no_class_align_restrictions~
+LABEL ~ww_iwd2_eou_no_class_align_restrictions~
 
 COPY_EXISTING ~alignmnt.2da~ ~override~
   REPLACE_TEXTUALLY 
@@ -335,7 +335,7 @@ COPY_EXISTING ~alignmnt.2da~ ~override~
 
 BEGIN @13 DESIGNATED 11
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
-LABEL ~ww_iwd_ease_of_use_magic_weapon_finesse~
+LABEL ~ww_iwd2_eou_magic_weapon_finesse~
 
 COPY_EXISTING_REGEXP GLOB ~^bbodisa\.itm$~         ~override~
                           ~^ltouch\.itm$~          ~override~
@@ -356,7 +356,7 @@ COPY_EXISTING_REGEXP GLOB ~^bbodisa\.itm$~         ~override~
 
 BEGIN @14 DESIGNATED 12
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
-LABEL ~ww_iwd_ease_of_use_always_some_xp~
+LABEL ~ww_iwd2_eou_always_some_xp~
 
 COPY    ~iwd2-ease/2da/moncrate.2da~   ~override~
 
@@ -370,7 +370,7 @@ COPY    ~iwd2-ease/2da/moncrate.2da~   ~override~
 
 BEGIN @15 DESIGNATED 13
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
-LABEL ~ww_iwd_ease_of_use_hof_items_in_regular~
+LABEL ~ww_iwd2_eou_hof_items_in_regular~
 
 COPY_EXISTING ~rt_fury.2da~     ~override/rt_norm.2da~
 
@@ -384,7 +384,7 @@ COPY_EXISTING ~rt_fury.2da~     ~override/rt_norm.2da~
 
 BEGIN @16 DESIGNATED 14
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
-LABEL ~ww_iwd_ease_of_use_stronger_bastard_swords~
+LABEL ~ww_iwd2_eou_stronger_bastard_swords~
 
 COPY ~iwd2-ease/itm/00swdbbs.itm~   ~override~
   SAY DESC @17
@@ -452,7 +452,7 @@ END
 
 BEGIN @30 DESIGNATED 15
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
-LABEL ~ww_iwd_ease_of_use_id_all_items~
+LABEL ~ww_iwd2_eou_id_all_items~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   WRITE_SHORT 0x42 0 // lore
@@ -468,20 +468,75 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
 
 BEGIN @31 DESIGNATED 16
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
-LABEL ~ww_iwd_ease_of_use_non_linear_teleportation~
+LABEL ~ww_iwd2_eou_non_linear_teleportation~
 
 EXTEND_BOTTOM ~dplayer3.bcs~ ~iwd2-ease/baf/teleport.baf~
 
 ACTION_IF !FILE_EXISTS_IN_GAME ~multig.dlg~ BEGIN COMPILE ~iwd2-ease/dlg/teleport_multig.d~ END // create multig in case it doesn't exist
 COMPILE ~iwd2-ease/dlg/teleport.d~
 
-///////////////////////////////////////////////////////////////////////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Armor and Shields Provide Damage Resistance      \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @32
+BEGIN @32 DESIGNATED 17
+REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+LABEL ~ww_iwd2_eou_armor_shield_damage_resistance~
 
-// special versions of all of the in-game armor that has been modified to
-// include damage resistance
-COPY ~iwd2-ease/resist~ ~override~
+// this was originally done by copying in a bunch of items and overwriting existing stuff. 
+// After examination, the new items simply had four ops (86-89) that provided resistance bonuses 
+// equal to their shield/armor AC bonus. So, we regexp it instead:
+COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
+  SET ac = 0
+  READ_LONG 0x6a fx_off
+  READ_LONG 0x70 fx_num
+  FOR (index = 0 ; index < fx_num ; ++index) BEGIN
+    READ_SHORT (fx_off +        (index * 0x30)) op
+    PATCH_IF op = 0 BEGIN
+      READ_LONG (fx_off + 0x08 + (index * 0x30)) ac_type
+      PATCH_IF ((ac_type = 1) OR (ac_type = 3)) BEGIN
+        READ_LONG (fx_off + 0x04 + (index * 0x30)) ac
+      END 
+    END
+  END    
+  PATCH_IF ac > 0 BEGIN // ac o armor/shield found, now adjust existing resistanec or add them 
+    SET slash = 0
+    SET crush = 0
+    SET pierce = 0
+    SET missile = 0
+    FOR (index = 0 ; index < fx_num ; ++index) BEGIN
+      READ_SHORT (fx_off +        (index * 0x30)) op
+      PATCH_IF ((op > 85) AND (op < 90)) BEGIN
+        READ_LONG (fx_off +        (index * 0x30)) param2
+        PATCH_IF !param2 BEGIN // ONLY if it's an increment effect
+          WRITE_LONG (fx_off + 0x04 + (index * 0x30)) (THIS + ac)
+          PATCH_MATCH op WITH // adjust existing effects, if present
+            86 BEGIN SET slash = 1   END
+            87 BEGIN SET crush = 1   END
+            88 BEGIN SET pierce = 1  END
+            DEFAULT  SET missile = 1 
+          END
+        END          
+      END 
+    END
+    PATCH_IF !slash BEGIN
+      LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 86 target = 1 parameter1 = ac timing = 2 END
+    END  
+    PATCH_IF !crush BEGIN
+      LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 87 target = 1 parameter1 = ac timing = 2 END
+    END  
+    PATCH_IF !pierce BEGIN
+      LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 88 target = 1 parameter1 = ac timing = 2 END
+    END  
+    PATCH_IF !missile BEGIN
+      LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 89 target = 1 parameter1 = ac timing = 2 END
+    END  
+  END
+  BUT_ONLY 
 
 // Examine every creature. If its AC is between 10 and 35 (which includes
 // the Guardian but not Wisps) then assume that the game designers were
@@ -493,6 +548,7 @@ COPY ~iwd2-ease/resist~ ~override~
 // To date (Wed Jan 22 09:25:23  2003), this is my most complicated WeiDU
 // expression. 
 
+/* cam: preserving this for future WeiDU historians:
 COPY_EXISTING_REGEXP ~.*\.CRE~ ~override~
   READ_SHORT "0x46" "AC"
   READ_SHORT "0x48" "RES1" 
@@ -508,6 +564,19 @@ COPY_EXISTING_REGEXP ~.*\.CRE~ ~override~
 
   IF_EVAL ( ("%AC%" > "10") AND 
             ("%AC%" <= "35") )
+*/
+
+// and now the modern way to do it
+// see you in another 20 years
+COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
+  READ_SHORT 0x46 ac
+  PATCH_IF ((ac > 10) AND (ac <= 35)) BEGIN
+    WRITE_SHORT 0x46 10 // set AC to 10 and dump the rest into resistance
+    FOR (off = 0x5c ; off < 0x60 ; ++off) BEGIN // hits 0x5c through 0x5f--resistance respectively to slash, crush, pierce, and missile
+      WRITE_BYTE off ((THIS + (ac - 10)) MODULO 255)
+    END
+  END 
+  BUT_ONLY  
 
 ///////////////////////////////////////////////////////////////////////
 
