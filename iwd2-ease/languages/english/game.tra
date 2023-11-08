@@ -386,14 +386,14 @@ Prerequisite: 5 Levels of Druid
 Benefit:  This grants the ability to shapeshift into a Will o' Wisp.~
 @65   = ~WILD SHAPE, YETI:
 
-Putting yourself more in tune with the creatures of the northern mountains, you have gained the ability to transform into a Yeti. Yetis are quite strong and their thick fur serves to keep out the cold and ward off blows. Their powerful paws are rancid and venomous. Yetis are vulernable to fire. 
+Putting yourself more in tune with the creatures of the northern mountains, you have gained the ability to transform into a Yeti. Yetis are quite strong and their thick fur serves to keep out the cold and ward off blows. Their powerful paws are rancid and venomous. Yetis are vulnerable to fire. 
 
 Prerequisite: 5 Levels of Druid
 
 Benefit:  This grants the ability to shapeshift into a Yeti.~
 @66   = ~WILD SHAPE, TREANT:
 
-Putting yourself more in tune with the creatures of the forest, you have gained the ability to transform into a Treant. Treants are very strong and their wooden bodies are almost impossible to damage. Treant branches behave like massive clubs while roots and shoots entangle unwary foes and hold them fast. Treants are especially vulernable to fire.
+Putting yourself more in tune with the creatures of the forest, you have gained the ability to transform into a Treant. Treants are very strong and their wooden bodies are almost impossible to damage. Treant branches behave like massive clubs while roots and shoots entangle unwary foes and hold them fast. Treants are especially vulnerable to fire.
 
 Prerequisite: 10 Levels of Druid
 
@@ -412,11 +412,11 @@ Advantages:
 * 5th level: Druids gain the Wild Shape ability to transform into powerful creatures. While transformed the druid cannot cast spells or use quick slot items (like healing potions). While transformed the druid's normal STR, CON and DEX are replaced by the physical attributes of the shape. Transforming also heals some damage. When a druid first learns a new Wild Shape, that shape can be used once per day. Each additional level gained allows the druid to use that shape an additional time per day (to a maximum of 9 times per day). 
 * 5th level: Wild Shape - Verbeeg. Verbeeg are strong but slow giantkin that attack with massive spears. 
 * 5th level (or above): At this point the druid may choose Wild Shape - Will o' Wisp as a Feat. Wisps are dexterous but fragile. They are adept at evading blows in combat and are almost impossible to damage with elemental magics. Wisps have a weak electrical attack. The druid will not be able to transform into Feat-based shapes as often, and all Feat-based shapes share the same pool of transformations per day. [ Because of bugs in the original game, even if you choose a Wild Shape Feat you may not be able to use it until you gain a few more levels. Sorry. ]
-* 5th level (or above): At this point the druid may choose Wild Shape - Yeti as a Feat. Yetis are quite strong and their thick fur serves to keep out the cold and ward off blows. Their powerful paws are rancid and venomous. Yetis are vulernable to fire. 
+* 5th level (or above): At this point the druid may choose Wild Shape - Yeti as a Feat. Yetis are quite strong and their thick fur serves to keep out the cold and ward off blows. Their powerful paws are rancid and venomous. Yetis are vulnerable to fire. 
 * 7th level: Wild Shape - Fomorian Giant. Fomorian Giants are stronger and tougher than the Verbeeg. They attack with massive fists and can stun their foes with the force of their blows. 
 * 8th level: Immunity to Poison. The druid becomes immune to all forms of poison.
 * 9th level: Wild Shape - Remorhaz. Remorhaz are massive fiery lizards. They are exceptionally strong and their chitinous shells deal bludgeoning damage and burn their foes.  Remorhaz are resistant to heat. 
-* 10th level (or above): At this point the druid may choose Wild Shape - Treant as a Feat. Treants are very strong and their wooden bodies are almost impossible to damage. Treant branches behave like massive clubs while roots and shoots entangle unwary foes and hold them fast. Treants are especially vulernable to fire.[ Again, game bugs mean that even if you pick this Feat you may not be able to use it until, for example, level 14. ] 
+* 10th level (or above): At this point the druid may choose Wild Shape - Treant as a Feat. Treants are very strong and their wooden bodies are almost impossible to damage. Treant branches behave like massive clubs while roots and shoots entangle unwary foes and hold them fast. Treants are especially vulnerable to fire.[ Again, game bugs mean that even if you pick this Feat you may not be able to use it until, for example, level 14. ] 
 * 11th level: Wild Shape - Wyvern. Wyverns are lizards that attack with venomous and acidic stingers. Wyverns are not as strong as previous Wild Shapes but they are heavily armored and resistant to magical spells. 
 * 13th level: Wild Shape - White Half-Dragon. Half-Dragons are tremendously strong, fairly quick and quite tough. They are also resistant to magical spells. White Half-Dragons are immune to cold and attack with chilling blades. 
 * 14th level: Timeless Body. The druid is immune to the effects of fatigue.
