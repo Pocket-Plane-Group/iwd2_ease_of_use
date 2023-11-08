@@ -676,32 +676,32 @@ LABEL ~ww_iwd2_eou_additional_druid_spells~
 
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_druid BEGIN  
 
-  ~SPPR106~ => 1
-  ~SPPR107~ => 1
-  ~SPPR408~ => 3
-  ~SPWI103~ => 1
-  ~SPWI107~ => 2
-  ~SPWI122~ => 1
-  ~SPWI214~ => 2
-  ~SPWI215~ => 2
-  ~SPWI223~ => 2
-  ~SPWI318~ => 3
-  ~SPWI408~ => 4
-  ~SPWI424~ => 4
-  ~SPWI428~ => 4
-  ~SPWI504~ => 5
-  ~SPWI511~ => 5
-  ~SPWI519~ => 5
-  ~SPWI522~ => 5
-  ~SPWI523~ => 4
-  ~SPWI525~ => 5
-  ~SPWI603~ => 6
-  ~SPWI605~ => 6
-  ~SPWI620~ => 6
-  ~SPWI626~ => 6
-  ~SPWI708~ => 6
-  ~SPWI719~ => 7
-  ~SPWI802~ => 8
+  ~SPPR106~ => 1 // Magic Stone
+  ~SPPR107~ => 1 // Protection From Evil
+  ~SPPR408~ => 3 // Magic Circle Against Evil
+  ~SPWI103~ => 1 // Burning Hands
+  ~SPWI107~ => 2 // Eagle's Splendor
+  ~SPWI122~ => 1 // Ice Dagger
+  ~SPWI214~ => 2 // Bull's Strength
+  ~SPWI215~ => 2 // Web
+  ~SPWI223~ => 2 // Cat's Grace
+  ~SPWI318~ => 3 // Icelance
+  ~SPWI408~ => 4 // Stoneskin
+  ~SPWI424~ => 4 // Vitriolic Sphere
+  ~SPWI428~ => 4 // Spider Spawn
+  ~SPWI504~ => 5 // Cone of Cold
+  ~SPWI511~ => 5 // Shroud of Flame
+  ~SPWI519~ => 5 // Sunfire
+  ~SPWI522~ => 5 // Protection from Acid
+  ~SPWI523~ => 4 // Protection from Electricity
+  ~SPWI525~ => 5 // Ball Lightning
+  ~SPWI603~ => 6 // Chain Lightning
+  ~SPWI605~ => 6 // Acid Fog
+  ~SPWI620~ => 6 // Trollish Fortitude
+  ~SPWI626~ => 6 // Wyvern Call
+  ~SPWI708~ => 6 // Acid Storm
+  ~SPWI719~ => 7 // Vipergout
+  ~SPWI802~ => 8 // Summon Monster VIII
     
 END
 
@@ -715,6 +715,33 @@ COPY_EXISTING ~listspll.2da~ ~override~
   END  
   PRETTY_PRINT_2DA
   BUT_ONLY
+  
+ACTION_IF subs BEGIN
+  OUTER_SPRINT drd_match   @2018
+  OUTER_SPRINT drd_txt     @2019
+END
+  
+ACTION_PHP_EACH cd_druid AS spell => level BEGIN
+  
+  COPY_EXISTING ~%spell%z.itm~ ~override~ // make scroll usable by druids
+    WRITE_LONG 0x1e (THIS BOR BIT3) // adds druid flag
+    BUT_ONLY IF_EXISTS
+    
+  ACTION_IF subs BEGIN // try to update spell descriptions 
+  
+    COPY_EXISTING ~%spell%.spl~  ~override~
+      READ_LONG   0x50 desc_strref
+      READ_STRREF 0x50 desc
+      INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+        REPLACE_TEXTUALLY ~%drd_match%~ ~\1%drd_txt% %level%, ~
+      END
+      BUT_ONLY
+    
+    STRING_SET_EVALUATE desc_strref ~%desc%~ // since scrolls & spells use same string, do it as STRING_SET
+      
+  END
+  
+END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
