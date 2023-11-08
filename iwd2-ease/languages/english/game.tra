@@ -352,6 +352,8 @@ Arcane Spell Failure:  5%
 Weight:  2 lb.~
 */
 
+@38   = ~Oswald's Secret Stash~
+
 
 // game and weidu share the 0-70 range; use 1000s for weidu and 2000s for game going forward
 

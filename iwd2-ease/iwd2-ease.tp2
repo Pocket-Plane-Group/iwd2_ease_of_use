@@ -658,12 +658,59 @@ COPY ~iwd2-ease/sto/w#oswald.sto~ ~override~ // oswald's secret stash
   
 COMPILE ~iwd2-ease/dlg/forgot.d~ 
 
-///////////////////////////////////////////////////////////////////////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Additional Druid Spells                          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @39
+BEGIN @39 DESIGNATED 19
+REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+LABEL ~ww_iwd2_eou_additional_druid_spells~
 
-COPY ~iwd2-ease/druid~  ~override~
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_druid BEGIN  
 
+  ~SPPR106~ => 1
+  ~SPPR107~ => 1
+  ~SPWI103~ => 1
+  ~SPWI107~ => 2
+  ~SPWI122~ => 1
+  ~SPWI214~ => 2
+  ~SPWI215~ => 2
+  ~SPWI223~ => 2
+  ~SPWI318~ => 3
+  ~SPWI408~ => 4
+  ~SPWI424~ => 4
+  ~SPWI428~ => 4
+  ~SPWI504~ => 5
+  ~SPWI511~ => 5
+  ~SPWI519~ => 5
+  ~SPWI522~ => 5
+  ~SPWI523~ => 4
+  ~SPWI525~ => 5
+  ~SPWI603~ => 6
+  ~SPWI605~ => 6
+  ~SPWI620~ => 6
+  ~SPWI626~ => 6
+  ~SPWI708~ => 6
+  ~SPWI719~ => 7
+  ~SPWI802~ => 8
+    
+END
+
+COPY_EXISTING ~listspll.2da~ ~override~
+  PATCH_PHP_EACH cd_druid AS spell => level BEGIN
+    REPLACE_EVALUATE CASE_INSENSITIVE ~^\([0-9]+[ %TAB%]+[0-9]+[ %TAB%]+[0-9]+[ %TAB%]+\)\([0-9]+\)\([ %TAB%]+[0-9]+[ %TAB%]+[0-9]+[ %TAB%]+[0-9]+[ %TAB%]+[0-9]+[ %TAB%]+\)\(%spell%\)~ BEGIN  
+      PATCH_IF ~%MATCH2%~ = 0 BEGIN // already enabled
+        SET MATCH2 = level
+      END  
+    END ~%MATCH1%%MATCH2%%MATCH3%%MATCH4%~
+  END  
+  PRETTY_PRINT_2DA
+  BUT_ONLY
+  
 ///////////////////////////////////////////////////////////////////////
 
 BEGIN @40
