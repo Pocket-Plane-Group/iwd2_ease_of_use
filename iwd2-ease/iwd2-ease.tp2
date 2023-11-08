@@ -578,52 +578,85 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
   END 
   BUT_ONLY  
 
-///////////////////////////////////////////////////////////////////////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Include Forgotten Armor and Shields              \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @33
+BEGIN @33 DESIGNATED 18
+REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+LABEL ~ww_iwd2_eou_forgotten_armor_and_shields~
 
-COPY  ~iwd2-ease/forgot/00rtww1.itm~  ~override/00rtar1.itm~
-      ~iwd2-ease/forgot/00rtww1.itm~  ~override/00rtar2.itm~
-      ~iwd2-ease/forgot/00rtww1.itm~  ~override/00rtar3.itm~
-      ~iwd2-ease/forgot/00chan08.itm~  ~override/00chan08.itm~
+COPY  ~iwd2-ease/itm/00rtww1.itm~  ~override/00rtar1.itm~
+      ~iwd2-ease/itm/00rtww1.itm~  ~override/00rtar2.itm~
+      ~iwd2-ease/itm/00rtww1.itm~  ~override/00rtar3.itm~
+
+COPY_EXISTING ~00chan08.itm~  ~override~
+  LPF DELETE_EFFECT INT_VAR match_opcode = 144 END // delete effects blocking thieving
+  LPF DELETE_EFFECT INT_VAR match_opcode = 145 END // delete effects blocking spellcasting
+  BUT_ONLY
 
 APPEND ~rt_norm.2da~
-~00RTAR1                12SHLDCT
-00RTAR2         12SHLDSG
-00RTAR3         12SHLDKD
+~00RTAR1  12SHLDCT
+00RTAR2  12SHLDSG
+00RTAR3  12SHLDKD
 ~	        
 APPEND ~rt_fury.2da~
-~00RTAR1                12HFSDCT
-00RTAR2         12HFSGSG
-00RTAR3         12HFSDKD
+~00RTAR1  12HFSDCT
+00RTAR2  12HFSGSG
+00RTAR3  12HFSDKD
 ~	        
 
-COPY_EXISTING ~12SHLDCT.ITM~    ~override/12shldct.itm~
-  SAY DESC @34
+ACTION_IF subs BEGIN // remove line about natural origins/druid usage
 
-COPY_EXISTING ~12hfsdct.itm~    ~override/12hfsdct.itm~
-  SAY DESC @35
+  OUTER_SPRINT druid_match @2013  
+  COPY_EXISTING ~12shldct.itm~ ~override~ // Cliffs of Targos
+                ~12shldkd.itm~ ~override~ // Knucklehead
+                ~12hfsdct.itm~ ~override~ // Cliffs over Maer Dualdon  
+                ~12hfsdkd.itm~ ~override~ // Apsel's Rolly-Polly Knuckledheaded Shield            
+    READ_STRREF 0x54 desc
+    INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+      REPLACE_TEXTUALLY ~%druid_match%~ ~~
+    END
+    SAY_EVALUATED 0x54 ~%desc%~
+    BUT_ONLY
+    
+END ELSE BEGIN 
 
-COPY_EXISTING ~12shldkd.itm~    ~override/12shldkd.itm~
-  SAY DESC @36
+  COPY_EXISTING ~12shldct.itm~ ~override~
+    SAY DESC @34
 
-COPY_EXISTING ~12hfsdkd.itm~    ~override/12hfsdkd.itm~
-  SAY DESC @37
+  COPY_EXISTING ~12hfsdct.itm~ ~override~
+    SAY DESC @35
 
-COPY_EXISTING ~10GUTHE.STO~      ~override/10GUTHE.STO~
-  REPLACE_TEXTUALLY     ~00SHLD01~      ~00SHLD87~
-COPY_EXISTING ~50TAHVO.STO~      ~override/50TAHVO.STO~
-  /* REPLACE_TEXTUALLY     ~00SPER99~      ~50RTHF03~ 
-   * it's in the battle square */
-  REPLACE_TEXTUALLY     ~00BWLX95~      ~00HIDE04~
-  REPLACE_TEXTUALLY     ~00BWHX03~      ~00HIDE05~
-COPY_EXISTING ~11DEIRD.STO~      ~override/11DEIRD.STO~
-  REPLACE_TEXTUALLY     ~00AX1H02~      ~60RTHF06~
+  COPY_EXISTING ~12shldkd.itm~ ~override~
+    SAY DESC @36
 
-COPY ~iwd2-ease/forgot/w#oswald.sto~    ~override/w#oswald.sto~
+  COPY_EXISTING ~12hfsdkd.itm~ ~override~
+    SAY DESC @37
+
+END  
+
+COPY_EXISTING ~10guthe.sto~ ~override~ // Henghelm's Goods
+  LPF ALTER_STORE_ITEM STR_VAR match_item = 00shld01 item = 00shld87 END // Tower Shield of Spell Resistance
+  BUT_ONLY
+
+COPY_EXISTING ~50tahvo.sto~ ~override~ // Tahvo the Huntmaster
+  LPF ALTER_STORE_ITEM STR_VAR match_item = 00bwlx95 item = 00hide04 END // Umber Hulk Plate
+  LPF ALTER_STORE_ITEM STR_VAR match_item = 00bwhx03 item = 00hide05 END // Black Dragon Scale
+  BUT_ONLY
+
+COPY_EXISTING ~11deird.sto~ ~override~ // Gallaway Trading Depot
+  LPF ALTER_STORE_ITEM STR_VAR match_item = 00ax1h02 item = 60rthf06 END
+  BUT_ONLY
+
+COPY ~iwd2-ease/sto/w#oswald.sto~ ~override~ // oswald's secret stash
   SAY 0xc @38
-
-COMPILE ~iwd2-ease/forgot/forgot.d~
+  
+COMPILE ~iwd2-ease/dlg/forgot.d~ 
 
 ///////////////////////////////////////////////////////////////////////
 

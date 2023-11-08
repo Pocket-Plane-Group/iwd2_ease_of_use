@@ -19,38 +19,7 @@
 @31   = ~Non-Linear Teleportation~
 @32   = ~Armor and Shields Provide Damage Resistance~
 @33   = ~Include Forgotten Armor and Shields~
-@34   = ~This weather-worn wooden buckler looks like it was once part of a much larger shield, but repeated blows with an axe or sword has chopped away the edges, leaving only a light-weight buckler in its place.  Upon the surface of the shield is a faded symbol of the Targos Guard, depicting the great cliffs rising over the waters of Maer Dualdon.  
-   
-Shield Bonus:  +2 
-Armor Check Penalty:  -1 
-Arcane Spell Failure:  5% 
-Weight: 3 lb.~
-@35   = ~This weather-worn wooden buckler looks like it was once part of a much larger shield, but repeated blows with an axe or sword has chopped away the edges, leaving only a light-weight buckler in its place.  Upon the surface of the shield is a faded symbol of the Targos Guard, depicting the great cliffs rising over the waters of Maer Dualdon.  Due to its natural origins, this buckler may be used by druids. 
-   
-Shield Bonus:  +4 
-Armor Check Penalty:  -1 
-Arcane Spell Failure:  5% 
-Weight: 3 lb.~
-@36   = ~This amazing ivory-white buckler has been carved from the head of a giant knucklehead trout.  It is sturdy as bone, and light as well, and it makes an effective shield.  The craftsmanship of the buckler is truly extraordinary, and the worker's symbol inscribed at the bottom spells out the name, "Apsel." 
-   
-The temptation to go 'knuck, knuck, knuck' while wearing this shield is extremely high.   
- 
-STATISTICS: 
- 
-Shield Bonus:  +3 
-Armor Check Penalty:  -0 
-Arcane Spell Failure:  15% 
-Weight:  2 lb.~
-@37   = ~This amazing ivory-white buckler has been carved from the head of a giant knucklehead trout.  It is sturdy as bone, and light as well, and it makes an effective shield.  The craftsmanship of the buckler is truly extraordinary, and the worker's symbol inscribed at the bottom spells out the name, "Apsel." 
-   
-The temptation to go 'knuck, knuck, knuck' while wearing this shield is extremely high.   
- 
-STATISTICS: 
- 
-Shield Bonus:  +5 
-Armor Check Penalty:  -0 
-Arcane Spell Failure:  5% 
-Weight:  2 lb.~
+// @34 - @37 in game.tra
 @38   = ~Oswald's Secret Stash~
 @39   = ~Additional Druid Spells~
 @40   = ~Alternate Shapeshifting~
