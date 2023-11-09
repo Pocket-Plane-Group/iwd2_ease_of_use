@@ -49,6 +49,10 @@ BEGIN @0 DESIGNATED 0 DEPRECATED @1003
 
 BEGIN @1 DESIGNATED 1
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+REQUIRE_PREDICATE ((!MOD_IS_INSTALLED ~setup-cdtweaks.tp2~ ~3080~) AND    // Unlimited Ammo Stacks AND 
+                   (!MOD_IS_INSTALLED ~setup-cdtweaks.tp2~ ~3090~) AND    // Unlimited Gem and Jewelry Stacking AND 
+                   (!MOD_IS_INSTALLED ~setup-cdtweaks.tp2~ ~3100~) AND    // Unlimited Potion Stacking AND 
+                   (!MOD_IS_INSTALLED ~setup-cdtweaks.tp2~ ~3110~)) @1002 // Unlimited Scroll Stacking
 LABEL ~ww_iwd2_eou_infinte_stacking~
 
 // code essentially stolen and adapted from Tweaks Anthology
@@ -485,10 +489,31 @@ END
 
 BEGIN @30 DESIGNATED 15
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~setup-cdtweaks.tp2~ ~3020~ @1002 // same as tweaks anthology
 LABEL ~ww_iwd2_eou_id_all_items~
 
+// if you can't steal code from yourself, who can you steal it from?
+
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
-  WRITE_SHORT 0x42 0 // lore
+  PATCH_IF (SOURCE_SIZE > 0x71) THEN BEGIN // protects against invalid files
+    WRITE_SHORT 0x42 0
+  END
+  BUT_ONLY
+
+OUTER_SET itm_off_cre = 0x616 // cre v2.2
+OUTER_SET itm_off_are = 0x88  // are v9.1
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.[ac]re$~ ~override~
+  PATCH_IF ("%SOURCE_FILE%" STRING_COMPARE_REGEXP "^.+\.cre$" = 0) BEGIN // if creature
+    READ_LONG (itm_off_cre       ) itm_off ELSE 0
+    READ_LONG (itm_off_cre + 0x04) itm_num ELSE 0
+  END ELSE BEGIN
+    READ_LONG  (itm_off_are       ) itm_off ELSE 0
+    READ_SHORT (itm_off_are - 0x02) itm_num ELSE 0
+  END
+  FOR (index = 0 ; index < itm_num ; ++index) BEGIN
+    WRITE_BYTE (itm_off + 0x10 + (0x14 * index)) (THIS BOR 0b00000001) // adds identified flag
+  END
   BUT_ONLY
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
