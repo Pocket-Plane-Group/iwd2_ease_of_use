@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>Icewind Dale II Ease of Use Mod</title>
+<title>Icewind Dale II Ease of Use (EoU) Mod</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link rel="stylesheet" href="style/weidu_readme_cam_110823.css" type="text/css" />
 <link href="style/weidu_icon.png" rel="icon" type="image/bmp" />
@@ -24,7 +24,7 @@
   <div class="ribbon_bubble">
     <div class="ribbon_rectangle">
       <h1> Icewind Dale II
-        Ease of Use Mod</h1>
+        Ease of Use (EoU) Mod</h1>
     </div>
     <div class="ribbon_triangle-l"></div>
     <div class="ribbon_triangle-r"></div>
@@ -64,6 +64,21 @@
       <p>As of v16, IWD2 Ease of Use should be compatible with most, if not all, other WeiDU mods for IWD2. This includes The IWD2 NPC Project and the IWD2EE mod. In general this mod should go late, if not last, in your install order, with the lone exception being the IWD2EE Mod Compatibility Patch. </p>
       <p>Because of how <strong>Randomized Treasure</strong> is coded it, <em>specifically</em>, should be installed as late as possible (more info in the component description). </p>
       <p>Version 16 was a major recode, bringing the mod forward two decades from its previous release in 2003. As such it's substantially more compatible and less overwritey&mdash;this isn't a criticism of the mod, as all mods in 2003 were coded this way since we didn't yet have the tools. In general, you're going to see a lot of 'patches instead of overwrites' in the v16 notes. This is done to maximize compatibility, as we no longer need to overwrite a file to make a small&mdash;or even a big&mdash;change. Patching also generally means we can search dynamically and catch content added by other mods. </p>
+      <p><strong>Compatibility</strong></p>
+      <p>A great deal of time and effort has gone into modernizing the code, which solves most compatibility issues right out of the gate. In places where another mod has already made the changes that EoU would make, or done it in a very different way, EoU will detect the other mod and skip the component. Notes for IWD2EE specifically are as follows:</p>
+      <ul>
+        <li><em>IWD2EE Class Revisions</em> already makes the changes in <strong>Non-Combat War Chant of the Sith </strong>and<strong> Improved Monk Fists</strong>, so the EoU components will be skipped. <em>Class Revisions </em>also approaches shapeshifting in a more systematic and different way, so <strong>Alternate Shapeshifting</strong> is also skipped if <em>Class Revisions</em> is installed. </li>
+        <li><em>IWD2EE Item Revisions</em> rebalances weapons in a systematic and different way. As such, EoU components <strong>Improved Holy Avenger</strong>, <strong>Improved Moonblades</strong>, and <strong>Stronger Bastard Swords</strong> will be skipped though <strong> Two-Handed Greatsword Holy Avenger</strong> will work. Item Revisions restores most, but not all, of the items in <strong>Include Forgotten Armor and Shields</strong>. As such, this component remains available, but will only restore the handful of items not already covered. </li>
+        <li><em>IWD2EE Spell Revisions</em> already makes the changes in <strong>No Fists for Iron Body</strong>, so the EoU component will be skipped. <strong> Additional Druid Spells</strong> will work alongside this component. For spells  made available to druids from <em>IWD2EE Spell Revisions</em>, <strong>Additional Druid Spells</strong> will make no changes. For the handful not covered by <em>Spell Revisions</em>, <strong>Additional Druid Spells</strong> will make its normal changes. </li>
+        <li><em>IWD2EE Revise Racial Level Adjustment</em> addresses the issue in <strong>Deep Gnome Starting XP</strong>, so the EoU component will be skipped. </li>
+        <li><em>IWD2EE Looser Alignment Restrictions</em> is an alternative to <strong>No Alignment Class Restrictions</strong>. If the component from IWD2EE is detected, EoU will skip this component. </li>
+        <li><em>IWD2EE Enemies give the same amount of experience regardless of the party's level</em> (either variant) are alternatives to <strong>Always Get Some XP Per Kill</strong>. If either component from IWD2EE is detected, EoU will skip this component. </li>
+        <li><em>IWD2EE Minor Damage Resistance for Armor and Shields</em> is an alternative to <strong>Armor and Shields Provide Damage Resistance</strong>. If the component from IWD2EE is detected, EoU will skip this component. </li>
+      </ul>
+      <p><strong>Other Compatibility Notes</strong></p>
+      <ul>
+        <li><em>Tweaks Anthology</em> has four components (<em>Increase Ammo Stack Size</em>; <em>Increase Jewelry, Gem, and Miscellaneous Item Stacks</em>; <em>Increase Potion Stacking</em>; and <em>Increase Scroll Stacking</em>)      that do, collectively, the same thing that EoU's <strong> Infinite Stacking</strong> does. Installing them together is redundant, but shouldn't cause any issues. Similarly, <em>Identify All Items</em> (Tweaks) and <strong>All Items Identified</strong> (EoU) do the exact same thing&mdash;also redundant but harmless. </li>
+      </ul>
     </div>
     <div class="ribbon_rectangle_h2"><a id="Bugs" name="Bugs"></a>
       <h2>Bug Reporting</h2>
@@ -101,18 +116,20 @@
     <div class="ribbon_triangle_h2-r"></div>
     <div class="section">
       <p>The Icewind Dale II Ease of Use Mod has multiple components, all of which can be installed independently. While Cam has made some changes to reflect changes in components, for the most part the text has been preserved from the original readme. Any and all editorial comments are from Wes unless otherwise noted. </p>
-<div class="deprecated">      <p><strong>Bugfixes - DEPRECATED</strong></p>
-      <p>This component has been deprecated. The handful of fixes that were here are already in IWD2EE directly or IWD2 Fixpack. </p></div>
-<p><strong> Infinite Stacking</strong></p>
+      <div class="deprecated">
+        <p><strong>Bugfixes - DEPRECATED</strong></p>
+        <p>This component has been deprecated. The fixes are already in IWD2EE and/or IWD2 Fixpack, and a dedicated project is a better home for fixes than a lone component in an otherwise late-install mod. </p>
+      </div>
+      <p><strong> Infinite Stacking</strong></p>
       <p>This allows you to stack up to 9999 of any type of stacking weapon or
         potion. This game should not be a quest for inventory management. </p>
       <p><strong> Non-Combat War Chant of the Sith</strong><br />
-      <em>Compatibility: Skipped if IWD2EE's 'Class Revisions' is installed, as it already makes this change</em></p>
+        <em>Compatibility: Skipped if IWD2EE's 'Class Revisions' is installed, as it already makes this change</em></p>
       <p> The Jedi War Song only works if enemies are present, but often you would
         like to regenerate even if they aren't. This component makes the song work
         whenever your bard sings it. </p>
       <p><strong> Improved Holy Avenger</strong><br />
-      <em>Compatibility: Skipped if IWD2EE's 'Item Revisions' is installed, as it </em><em>offers a different alternative version</em></p>
+        <em>Compatibility: Skipped if IWD2EE's 'Item Revisions' is installed, as it offers alternative functionality</em></p>
       <p> This changes all Holy Avengers in the game to additionally have the
         following characteristics: </p>
       <ul>
@@ -123,7 +140,7 @@
         addition, many people are used to the Dispel Magic on Hit ability from BG2.
         Basically, no one is arguing that Cera Suma is too powerful in this games&mdash;it
         needs all the help it can get, especially considering the difficulty in
-        obtaining it.      </p>
+        obtaining it. </p>
       <p><strong> Two-Handed Greatsword Holy Avenger</strong></p>
       <p> This turns all Holy Avengers in the game into Two-Handed Greatswords. This
         changes the amount of damage dealt, the range, the number of hands
@@ -137,19 +154,19 @@
         Golden Heart, or Cera Sumat and the Stunning Star of Speed, or Cera Sumat
         and Cera Sumat. </p>
       <p><strong> No Fists for Iron Body</strong><br />
-      <em>Compatibility: Skipped if IWD2EE's 'Spell Revisions' is installed, as it already makes this change</em></p>
+        <em>Compatibility: Skipped if IWD2EE's 'Spell Revisions' is installed, as it already makes this change</em></p>
       <p> The Iron Body spell is lovely, but by that point in the game you probably
         have much better weapons than 1d6 fists. Casting iron body <em>forces</em> you to
         use those weak fists. This component changes the iron body spell so that no
         fists are generated. This means that you have to come up with your own
         weapons... but if you have some, you can use them. </p>
       <p><strong> Deep Gnome Starting XP</strong><br />
-      <em>Compatibility: Skipped if IWD2EE's 'Revise Racial Level Adjustment' is installed, as it sets all starting XP to zero</em><em></em></p>
+        <em>Compatibility: Skipped if IWD2EE's 'Revise Racial Level Adjustment' is installed, as it sets all starting XP to zero</em></p>
       <p> All races start 1000 XP from level 2... except deep gnomes, who for no
         apparent reason start 5000 XP from level 2. This component makes deep
         gnomes start 1000 XP away from level 2, just like everyone else. </p>
       <p><strong> Improved Moonblades</strong> <em><br />
-      Compatibility: Skipped if IWD2EE's 'Item Revisions' is installed, as it </em><em>offers a different alternative version</em></p>
+        Compatibility: Skipped if IWD2EE's 'Item Revisions' is installed, as it offers alternative functionality</em></p>
       <p> This changes Emma's Moonblade and the Moonblade from the Moonblade spell to
         count as small blades so that (1) you can use Expertise with them and (2)
         you can dual-wield them more easily. This only makes sense: Moonblades are
@@ -158,7 +175,7 @@
         Moonblade so that it has the same stats as the Moonblade Spell Moonblade
         (e.g., no to-hit bonus, more damage, scrambles magic). </p>
       <p><strong> Improved Monk Fists</strong><br />
-      <em>Compatibility: Skipped if IWD2EE's 'Class Revisions' is installed, as it already makes this change</em></p>
+        <em>Compatibility: Skipped if IWD2EE's 'Class Revisions' is installed, as it already makes this change</em></p>
       <p> This makes monk fists count as &quot;small blades&quot; so that you can use Weapon
         Finesse (feat that allows you to use DEX for to-hit bonuses instead of STR)
         with them. Fists are even smaller than daggers&mdash;this only makes sense. In
@@ -187,7 +204,7 @@
         has the Avarine Decanter for sale in his store. It is a very unique
         item, but it is up to you to decipher its mysteries. </p>
       <p><strong> No Alignment Class Restrictions </strong><em><br />
-Compatibility: Skipped if IWD2EE's 'Looser Alignment Restrictions' is installed, as it </em><em>offers a different alternative version</em></p>
+        Compatibility: Skipped if IWD2EE's 'Looser Alignment Restrictions' is installed, as it offers alternative functionality</em></p>
       <p> This removes all alignment class restrictions. So you can make a lawful
         good bard (and later multi-class to a paladin) if you want to, etc. </p>
       <p><strong> Magic Weapon Finesse</strong></p>
@@ -195,7 +212,7 @@ Compatibility: Skipped if IWD2EE's 'Looser Alignment Restrictions' is installed,
         touch, ghoul touch, harm, destruction, mordy's sword) to qualify as small
         blades so that you can use Weapon Finesse with them. </p>
       <p><strong> Always Get Some XP Per Kill</strong><em><br />
-Compatibility: Skipped if  IWD2EE's 'Enemies give the same amount of experience regardless of the party's level' is installed, as it </em><em>offers a different alternative version</em></p>
+        Compatibility: Skipped if  IWD2EE's 'Enemies give the same amount of experience regardless of the party's level' is installed, as it offers alternative functionality</em></p>
       <p> This changes the XP tables so that you will always get some (small) amount
         of XP for killing a monster, no matter what your level. If the monster used
         to give 50 XP when killed by a level X party and 0 when killed by a level
@@ -216,7 +233,7 @@ Compatibility: Skipped if  IWD2EE's 'Enemies give the same amount of experience 
       <p>I'm sorry, but I cannot give you a list of exactly which HoF items will
         appear in normal mode when you install this. </p>
       <p><strong> Stronger Bastard Swords</strong><em><br />
-Compatibility: Skipped if IWD2EE's 'Item Revisions' is installed, as it </em><em>offers a different alternative version</em></p>
+        Compatibility: Skipped if IWD2EE's 'Item Revisions' is installed, as it offers alternative functionality</em></p>
       <p> Bastard Swords are basically useless in IWD2. Not only do you have to take
         a special feat to use them, but they are all bad. Half of the cursed
         weapons in the game are bastard swords, and around 25% of all bastard
@@ -332,7 +349,7 @@ Compatibility: Skipped if IWD2EE's 'Item Revisions' is installed, as it </em><em
         listing possible places to go. Pick one. Note that teleporting a level 1
         party to Kuldahar (or whatnot) is probably a recipe for disaster. </p>
       <p><strong> Armor and Shields Provide Damage Resistance</strong><em><br />
-Compatibility: Skipped if IWD2EE's 'Minor Damage Resistance for Armor and Shields' is installed, as it </em><em>offers a different alternative version</em></p>
+        Compatibility: Skipped if IWD2EE's 'Minor Damage Resistance for Armor and Shields' is installed, as it offers alternative functionality</em></p>
       <p> This changes the game so that a piece of equipment that provides an armor
         bonus of +X also provides +X damage resistance. Why? This is for those of
         you who dislike 3E's continual use of &quot;armor class&quot; despite the fact that
@@ -365,7 +382,7 @@ Compatibility: Skipped if IWD2EE's 'Minor Damage Resistance for Armor and Shield
       <p>This will NOT show up in the item descriptions, but the items will grant a
         damage reduction bonus equal to their armor bonus. </p>
       <p><strong> Include Forgotten Armor and Shields</strong><em><br />
-Compatibility:  This component will be substantially recied in scope  if IWD2EE's 'Item Revisions' is installed, since it restores all but five of these items</em><em></em></p>
+        Compatibility:  This component will be substantially reduced in scope  if IWD2EE's 'Item Revisions' is installed, since it restores all but five of these items</em></p>
       <p> This component takes a number of items are are defined in the official game
         resource files but do not actually appear anywhere in the game and puts
         them into the game. I am fairly certain that there is no other way to
@@ -437,7 +454,7 @@ Compatibility:  This component will be substantially recied in scope  if IWD2EE'
           because DRUIDS CANNOT CAST PRO-EVIL! Hello: design flaw. </li>
       </ul>
       <p><strong> Alternate Shapeshifting</strong><br />
-      <em>Compatibility: Skipped if IWD2EE's 'Class Revisions' is installed, as it revamps these abilities in a different way</em></p>
+        <em>Compatibility: Skipped if IWD2EE's 'Class Revisions' is installed, as it revamps these abilities in a different way</em></p>
       <p> Shapeshifting in IWD2 has a number of crippling disadvantages:</p>
       <ul>
         <li> While shapeshifted you cannot cast spells <em>OR</em> use quickslot items. No
@@ -547,7 +564,7 @@ Compatibility:  This component will be substantially recied in scope  if IWD2EE'
       <p><strong>Faster Oswald</strong></p>
       <p>This component eliminates the timers for Oswald's forging so that the items become available immediately. <em>From Cam: This was present and operating in v15, but wasn't in the documentation anywhere. </em></p>
       <p><strong> Randomized Treasure</strong></p>
-      <p><em>From Cam: This component accomplishes its task by swapping the </em>contents<em> of multiple item files. As such, other mods looking to modify specific items will apply modifications to the wrong file contents&mdash;this could mean either that the mod doesn't make its needed changes, or that the mod could fail to install. As such, this component, specifically, should be installed as late as possible in your mod order. Even with that, there are further caveats below. Read on.</em></p>
+      <p><em>From Cam: This component accomplishes its task by swapping the </em>contents<em> of multiple item files. As such, other mods looking to modify specific items will apply modifications to the wrong file contents&mdash;this could mean either that the mod doesn't make its needed changes, or that the mod could fail to install. As such, this component, specifically, should be installed as late as possible in your mod order. Even with that, there are still many potential compatibility issues and some in-game wonk (see below). </em></p>
       <p> IWD2 nominally has randomized treasure drops... but if you've played the
         game a few times you've probably noticed that there really isn't all that
         much variation. This component swaps around items that were given similar
@@ -631,7 +648,7 @@ Compatibility:  This component will be substantially recied in scope  if IWD2EE'
       <p><strong>Version 16 - November 9, 2023</strong></p>
       <ul>
         <li>Removed backup folder contents and changed backup location</li>
-        <li><strong>Bugfixes </strong>has been deprecated. The fixes are already in IWD2EE and/or IWD2 FIxpack, and a dedicated project is a better home for fixes than a lone component in an otherwise late-install mod. </li>
+        <li><strong>Bugfixes </strong>has been deprecated. The fixes are already in IWD2EE and/or IWD2 Fixpack, and a dedicated project is a better home for fixes than a lone component in an otherwise late-install mod. </li>
         <li><strong> Infinite Stacking</strong> now searches dynamically for stackable items so that it will cover items added by mods</li>
         <li>The following components were overwriting files and now patch them dynamically instead: <strong> Non-Combat War Chant of the Sith</strong>, <strong> Improved Holy Avenger</strong>, <strong> No-Fists for Iron Body</strong>, <strong> Deep Gnome Starting XP</strong>, <strong> Improved Moonblades</strong>, <strong> No Alignment Class Restrictions,  Additional Druid Spells</strong></li>
         <li>Prior versions also overwrote the entire description of a spell or item when updating. Descriptions are instead changed dynamically for: <strong> Improved Holy Avenger</strong>, <strong> Improved Moonblades</strong>, <strong>Include Forgotten Armor and Shields</strong></li>
