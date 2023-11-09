@@ -101,28 +101,9 @@
     <div class="ribbon_triangle_h2-r"></div>
     <div class="section">
       <p>The Icewind Dale II Ease of Use Mod has multiple components, all of which can be installed independently. While Cam has made some changes to reflect changes in components, for the most part the text has been preserved from the original readme. Any and all editorial comments are from Wes unless otherwise noted. </p>
-      <p><strong>Bugfixes</strong></p>
-      <ol>
-        <li>The Bastard Sword of Heroism should give a +3 attack bonus based on its
-          description. </li>
-        <li>Phaen should drop Phaen's Ironshod Staff or the
-          Iron-Banded Staff  when he dies, not a normal quarterstaff. </li>
-        <li> Screamer should give a strength bonus when thrown.</li>
-        <li> Stunning Arrows +1 should have a 50% chance of stunning
-          (not 25%), based on its description. </li>
-        <li> Stun Flail +1 should have a 50% chance of stunning
-          (not 25%), based on its description. </li>
-        <li> The Shambling Mound attacks (both the normal one and the
-          druid shapechange one) were not casting the entangle spell correctly
-          (targets weren't getting the DEX penalty, etc.). </li>
-        <li> The HoF random equipment chart contains two spelling
-          errors for item codes. This meant that you might not get a random drop when
-          you should have gotten one. </li>
-        <li>The Berserk Warriors summoned by the Horn of Valhalla would drop armor when slain. </li>
-        <li> Mail of Life no longer prevents you from casting spells</li>
-        <li>Added  a small fix for a (IWD2 original) typo in the <span data-code-marker="+">Air Elemental</span> transformation spell that referenced its icon</li>
-      </ol>
-      <p><strong> Infinite Stacking</strong></p>
+<div class="deprecated">      <p><strong>Bugfixes - DEPRECATED</strong></p>
+      <p>This component has been deprecated. The handful of fixes that were here are already in IWD2EE directly or IWD2 Fixpack. </p></div>
+<p><strong> Infinite Stacking</strong></p>
       <p>This allows you to stack up to 9999 of any type of stacking weapon or
         potion. This game should not be a quest for inventory management. </p>
       <p><strong> Non-Combat War Chant of the Sith</strong><br />
@@ -650,16 +631,7 @@ Compatibility:  This component will be substantially recied in scope  if IWD2EE'
       <p><strong>Version 16 - November 9, 2023</strong></p>
       <ul>
         <li>Removed backup folder contents and changed backup location</li>
-        <li>Changes to <strong>Bugfixes</strong>:
-          <ul>
-            <li>v15 was patching Pudu's Blight as it claimed the item had the wrong stun chance, but it was correct already. The stun chance for Stunning Arrows and the Stun Flail were not being patched to the correct value. </li>
-            <li>Multiple patches were targeting static offsets, which could result in the patch not working or actively breaking something else. Similarly, it was using text patches to replace entries in a binary file, which could have the same result. </li>
-            <li>The Mail of Life fix from v15 was included in <strong> Include Forgotten Armor and Shields</strong>, and has been moved to <strong>Bugfixes</strong> instead. </li>
-            <li>Shambling Mound attack is now fixed via patch instead of overwrite. </li>
-            <li>Added  a small fix for a (IWD2 original) typo in the <span data-code-marker="+">Air Elemental</span> transformation spell that referenced its icon</li>
-            <li>Berserk Warriors summoned via the Horn of Valhalla no longer drop armor</li>
-          </ul>
-        </li>
+        <li><strong>Bugfixes </strong>has been deprecated. The fixes are already in IWD2EE and/or IWD2 FIxpack, and a dedicated project is a better home for fixes than a lone component in an otherwise late-install mod. </li>
         <li><strong> Infinite Stacking</strong> now searches dynamically for stackable items so that it will cover items added by mods</li>
         <li>The following components were overwriting files and now patch them dynamically instead: <strong> Non-Combat War Chant of the Sith</strong>, <strong> Improved Holy Avenger</strong>, <strong> No-Fists for Iron Body</strong>, <strong> Deep Gnome Starting XP</strong>, <strong> Improved Moonblades</strong>, <strong> No Alignment Class Restrictions,  Additional Druid Spells</strong></li>
         <li>Prior versions also overwrote the entire description of a spell or item when updating. Descriptions are instead changed dynamically for: <strong> Improved Holy Avenger</strong>, <strong> Improved Moonblades</strong>, <strong>Include Forgotten Armor and Shields</strong></li>

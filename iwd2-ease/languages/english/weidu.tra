@@ -4,7 +4,7 @@
 @3    = ~Improved Holy Avenger (Lawful: +2d6 vs. Chaos; Dispel On Hit, Will saves)~
 // @4, @5 in game.tra
 @6    = ~Two-Handed Greatsword Holy Avenger~
-@7    = ~No-Fists for Iron Body~
+@7    = ~No Fists for Iron Body~
 @8    = ~Deep Gnome Starting XP~
 @9    = ~Improved Moonblades~
 @10   = ~Improved Monk Fists~
@@ -32,3 +32,4 @@
 @1000 = ~This mod is for IWD2 only.~
 @1001 = ~This component is not compatible with your selection of IWD2EE components (check readme)~
 @1002 = ~The functionality of this component is already provided by another mod~
+@1003 = ~This component has been deprecated.~
