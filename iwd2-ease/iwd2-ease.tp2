@@ -7,6 +7,10 @@ ALWAYS
     INCLUDE ~iwd2-ease/lib/always.tpa~
   END
 END  
+
+VERSION ~v16~
+
+README ~iwd2-ease/readme-iwd2-ease.html~
   
 AUTO_TRA ~iwd2-ease/languages/%s~
 
@@ -35,9 +39,11 @@ BEGIN @0 DESIGNATED 0
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
 LABEL ~ww_iwd2_eou_bugfixes~
 
-COPY_EXISTING ~00swdb93.itm~    ~override~ // Bastard Sword of Heroism
-  LPF ALTER_HEADER_IWD2 INT_VAR type = 1 to_hit = 3 END // to hit bonus is 0, should be +3
-  BUT_ONLY
+ACTION_IF !MOD_IS_INSTALLED ~iwd2ee.tp2~ ~4~ BEGIN // iwdee item revisions turns this into a katana with +6 to hit
+  COPY_EXISTING ~00swdb93.itm~    ~override~ // Bastard Sword of Heroism
+    LPF ALTER_HEADER_IWD2 INT_VAR type = 1 to_hit = 3 END // to hit bonus is 0, should be +3
+    BUT_ONLY
+END
 
 COPY_EXISTING ~11phaen.cre~     ~override~ // Phaen of the Rags
               ~12phaen.cre~     ~override~
@@ -136,6 +142,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~    ~override~ // check all items
 
 BEGIN @2 DESIGNATED 2
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~iwd2ee.tp2~ ~0~ @1002 // class revisions already makes this non-combat
 LABEL ~ww_iwd2_eou_non-_combat_war_chant~
 
 // small change from v15: war chant still wn't apply to deafened party members or non-allies
@@ -154,6 +161,7 @@ COPY_EXISTING ~spin148.spl~ ~override~
 
 BEGIN @3 DESIGNATED 3
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~iwd2ee.tp2~ ~4~ @1001 // iwd2ee radically changes this
 LABEL ~ww_iwd2_eou_holy_avenger_improved~
 
 ACTION_IF subs BEGIN
@@ -228,6 +236,7 @@ COPY_EXISTING ~60hfslha.itm~ ~override~
 
 BEGIN @7 DESIGNATED 5
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~iwd2ee.tp2~ ~2~ @1002 // spell revisions already makes this change
 LABEL ~ww_iwd2_eou_iron_body_no_fist~
 
 COPY_EXISTING ~spwi807.spl~ ~override~ // iron body
@@ -244,6 +253,7 @@ COPY_EXISTING ~spwi807.spl~ ~override~ // iron body
 
 BEGIN @8 DESIGNATED 6
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~iwd2ee.tp2~ ~84~ @1001 // iwd2ee radically changes this
 LABEL ~ww_iwd2_eou_gnome_starting_xp~
 
 COPY_EXISTING ~strtxp.2da~ ~override~
@@ -260,6 +270,7 @@ COPY_EXISTING ~strtxp.2da~ ~override~
 
 BEGIN @9 DESIGNATED 7
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~iwd2ee.tp2~ ~4~ @1001 // iwd2ee radically changes this
 LABEL ~ww_iwd2_eou_improved_moonblades~
 
 ACTION_IF subs BEGIN
@@ -330,6 +341,7 @@ EXTEND_BOTTOM ~baldur.bcs~ ~iwd2-ease/baf/ce.baf~
 
 BEGIN @12 DESIGNATED 10
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~iwd2ee.tp2~ ~1~ @1001 // different approach
 LABEL ~ww_iwd2_eou_no_class_align_restrictions~
 
 COPY_EXISTING ~alignmnt.2da~ ~override~
@@ -370,6 +382,7 @@ COPY_EXISTING_REGEXP GLOB ~^bbodisa\.itm$~         ~override~
 
 BEGIN @14 DESIGNATED 12
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+REQUIRE_PREDICATE ((!MOD_IS_INSTALLED ~iwd2ee.tp2~ ~42~) AND (!!MOD_IS_INSTALLED ~iwd2ee.tp2~ ~43~)) @1001 // different approach
 LABEL ~ww_iwd2_eou_always_some_xp~
 
 COPY    ~iwd2-ease/2da/moncrate.2da~   ~override~
@@ -398,6 +411,7 @@ COPY_EXISTING ~rt_fury.2da~     ~override/rt_norm.2da~
 
 BEGIN @16 DESIGNATED 14
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~iwd2ee.tp2~ ~4~ @1001 // different approach
 LABEL ~ww_iwd2_eou_stronger_bastard_swords~
 
 COPY ~iwd2-ease/itm/00swdbbs.itm~   ~override~
@@ -452,10 +466,59 @@ ACTION_FOR_EACH sword IN 00swdbrc 00hfsbrc BEGIN
                               STR_VAR item  = EVAL ~%sword%~ spell = sppr508 END
                               
   COPY_EXISTING ~%sword%.itm~ ~override~ // fix params on newly-added global effects from chaotic commands
-    LPF ALTER_EFFECT INT_VAR check_headers = 0 power = 0 timing = 2 duration = 0 resist_dispel = 0 END
+    LPF DELETE_EFFECT INT_VAR check_headers = 0 match_opcode = 174 END
+    LPF ALTER_EFFECT INT_VAR check_headers = 0 power = 0 resist_dispel = 0 END // bypass spell protections
+    LPF ALTER_EFFECT INT_VAR check_headers = 0 match_timing = 0 timing = 2 duration = 0 END // change to equipped, ignore one-off visuals
     
 END  
 
+ACTION_IF MOD_IS_INSTALLED ~iwd2ee.tp2~ ~0~ BEGIN // compat with iwd2ee class revisions
+
+  OUTER_SET splstate_ME_ITEM_TYPE_EQUIPPED = IDS_OF_SYMBOL (~splstate~ ~ME_ITEM_TYPE_EQUIPPED~)
+
+  COPY_EXISTING ~00swdbbs.itm~   ~override~ // Bastard's Son
+                ~00hfsbbs.itm~   ~override~ // Know Thy Family
+                ~00swdbrc.itm~   ~override~ // Rage of Chaos
+                ~00hfsbrc.itm~   ~override~ // Order's Nemesis
+                ~00swdbwr.itm~   ~override~ // Wroth
+                ~00hfsbwr.itm~   ~override~ // Bloody Wroth
+                ~00swdb91.itm~   ~override~ // Icy Bastard Sword +1
+                ~00swdb92.itm~   ~override~ // Static Bastard Sword
+                ~00swdb93.itm~   ~override~ // Bastard Sword of Heroism
+                ~00swdb96.itm~   ~override~ // Bastard Sword +3: Cold Fire
+                ~00swdb97.itm~   ~override~ // Bastard Sword +2: Black Adder
+                ~00swdb98.itm~   ~override~ // Bastard Sword of Frost +1
+                ~00swdb99.itm~   ~override~ // fang
+                ~zzj6bs.itm~     ~override~ // Bastard Sword of the Undead Slayer +1
+    SET 288_save = (BIT18 + BIT19 + BIT21 + BIT22)                
+//    PATCH_IF (("%SOURCE_RES%" STRING_COMPARE_CASE "00swdbrc" = 0) OR 
+//              ("%SOURCE_RES%" STRING_COMPARE_CASE "00hfsbrc" = 0) OR 
+//              ("%SOURCE_RES%" STRING_COMPARE_CASE "00swdbwr" = 0) OR 
+//              ("%SOURCE_RES%" STRING_COMPARE_CASE "00hfsbwr" = 0)) BEGIN SET 288_save = 288_save + BIT20 // add cursed flag
+    LPF ADD_ITEM_EQEFFECT INT_VAR insert_point = 0 opcode = 287 target = 1 timing = 2 STR_VAR resource = USNONSNA END
+    LPF ADD_ITEM_EQEFFECT INT_VAR insert_point = 1 opcode = 288 target = 1 parameter1 = 69 parameter2 = splstate_ME_ITEM_TYPE_EQUIPPED timing = 2 savingthrow = 288_save special = 5 STR_VAR resource = USEQTYPE END
+    LPF ADD_ITEM_EFFECT INT_VAR type = 1 opcode = 500 target = 2 special = 1 STR_VAR resource = MEONHIT END
+    LPF ADD_ITEM_EFFECT INT_VAR type = 1 opcode = 500 target = 2 parameter2 = 16777216 savingthrow = (BIT14 + BIT19 + BIT23 + BIT24) STR_VAR resource = EXDAMAGE END
+  
+  // convert cold damage to iwd2ee  
+  COPY_EXISTING ~00swdb91.itm~   ~override~ // Icy Bastard Sword +1
+                ~00swdb98.itm~   ~override~ // Bastard Sword of Frost +1
+    LPF ALTER_EFFECT INT_VAR match_opcode = 12 opcode = 500 parameter1 = 0x00050600 parameter2 = 131072 savingthrow = BIT16 timing = 0 dicesize = 0 dicenumber = 0 STR_VAR resource = EXDAMAGE END
+    
+  // convert electrical damage to iwd2ee  
+  COPY_EXISTING ~00swdb92.itm~   ~override~ // Static Bastard Sword
+    LPF ALTER_EFFECT INT_VAR match_opcode = 12 opcode = 500 parameter1 = 0x00050600 parameter2 = 262144 savingthrow = BIT16 timing = 0 dicesize = 0 dicenumber = 0 STR_VAR resource = EXDAMAGE END
+    
+  // convert cold, fire damage to iwd2ee  
+  COPY_EXISTING ~00swdb96.itm~   ~override~ // Bastard Sword +3: Cold Fire
+    LPF ALTER_EFFECT INT_VAR match_opcode = 12 multi_match = 1 opcode = 500 parameter1 = 0x00030600 parameter2 = 131072 savingthrow = BIT16 timing = 0 dicesize = 0 dicenumber = 0 STR_VAR resource = EXDAMAGE END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 12                 opcode = 500 parameter1 = 0x00030600 parameter2 = 524288 savingthrow = BIT16 timing = 0 dicesize = 0 dicenumber = 0 STR_VAR resource = EXDAMAGE END
+    
+  // convert acid damage to iwd2ee  
+  COPY_EXISTING ~00swdb99.itm~   ~override~ // fang
+    LPF ALTER_EFFECT INT_VAR match_opcode = 12 opcode = 500 parameter1 = 0x00050600 parameter2 = 65536 savingthrow = BIT16 timing = 0 dicesize = 0 dicenumber = 0 STR_VAR resource = EXDAMAGE END
+
+END
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -499,6 +562,7 @@ COMPILE ~iwd2-ease/dlg/teleport.d~
 
 BEGIN @32 DESIGNATED 17
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~iwd2ee.tp2~ ~39~ @1001 // different approach
 LABEL ~ww_iwd2_eou_armor_shield_damage_resistance~
 
 // this was originally done by copying in a bunch of items and overwriting existing stuff. 
@@ -604,68 +668,96 @@ BEGIN @33 DESIGNATED 18
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
 LABEL ~ww_iwd2_eou_forgotten_armor_and_shields~
 
-COPY  ~iwd2-ease/itm/00rtww1.itm~  ~override/00rtar1.itm~
-      ~iwd2-ease/itm/00rtww1.itm~  ~override/00rtar2.itm~
-      ~iwd2-ease/itm/00rtww1.itm~  ~override/00rtar3.itm~
-
-APPEND ~rt_norm.2da~
-~00RTAR1  12SHLDCT
-00RTAR2  12SHLDSG
-00RTAR3  12SHLDKD
-~	        
-APPEND ~rt_fury.2da~
-~00RTAR1  12HFSDCT
-00RTAR2  12HFSGSG
-00RTAR3  12HFSDKD
-~	        
-
-ACTION_IF subs BEGIN // remove line about natural origins/druid usage
-
-  OUTER_SPRINT druid_match @2013  
-  COPY_EXISTING ~12shldct.itm~ ~override~ // Cliffs of Targos
-                ~12shldkd.itm~ ~override~ // Knucklehead
-                ~12hfsdct.itm~ ~override~ // Cliffs over Maer Dualdon  
-                ~12hfsdkd.itm~ ~override~ // Apsel's Rolly-Polly Knuckledheaded Shield            
-    READ_STRREF 0x54 desc
-    INNER_PATCH_SAVE desc ~%desc%~ BEGIN
-      REPLACE_TEXTUALLY ~%druid_match%~ ~~
-    END
-    SAY_EVALUATED 0x54 ~%desc%~
-    BUT_ONLY
-    
-END ELSE BEGIN 
-
-  COPY_EXISTING ~12shldct.itm~ ~override~
-    SAY DESC @34
-
-  COPY_EXISTING ~12hfsdct.itm~ ~override~
-    SAY DESC @35
-
-  COPY_EXISTING ~12shldkd.itm~ ~override~
-    SAY DESC @36
-
-  COPY_EXISTING ~12hfsdkd.itm~ ~override~
-    SAY DESC @37
-
-END  
-
-COPY_EXISTING ~10guthe.sto~ ~override~ // Henghelm's Goods
-  LPF ALTER_STORE_ITEM STR_VAR match_item = 00shld01 item = 00shld87 END // Tower Shield of Spell Resistance
-  BUT_ONLY
-
 COPY_EXISTING ~50tahvo.sto~ ~override~ // Tahvo the Huntmaster
-  LPF ALTER_STORE_ITEM STR_VAR match_item = 00bwlx95 item = 00hide04 END // Umber Hulk Plate
-  LPF ALTER_STORE_ITEM STR_VAR match_item = 00bwhx03 item = 00hide05 END // Black Dragon Scale
-  BUT_ONLY
-
-COPY_EXISTING ~11deird.sto~ ~override~ // Gallaway Trading Depot
-  LPF ALTER_STORE_ITEM STR_VAR match_item = 00ax1h02 item = 60rthf06 END
+  LPF ADD_STORE_ITEM_EX STR_VAR position = ~AFTER 00leat01~ item_name = ~00hide04~ END // Umber Hulk Plate
+  LPF ADD_STORE_ITEM_EX STR_VAR position = ~AFTER 00hide04~ item_name = ~00hide05~ END // Black Dragon Scale
   BUT_ONLY
 
 COPY ~iwd2-ease/sto/w#oswald.sto~ ~override~ // oswald's secret stash
   SAY 0xc @38
   
-COMPILE ~iwd2-ease/dlg/forgot.d~ 
+ACTION_IF !MOD_IS_INSTALLED ~iwd2ee.tp2~ ~36~ BEGIN
+    
+  COMPILE ~iwd2-ease/dlg/forgot.d~ // shawford, oswald only
+    USING ~iwd2-ease/languages/english/forgot.tra~ ~iwd2-ease/languages/%LANGUAGE%/forgot.tra~
+  
+END ELSE BEGIN  
+    
+  COMPILE ~iwd2-ease/dlg/forgot.d~           // shawford, oswald only
+          ~iwd2-ease/dlg/forgot_iwd2ee_36.d~ // extra shawford transition to catch
+    USING ~iwd2-ease/languages/english/forgot.tra~ ~iwd2-ease/languages/%LANGUAGE%/forgot.tra~
+
+END 
+
+// iwd2ee already restores most of these, so need a major fork here
+ACTION_IF MOD_IS_INSTALLED ~iwd2ee.tp2~ ~4~ BEGIN
+
+  COPY_EXISTING ~w#oswald.sto~ ~override~ // oswald's secret stash
+    LPF DELETE_STORE_ITEM STR_VAR item_to_delete = 00chan07 END
+    LPF DELETE_STORE_ITEM STR_VAR item_to_delete = 00leat08 END
+    LPF DELETE_STORE_ITEM STR_VAR item_to_delete = 60rthf04 END
+    LPF DELETE_STORE_ITEM STR_VAR item_to_delete = 60rthf05 END
+    
+END ELSE BEGIN
+
+  COPY  ~iwd2-ease/itm/00rtww1.itm~  ~override/00rtar1.itm~
+        ~iwd2-ease/itm/00rtww1.itm~  ~override/00rtar2.itm~
+        ~iwd2-ease/itm/00rtww1.itm~  ~override/00rtar3.itm~
+
+  APPEND ~rt_norm.2da~
+~00RTAR1  12SHLDCT
+00RTAR2  12SHLDSG
+00RTAR3  12SHLDKD
+~	        
+  APPEND ~rt_fury.2da~
+~00RTAR1  12HFSDCT
+00RTAR2  12HFSGSG
+00RTAR3  12HFSDKD
+~	        
+
+  // 00hide05, 00leat08
+  ACTION_IF subs BEGIN // remove line about natural origins/druid usage
+
+    OUTER_SPRINT druid_match @2013  
+    COPY_EXISTING ~12shldct.itm~ ~override~ // Cliffs of Targos
+                  ~12shldkd.itm~ ~override~ // Knucklehead
+                  ~12hfsdct.itm~ ~override~ // Cliffs over Maer Dualdon  
+                  ~12hfsdkd.itm~ ~override~ // Apsel's Rolly-Polly Knuckledheaded Shield            
+      READ_STRREF 0x54 desc
+      INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+        REPLACE_TEXTUALLY ~%druid_match%~ ~~
+      END
+      SAY_EVALUATED 0x54 ~%desc%~
+      BUT_ONLY
+      
+  END ELSE BEGIN 
+
+    COPY_EXISTING ~12shldct.itm~ ~override~
+      SAY DESC @34
+
+    COPY_EXISTING ~12hfsdct.itm~ ~override~
+      SAY DESC @35
+
+    COPY_EXISTING ~12shldkd.itm~ ~override~
+      SAY DESC @36
+
+    COPY_EXISTING ~12hfsdkd.itm~ ~override~
+      SAY DESC @37
+
+  END  
+
+  COPY_EXISTING ~10guthe.sto~ ~override~ // Henghelm's Goods
+    LPF ADD_STORE_ITEM_EX STR_VAR position = ~AFTER 00shld01~ item_name = ~00shld87~ END // Tower Shield of Spell Resistance
+    BUT_ONLY
+
+  COPY_EXISTING ~11deird.sto~ ~override~ // Gallaway Trading Depot
+    LPF ADD_STORE_ITEM_EX STR_VAR position = ~AFTER 00leat01~ item_name = ~60rthf06~ END
+    BUT_ONLY
+    
+  COMPILE ~iwd2-ease/dlg/forgot_base.d~ 
+    USING ~iwd2-ease/languages/english/forgot.tra~ ~iwd2-ease/languages/%LANGUAGE%/forgot.tra~
+      
+END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -679,32 +771,33 @@ BEGIN @39 DESIGNATED 19
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
 LABEL ~ww_iwd2_eou_additional_druid_spells~
 
+// will defer to IWD2EE's Spell Revisions for level placement, but will still add otherwise
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_druid BEGIN  
 
-  ~SPPR106~ => 1 // Magic Stone
-  ~SPPR107~ => 1 // Protection From Evil
-  ~SPPR408~ => 3 // Magic Circle Against Evil
-  ~SPWI103~ => 1 // Burning Hands
-  ~SPWI107~ => 2 // Eagle's Splendor
-  ~SPWI122~ => 1 // Ice Dagger
-  ~SPWI214~ => 2 // Bull's Strength
-  ~SPWI215~ => 2 // Web
-  ~SPWI223~ => 2 // Cat's Grace
-  ~SPWI318~ => 3 // Icelance
-  ~SPWI408~ => 4 // Stoneskin
-  ~SPWI424~ => 4 // Vitriolic Sphere
-  ~SPWI428~ => 4 // Spider Spawn
-  ~SPWI504~ => 5 // Cone of Cold
-  ~SPWI511~ => 5 // Shroud of Flame
-  ~SPWI519~ => 5 // Sunfire
+  ~SPPR106~ => 1 // Magic Stone [already added in IWD2EE spell revisions at same level]
+  ~SPPR107~ => 1 // Protection From Evil [already added in IWD2EE spell revisions at same level]
+  ~SPPR408~ => 3 // Magic Circle Against Evil [already added in IWD2EE spell revisions at level 4]
+  ~SPWI103~ => 1 // Burning Hands [already added in IWD2EE spell revisions at same level]
+  ~SPWI107~ => 2 // Eagle's Splendor [already added in IWD2EE spell revisions at same level]
+  ~SPWI122~ => 1 // Ice Dagger [already added in IWD2EE spell revisions at same level]
+  ~SPWI214~ => 2 // Bull's Strength [already added in IWD2EE spell revisions at same level]
+  ~SPWI215~ => 2 // Web [already added in IWD2EE spell revisions at same level]
+  ~SPWI223~ => 2 // Cat's Grace [already added in IWD2EE spell revisions at same level]
+  ~SPWI318~ => 3 // Icelance [already added in IWD2EE spell revisions at same level]
+  ~SPWI408~ => 4 // Stoneskin [already added in IWD2EE spell revisions at same level]
+  ~SPWI424~ => 4 // Vitriolic Sphere [already added in IWD2EE spell revisions at same level]
+  ~SPWI428~ => 4 // Spider Spawn [already added in IWD2EE spell revisions at same level]
+  ~SPWI504~ => 5 // Cone of Cold [already added in IWD2EE spell revisions at same level]
+  ~SPWI511~ => 5 // Shroud of Flame [already added in IWD2EE spell revisions at same level]
+  ~SPWI519~ => 5 // Sunfire [already added in IWD2EE spell revisions at same level]
   ~SPWI522~ => 5 // Protection from Acid
   ~SPWI523~ => 4 // Protection from Electricity
-  ~SPWI525~ => 5 // Ball Lightning
-  ~SPWI603~ => 6 // Chain Lightning
+  ~SPWI525~ => 5 // Ball Lightning [already added in IWD2EE spell revisions at same level]
+  ~SPWI603~ => 6 // Chain Lightning [already added in IWD2EE spell revisions at same level]
   ~SPWI605~ => 6 // Acid Fog
-  ~SPWI620~ => 6 // Trollish Fortitude
+  ~SPWI620~ => 6 // Trollish Fortitude [already added in IWD2EE spell revisions at same level]
   ~SPWI626~ => 6 // Wyvern Call
-  ~SPWI708~ => 6 // Acid Storm
+  ~SPWI708~ => 6 // Acid Storm [already added in IWD2EE spell revisions at level 7]
   ~SPWI719~ => 7 // Vipergout
   ~SPWI802~ => 8 // Summon Monster VIII
     
@@ -713,8 +806,10 @@ END
 COPY_EXISTING ~listspll.2da~ ~override~
   PATCH_PHP_EACH cd_druid AS spell => level BEGIN
     REPLACE_EVALUATE CASE_INSENSITIVE ~^\([0-9]+[ %TAB%]+[0-9]+[ %TAB%]+[0-9]+[ %TAB%]+\)\([0-9]+\)\([ %TAB%]+[0-9]+[ %TAB%]+[0-9]+[ %TAB%]+[0-9]+[ %TAB%]+[0-9]+[ %TAB%]+\)\(%spell%\)~ BEGIN  
-      PATCH_IF ~%MATCH2%~ = 0 BEGIN // already enabled
+      PATCH_IF ~%MATCH2%~ = 0 BEGIN // not already enabled
         SET MATCH2 = level
+      END ELSE BEGIN
+        DEFINE_ASSOCIATIVE_ARRAY cd_druid BEGIN ~%spell%~ => 0 END // already available, so update array so next steps get skipped
       END  
     END ~%MATCH1%%MATCH2%%MATCH3%%MATCH4%~
   END  
@@ -727,24 +822,28 @@ ACTION_IF subs BEGIN
 END
   
 ACTION_PHP_EACH cd_druid AS spell => level BEGIN
+
+  ACTION_IF level BEGIN // only proceed if this component enabled it in listspll
   
-  COPY_EXISTING ~%spell%z.itm~ ~override~ // make scroll usable by druids
-    WRITE_LONG 0x1e (THIS BOR BIT3) // adds druid flag
-    BUT_ONLY IF_EXISTS
-    
-  ACTION_IF subs BEGIN // try to update spell descriptions 
-  
-    COPY_EXISTING ~%spell%.spl~  ~override~
-      READ_LONG   0x50 desc_strref
-      READ_STRREF 0x50 desc
-      INNER_PATCH_SAVE desc ~%desc%~ BEGIN
-        REPLACE_TEXTUALLY ~%drd_match%~ ~\1%drd_txt% %level%, ~
-      END
-      BUT_ONLY
-    
-    STRING_SET_EVALUATE desc_strref ~%desc%~ // since scrolls & spells use same string, do it as STRING_SET
+    COPY_EXISTING ~%spell%z.itm~ ~override~ // make scroll usable by druids
+      WRITE_LONG 0x1e (THIS BOR BIT3) // adds druid flag
+      BUT_ONLY IF_EXISTS
       
-  END
+    ACTION_IF subs BEGIN // try to update spell descriptions 
+    
+      COPY_EXISTING ~%spell%.spl~  ~override~
+        READ_LONG   0x50 desc_strref
+        READ_STRREF 0x50 desc
+        INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+          REPLACE_TEXTUALLY ~%drd_match%~ ~\1%drd_txt% %level%, ~
+        END
+        BUT_ONLY
+      
+      STRING_SET_EVALUATE desc_strref ~%desc%~ // since scrolls & spells use same string, do it as STRING_SET
+        
+    END
+    
+  END  
   
 END
 
@@ -770,6 +869,7 @@ COPY_EXISTING ~listspll.2da~ ~override~
 
 BEGIN @40 DESIGNATED 20
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~iwd2ee.tp2~ ~0~ @1001 // class revisions completely overhauls this
 LABEL ~ww_iwd2_eou_alternate_shapeshifting~
 
 COPY_EXISTING ~clabdr01.2da~ ~override~

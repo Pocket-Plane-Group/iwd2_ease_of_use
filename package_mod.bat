@@ -10,7 +10,7 @@ call "%~dp0..\ModPackaging\utilities\ie_games.bat"
 
 REM /* MODIFY: set the values of the 3 variables below to reflect the current mod version */
 set "mod_name=Icewind Dale II Ease of Use Mod Pack"
-set mod_version=v15
+set mod_version=v16
 set mod_folder=iwd2-ease
 
 REM /* MODIFY: list here which IE games the mod is compatible with, from this list of possibilities: */

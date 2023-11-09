@@ -30,3 +30,5 @@
 // game and weidu share the 0-70 range; use 1000s for weidu and 2000s for game going forward
 
 @1000 = ~This mod is for IWD2 only.~
+@1001 = ~This component is not compatible with your selection of IWD2EE components (check readme)~
+@1002 = ~The functionality of this component is already provided by another mod~
