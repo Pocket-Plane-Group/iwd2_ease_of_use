@@ -6,11 +6,11 @@
 
 ![The WeiDU.org Logo](https://pocket-plane-group.github.io/readmes/style/weidu_logo.png)
 
-# Icewind Dale II Ease of Use Mod Pack
+# Icewind Dale II Ease of Use (EoU) Mod
 
 ## Overview
 
-This is a collection of useful mods that I threw together. Many of them were written by others. 
+This is a collection of useful mods put together by Westley Weimer for use on IWD2. Many of them were written by others. 
 
 ## More Information
 
