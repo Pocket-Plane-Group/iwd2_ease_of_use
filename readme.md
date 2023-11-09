@@ -4,7 +4,7 @@
 ![Language](https://img.shields.io/static/v1?label=language&message=English%20%7C%20Spanish&color=limegreen)
 ![Supported games](https://img.shields.io/static/v1?label=supported%20games&message=IWD2&color=dodgerblue)
 
-![The PPG Logo](https://avatars.githubusercontent.com/u/59457396)
+![The WeiDU.org Logo](https://pocket-plane-group.github.io/readmes/style/weidu_logo.png)
 
 # Icewind Dale II Ease of Use Mod Pack
 
@@ -14,7 +14,7 @@ This is a collection of useful mods that I threw together. Many of them were wri
 
 ## More Information
 
-:page_facing_up: [Readme](https://raw.githubusercontent.com/Pocket-Plane-Group/iwd2_ease_of_use/master/iwd2-ease/readme-iwd2-ease.txt)
+:page_facing_up: [Readme](https://pocket-plane-group.github.io/readmes/readme-iwd2-ease.html)  
 :page_facing_up: [Forum](http://forums.pocketplane.net/index.php/board,43.0.html) 
 
 ## 
