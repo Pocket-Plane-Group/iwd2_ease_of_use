@@ -125,10 +125,12 @@ COPY_EXISTING ~60hfslha.itm~ ~override~
   LPF ADD_ITEM_EFFECT INT_VAR type = 1 opcode = 402 target = 2                 timing = 1 resist_dispel = 2 STR_VAR resource = ~effdm1~  END // dispel magic vs. everyone
   PATCH_IF subs BEGIN // for english, sub text in the description directly
     READ_STRREF 0x54 desc
-    INNER_PATCH_SAVE desc ~%desc%~ BEGIN
-      REPLACE_TEXTUALLY ~%ha_match%~ ~%ha_replace%~
+    PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // sanity check, checking for valid content in string
+      INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+        REPLACE_TEXTUALLY ~%ha_match%~ ~%ha_replace%~
+      END
+      SAY_EVALUATED 0x54 ~%desc%~
     END
-    SAY_EVALUATED 0x54 ~%desc%~
   END ELSE BEGIN // otherwise use static descriptions
     PATCH_IF ("%SOURCE_RES%" STRING_COMPARE_CASE "60swdlha" = 0) BEGIN
       SAY DESC @4
@@ -167,12 +169,14 @@ COPY_EXISTING ~60hfslha.itm~ ~override~
   LPF ALTER_HEADER_IWD2 INT_VAR match_type = 1 range = 2 dicenumber = 2 dicesize = 6 END // range 2, base damage 2d6
   PATCH_IF subs BEGIN // for english, sub text in the description directly
     READ_STRREF 0x54 desc
-    INNER_PATCH_SAVE desc ~%desc%~ BEGIN
-      REPLACE_TEXTUALLY ~%dam_match%~  ~%dam_replace%~  // replace damagae line with 2d6
-      REPLACE_TEXTUALLY ~%hd1_match%~  ~%hd1_replace%~  // replace one-handed line with two-handed
-      REPLACE_TEXTUALLY ~%feat_match%~ ~%feat_replace%~ // replace 'large sword' with 'great sword' in feat line
-    END
-    SAY_EVALUATED 0x54 ~%desc%~
+    PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // sanity check, checking for valid content in string
+      INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+        REPLACE_TEXTUALLY ~%dam_match%~  ~%dam_replace%~  // replace damagae line with 2d6
+        REPLACE_TEXTUALLY ~%hd1_match%~  ~%hd1_replace%~  // replace one-handed line with two-handed
+        REPLACE_TEXTUALLY ~%feat_match%~ ~%feat_replace%~ // replace 'large sword' with 'great sword' in feat line
+      END
+      SAY_EVALUATED 0x54 ~%desc%~
+    END  
   END
   BUT_ONLY
 
@@ -238,12 +242,14 @@ COPY_EXISTING ~00swdl09.itm~   ~override~
   LPF ADD_ITEM_EFFECT INT_VAR type = 1 opcode = 60 target = 2 power = 3 parameter1 = 100 parameter2 = 2 resist_dispel = 1 duration = 7 END // 100% casting failure for one round
   PATCH_IF subs BEGIN // for english, sub text in the description directly
     READ_STRREF 0x50 desc
-    INNER_PATCH_SAVE desc ~%desc%~ BEGIN
-      REPLACE_TEXTUALLY ~%dam_match%~  ~%dam_replace%~  // replace damagae line with 1d12+4
-      REPLACE_TEXTUALLY ~%atk_match%~  ~~               // remove attack bonus line
-      REPLACE_TEXTUALLY ~%feat_match%~ ~%feat_replace%~ // replace 'large sword' with 'small blade' in feat line
+    PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // sanity check, checking for valid content in string
+      INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+        REPLACE_TEXTUALLY ~%dam_match%~  ~%dam_replace%~  // replace damagae line with 1d12+4
+        REPLACE_TEXTUALLY ~%atk_match%~  ~~               // remove attack bonus line
+        REPLACE_TEXTUALLY ~%feat_match%~ ~%feat_replace%~ // replace 'large sword' with 'small blade' in feat line
+      END
+      SAY_EVALUATED 0x50 ~%desc%~
     END
-    SAY_EVALUATED 0x50 ~%desc%~
   END
   BUT_ONLY
   
@@ -514,6 +520,12 @@ BEGIN @32 DESIGNATED 17
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @1000
 REQUIRE_PREDICATE !MOD_IS_INSTALLED ~iwd2ee.tp2~ ~39~ @1001 // different approach
 LABEL ~ww_iwd2_eou_armor_shield_damage_resistance~
+  
+ACTION_IF subs BEGIN
+  OUTER_SPRINT res_match   @2020
+  OUTER_SPRINT res_txt     @2021
+  OUTER_SPRINT cdeol       @2022
+END
 
 // this was originally done by copying in a bunch of items and overwriting existing stuff. 
 // After examination, the new items simply had four ops (86-89) that provided resistance bonuses 
@@ -532,6 +544,21 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
     END
   END    
   PATCH_IF ac > 0 BEGIN // ac o armor/shield found, now adjust existing resistanec or add them 
+    PATCH_IF subs BEGIN
+      READ_LONG 0x54 desc
+      PATCH_IF (desc > 0) AND (desc < 999999) BEGIN
+        SET offset = 0x54
+      END ELSE BEGIN
+        SET offset = 0x50
+      END
+      READ_STRREF offset desc
+      PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // sanity check, checking for valid content in string
+        INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+          REPLACE_TEXTUALLY ~%res_match%%ac%%cdeol%~ ~\1%ac% (%ac%%res_txt%)\3~
+        END
+        SAY_EVALUATED ~%offset%~ ~%desc%~ // write changes
+      END
+    END
     SET slash = 0
     SET crush = 0
     SET pierce = 0
