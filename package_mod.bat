@@ -28,7 +28,7 @@ set audio_folder=%mod_folder%\audio
 set tispack_folder=%mod_folder%\tiz
 set tile2ee_folder=%mod_folder%\tools\tile2ee
 set iconv_folder=%mod_folder%\languages\iconv
-set mod_readme=https://raw.githubusercontent.com/Pocket-Plane-Group/iwd2_ease_of_use/master/iwd2-ease/readme-iwd2-ease.txt
+set mod_readme=https://pocket-plane-group.github.io/readmes/readme-iwd2-ease.html
 
 REM /* MODIFY: if you don't need to build a specific package, you can disable it by setting the appropriate variable below to 0 */
 set build_windows=1
