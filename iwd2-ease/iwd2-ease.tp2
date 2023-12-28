@@ -8,7 +8,7 @@ ALWAYS
   END
 END  
 
-VERSION ~Test_Build_1_for_v16~
+VERSION ~v16~
 
 README ~iwd2-ease/readme-iwd2-ease.html~
   
