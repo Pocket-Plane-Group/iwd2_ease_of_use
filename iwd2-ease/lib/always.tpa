@@ -4,7 +4,7 @@ ACTION_IF ("%LANGUAGE%" STRING_COMPARE_CASE "english" = 0) BEGIN OUTER_SET subs 
 ///// alter_header_iwd2                                \\\\\
 /////                                                  \\\\\
 
-INCLUDE ~owd2-ease/lib/alter_header_iwd2.tpa~
+INCLUDE ~iwd2-ease/lib/alter_header_iwd2.tpa~
 
 /////                                                  \\\\\
 ///// ALTER_AREA/CREATURE_ITEM                         \\\\\
